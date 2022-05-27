@@ -1,6 +1,11 @@
 package FolderPlane;
 
 public class Silver extends Plane{
+
+    public Silver() {
+        super(100,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
+    }
+
     @Override
     public void catering() {
 

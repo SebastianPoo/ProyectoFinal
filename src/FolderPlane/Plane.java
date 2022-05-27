@@ -15,4 +15,12 @@ public abstract class Plane implements Service {
         MOTOR_DE_PISTONES,
     }
 
+    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+        this.coste = coste;
+        this.fuel = fuel;
+        this.maxPassenger = maxPassenger;
+        this.kmXhs = kmXhs;
+        this.kmTraveled = kmTraveled;
+        this.tipoMotor = tipoMotor;
+    }
 }
