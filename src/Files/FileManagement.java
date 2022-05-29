@@ -1,13 +1,14 @@
 package Files;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import Passenger.Passenger;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 public class FileManagement {
 
@@ -41,7 +42,42 @@ public class FileManagement {
         }
 
         }
-   }
+
+
+        public ArrayList jSonToArrayList (String archivoJson){
+
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+                BufferedReader reader = null;
+
+                ArrayList<Passenger> passengers= new ArrayList<>();
+
+                try {
+                    reader = new BufferedReader(new FileReader(new File(archivoJson)));
+                    passengers = gson.fromJson(reader,
+                            (new TypeToken<ArrayList<Passenger>>() {}.getType())
+                    ); // hacemos esto porque necesitamos el tipo de dato
+
+                    for(var libro : passengers) {
+                        System.out.println(passengers);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+
+                } finally {
+                    try {
+                        if (reader != null) {
+                            reader.close();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+         return passengers;
+        }
+    }
 
 
 

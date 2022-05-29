@@ -1,6 +1,8 @@
 package Passenger;
 
-public class Passenger {
+import java.io.Serializable;
+
+public class Passenger implements Serializable {
     private String name;
     private String LastName;
     private String Dni;
