@@ -1,3 +1,8 @@
+package Ticket;
+
+import FolderPlane.Plane;
+import Passenger.Passenger;
+
 import java.util.Objects;
 
 public class Ticket {
