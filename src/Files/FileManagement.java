@@ -56,7 +56,7 @@ public class FileManagement {
                     reader = new BufferedReader(new FileReader(new File(archivoJson)));
                     passengers = gson.fromJson(reader,
                             (new TypeToken<ArrayList<Passenger>>() {}.getType())
-                    ); // hacemos esto porque necesitamos el tipo de dato
+                    ); 
 
                     for(var passenger : passengers) {
                         System.out.println(passenger);
