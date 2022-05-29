@@ -29,7 +29,7 @@ public class FileManagement {
         }
     }
 
-   public void arrayToJson (ArrayList array) throws IOException {
+   public void arrayListToJson (ArrayList array) throws IOException {
         try{
             String jSon=gson.toJson(array);
             BufferedWriter buffer = new BufferedWriter(new FileWriter(new File("archivoJson.txt")));
@@ -58,8 +58,8 @@ public class FileManagement {
                             (new TypeToken<ArrayList<Passenger>>() {}.getType())
                     ); // hacemos esto porque necesitamos el tipo de dato
 
-                    for(var libro : passengers) {
-                        System.out.println(passengers);
+                    for(var passenger : passengers) {
+                        System.out.println(passenger);
                     }
 
                 } catch (IOException e) {

@@ -18,7 +18,7 @@ public class Menu {
           pasajeros.add(person2);
           pasajeros.add(person3);
           FileManagement file = new FileManagement();
-          file.arrayToJson(pasajeros);
+          file.arrayListToJson(pasajeros);
 
           pasajerosJson =file.jSonToArrayList("archivoJson.txt");
           System.out.println(pasajerosJson);
