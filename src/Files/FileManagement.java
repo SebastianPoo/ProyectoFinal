@@ -4,6 +4,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import Passenger.Passenger;
 import com.google.gson.Gson;
@@ -50,13 +51,13 @@ public class FileManagement {
 
                 BufferedReader reader = null;
 
-                ArrayList<Passenger> passengers= new ArrayList<>();
+                ArrayList<Object> passengers= new ArrayList<>();
 
                 try {
                     reader = new BufferedReader(new FileReader(new File(archivoJson)));
                     passengers = gson.fromJson(reader,
-                            (new TypeToken<ArrayList<Passenger>>() {}.getType())
-                    ); 
+                            (new TypeToken<ArrayList<Object>>() {}.getType())
+                    );
 
                     for(var passenger : passengers) {
                         System.out.println(passenger);

@@ -1,6 +1,10 @@
 package FolderPlane;
 
 public class Gold extends Plane{
+    public Gold() {
+
+    }
+
     @Override
     public void catering() {
 

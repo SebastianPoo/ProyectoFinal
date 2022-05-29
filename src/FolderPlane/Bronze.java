@@ -1,6 +1,12 @@
 package FolderPlane;
 
 public class Bronze extends Plane{
+
+
+    public Bronze() {
+
+    }
+
     @Override
     public void catering() {
 

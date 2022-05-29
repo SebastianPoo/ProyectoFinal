@@ -1,6 +1,10 @@
 package FolderPlane;
 
 public class Silver extends Plane{
+    public Silver() {
+
+    }
+
     @Override
     public void catering() {
 
