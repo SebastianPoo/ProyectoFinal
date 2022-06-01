@@ -9,10 +9,7 @@ public abstract class Plane implements Service {
     private  TipoMotor tipoMotor;
 
 
-    public enum TipoMotor{
-        MOTOR_A_REACCION,
-        MOTOR_A_HELICE,
-        MOTOR_DE_PISTONES,
+    public Plane (){
     }
 
     public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
@@ -22,5 +19,22 @@ public abstract class Plane implements Service {
         this.kmXhs = kmXhs;
         this.kmTraveled = kmTraveled;
         this.tipoMotor = tipoMotor;
+    }
+
+    public enum TipoMotor {
+        MOTOR_A_REACCION,
+        MOTOR_A_HELICE,
+        MOTOR_DE_PISTONES,
+    }
+    @Override
+    public String toString() {
+        return "Plane{" +
+                "coste=" + coste +
+                ", fuel=" + fuel +
+                ", maxPassenger=" + maxPassenger +
+                ", kmXhs=" + kmXhs +
+                ", kmTraveled=" + kmTraveled +
+                ", tipoMotor=" + tipoMotor +
+                '}';
     }
 }

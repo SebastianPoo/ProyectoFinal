@@ -3,7 +3,7 @@ package FolderPlane;
 public class Silver extends Plane{
 
     public Silver() {
-        super(100,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
+        super(150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
     }
 
     @Override
@@ -13,7 +13,7 @@ public class Silver extends Plane{
 
     @Override
     public void wifi() {
-
+        System.out.println("wifi max 2GB");
     }
 
     @Override

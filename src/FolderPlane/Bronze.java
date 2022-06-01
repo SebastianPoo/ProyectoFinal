@@ -3,8 +3,10 @@ package FolderPlane;
 public class Bronze extends Plane{
 
     public Bronze() {
-        super( 150, 19325.44,60,876,3440 , TipoMotor.MOTOR_A_REACCION);
+        super( 150, 19325.44,60,
+                876,3440 , TipoMotor.MOTOR_DE_PISTONES);
     }
+
 
     @Override
     public void catering() {

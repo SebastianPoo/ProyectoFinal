@@ -3,7 +3,11 @@ package FolderPlane;
 public class Gold extends Plane{
 
     public Gold() {
-        super(300,3260,8,746,3700,TipoMotor.MOTOR_DE_PISTONES);
+        super(300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
+    }
+
+    public Gold(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+        super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
 
     @Override
