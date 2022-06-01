@@ -1,3 +1,4 @@
+/*
 package Travel;
 
 public class Travel {
@@ -7,3 +8,4 @@ public class Travel {
     List<Pasajero> pasajeros;
     int distancia;
 }
+*/
