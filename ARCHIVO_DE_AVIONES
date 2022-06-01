@@ -1,0 +1,26 @@
+[
+  {
+    "coste": 150,
+    "fuel": 19325.44,
+    "maxPassenger": 60,
+    "kmXhs": 876.0,
+    "kmTraveled": 3440.0,
+    "tipoMotor": "MOTOR_DE_PISTONES"
+  },
+  {
+    "coste": 150,
+    "fuel": 1141.0,
+    "maxPassenger": 4,
+    "kmXhs": 694.0,
+    "kmTraveled": 2084.0,
+    "tipoMotor": "MOTOR_A_HELICE"
+  },
+  {
+    "coste": 300,
+    "fuel": 3260.0,
+    "maxPassenger": 8,
+    "kmXhs": 746.0,
+    "kmTraveled": 3700.0,
+    "tipoMotor": "MOTOR_A_REACCION"
+  }
+]
