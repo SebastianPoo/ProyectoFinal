@@ -30,4 +30,5 @@ public class Bronze extends Plane{
         System.out.println("Precio $200");
         return costo=costo+200;
     }
+
 }

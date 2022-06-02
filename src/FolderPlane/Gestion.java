@@ -9,9 +9,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class Gestion extends Plane {
+public class Gestion {
 
     private LinkedList<Plane> flota = new LinkedList<>();
+    private LinkedList<Person> clientes = new LinkedList<>();   /// lista que no se repite
+    private LinkedList<Plane> ticket = new LinkedList<>();     ///lista que no se repite
+    private LinkedList<Plane> travel = new LinkedList<>();     ///lista que no se repite
 
     public Gestion(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
@@ -33,7 +36,7 @@ public class Gestion extends Plane {
 
         return flota;
     }
-
+    ///VER DEL ARCHIVO
     public static  <T> void persistencia(LinkedList<T> t) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
