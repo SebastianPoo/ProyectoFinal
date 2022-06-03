@@ -6,6 +6,9 @@ public class Gold extends Plane{
     public Gold(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
+    public Gold() {
+        super(300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
+    }
 
     @Override
     public int catering(int costo) {

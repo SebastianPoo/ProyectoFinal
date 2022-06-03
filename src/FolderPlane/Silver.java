@@ -6,6 +6,9 @@ public class Silver extends Plane{
     public Silver(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
+    public Silver() {
+        super(150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
+    }
 
     @Override
     public int catering(int costo) {

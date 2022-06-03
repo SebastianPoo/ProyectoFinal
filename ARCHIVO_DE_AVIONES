@@ -1,5 +1,6 @@
 [
   {
+    "planeType": 3000,
     "coste": 150,
     "fuel": 19325.44,
     "maxPassenger": 60,
@@ -8,6 +9,7 @@
     "tipoMotor": "MOTOR_DE_PISTONES"
   },
   {
+    "planeType": 4000,
     "coste": 150,
     "fuel": 1141.0,
     "maxPassenger": 4,
@@ -16,6 +18,7 @@
     "tipoMotor": "MOTOR_A_HELICE"
   },
   {
+    "planeType": 6000,
     "coste": 300,
     "fuel": 3260.0,
     "maxPassenger": 8,

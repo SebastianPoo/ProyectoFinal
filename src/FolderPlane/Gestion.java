@@ -1,5 +1,8 @@
 package FolderPlane;
 
+import Person.Person;
+import Ticket.Ticket;
+import Travel.Travel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -9,19 +12,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class Gestion {
+public abstract class Gestion {
 
     private LinkedList<Plane> flota = new LinkedList<>();
-    private LinkedList<Person> clientes = new LinkedList<>();   /// lista que no se repite
-    private LinkedList<Plane> ticket = new LinkedList<>();     ///lista que no se repite
-    private LinkedList<Plane> travel = new LinkedList<>();     ///lista que no se repite
-
-    public Gestion(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
-    }
-
-
-
+    private LinkedList<Person> passenger = new LinkedList<>();   /// lista que no se repite
+    private LinkedList<Ticket> ticket = new LinkedList<>();     ///lista que no se repite
+    private LinkedList<Travel> travel = new LinkedList<>();     ///lista que no se repite
 
     public static LinkedList<Plane> add_a_Flota(){
         LinkedList<Plane> flota = new LinkedList<>();
@@ -59,40 +55,6 @@ public class Gestion {
                 }
             }
         }
-    }
-
-    public void flotaToJson (){
-        persistencia(add_a_Flota());
-    }
-
-    @Override
-    public void catering() {
-
-    }
-
-    @Override
-    public void wifi() {
-
-    }
-
-    @Override
-    public void landingStrip() {
-
-    }
-
-    @Override
-    public void sevice() {
-
-    }
-
-    @Override
-    public void carry_on_bag() {
-
-    }
-
-    @Override
-    public void confort() {
-
     }
 
 

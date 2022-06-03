@@ -6,6 +6,10 @@ public class Bronze extends Plane{
     public Bronze(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
+    public Bronze() {
+        super( 150, 19325.44,60,
+                876,3440 , TipoMotor.MOTOR_DE_PISTONES);
+    }
 
     @Override
     public int catering(int costo) {
