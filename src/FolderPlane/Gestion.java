@@ -16,10 +16,10 @@ import java.util.List;
 
 public abstract class Gestion {
 
-    private List <Plane> planes;
-    private LinkedList<Person> passenger;
-    private LinkedList<Ticket> ticket;
-    private LinkedList<Travel> travel;
+    private static List <Plane> planes;
+    private static List <Person> passenger;
+    private static List <Ticket> ticket;
+    private static List <Travel> travel;
 
 
     public Gestion (){
@@ -41,8 +41,10 @@ public abstract class Gestion {
         planes.add(eclipse550);
         planes.add(cessna550);
 
+
         return planes;
     }
+
     ///VER DEL ARCHIVO
     public static  <T> void persistencia(List<T> t, String nombre) {
 
@@ -67,6 +69,5 @@ public abstract class Gestion {
             }
         }
     }
-
 
 }

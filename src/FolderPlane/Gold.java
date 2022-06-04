@@ -1,13 +1,13 @@
 package FolderPlane;
 
 public class Gold extends Plane{
-    private int planeType = 6000;
+    private int planeType = 6000;               //todo -- para que era este atributo??
 
-    public Gold(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
+    public Gold(String nombre, int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+        super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
     public Gold() {
-        super(300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
+        super("Gold01", 300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
     }
 
     @Override
