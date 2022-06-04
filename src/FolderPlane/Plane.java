@@ -1,6 +1,7 @@
 package FolderPlane;
 
 public abstract class Plane implements Service {
+    private String nombre;
     private int coste;
     private double fuel;
     private int maxPassenger;

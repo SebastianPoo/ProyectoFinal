@@ -9,16 +9,18 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
         // TODO: 02/06/2022 Pruebas de metodos
-        //Gestion.persistencia(Gestion.add_a_Flota());     todo metodo persistencia funciona
+        Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_NUEVO");     //todo metodo persistencia funciona
         //  muestraJson();
-        String nombre = JOptionPane.showInputDialog("Introduce tu nombre");
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduce tu edad"));
-        System.out.println("nombre es " + nombre + " edad: " + edad );
+       // String nombre = JOptionPane.showInputDialog("Introduce tu nombre");
+        //int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduce tu edad"));
+        //System.out.println("nombre es " + nombre + " edad: " + edad );
+
 
     }
 

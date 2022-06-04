@@ -10,36 +10,47 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public abstract class Gestion {
 
-    private LinkedList<Plane> flota = new LinkedList<>();
-    private LinkedList<Person> passenger = new LinkedList<>();   /// lista que no se repite
-    private LinkedList<Ticket> ticket = new LinkedList<>();     ///lista que no se repite
-    private LinkedList<Travel> travel = new LinkedList<>();     ///lista que no se repite
+    private List <Plane> planes;
+    private LinkedList<Person> passenger;
+    private LinkedList<Ticket> ticket;
+    private LinkedList<Travel> travel;
 
-    public static LinkedList<Plane> add_a_Flota(){
-        LinkedList<Plane> flota = new LinkedList<>();
+
+    public Gestion (){
+    }
+
+    public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
         Bronze boeing123 = new Bronze();
+        Bronze boeing124 = new Bronze();
         Silver eclipse550 = new Silver();
+        Silver eclipse555 = new Silver();
         Gold cessna550 = new Gold();
+        Gold cessna650 = new Gold();
 
-        flota.add(boeing123);
-        flota.add(eclipse550);
-        flota.add(cessna550);
+        planes.add(boeing123);
+        planes.add(boeing124);
+        planes.add(eclipse555);
+        planes.add(cessna650);
+        planes.add(eclipse550);
+        planes.add(cessna550);
 
-        return flota;
+        return planes;
     }
     ///VER DEL ARCHIVO
-    public static  <T> void persistencia(LinkedList<T> t) {
+    public static  <T> void persistencia(List<T> t, String nombre) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         BufferedWriter whrite = null;
 
         try {
-            whrite = new BufferedWriter(new FileWriter(new File("ARCHIVO_DE_AVIONES")));
+            whrite = new BufferedWriter(new FileWriter(new File(nombre)));
             gson.toJson(t, t.getClass(), whrite);
         } catch (
                 IOException e) {
