@@ -45,6 +45,10 @@ public abstract class Gestion {
         return planes;
     }
 
+    public static List<Plane> getPlanes() {
+        return planes;
+    }
+
     ///VER DEL ARCHIVO
     public static  <T> void persistencia(List<T> t, String nombre) {
 

@@ -16,6 +16,10 @@ public abstract class Plane implements Service {
         return coste;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public Plane(String nombre, int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         this.nombre = nombre;
         this.coste = coste;

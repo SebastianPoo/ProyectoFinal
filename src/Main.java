@@ -2,9 +2,11 @@
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
 
+import Ticket.Ticket;
+import Travel.Distances;
+import Travel.Travel;
 import com.google.gson.Gson;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -21,9 +23,14 @@ public class Main {
        // String nombre = JOptionPane.showInputDialog("Introduce tu nombre");
         //int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduce tu edad"));
         //System.out.println("nombre es " + nombre + " edad: " + edad );
-        /*List<Plane> misAviones = new ArrayList<>();*/
+        List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
+
         // TODO muestra ArrayList
         muestraLista(Gestion.add_a_Flota(new ArrayList<Plane>()));
+        Ticket ticket = new Ticket(12, Distances.BsAs_Cor,"12", misAviones.get(1));
+        System.out.println("El ticket es " +  ticket.toString());
+        Travel viaje1 = new Travel(ticket);
+        System.out.println("El primer viaje es " + viaje1.toString());
 
 
     }
