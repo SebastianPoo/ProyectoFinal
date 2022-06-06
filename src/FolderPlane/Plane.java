@@ -17,6 +17,12 @@ public abstract class Plane implements Service {
         this.tipoMotor = tipoMotor;
     }
 
+    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+    }
+
+    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+    }
+
     public int getCoste() {
         return coste;
     }

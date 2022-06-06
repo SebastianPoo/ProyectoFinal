@@ -93,4 +93,23 @@ public class Gestion extends Plane {
     }
 
 
+    @Override
+    public int catering(int costo) {
+        return 0;
+    }
+
+    @Override
+    public int wifi(int costo) {
+        return 0;
+    }
+
+    @Override
+    public int carry_on_bag(int costo) {
+        return 0;
+    }
+
+    @Override
+    public int confort(int costo) {
+        return 0;
+    }
 }
