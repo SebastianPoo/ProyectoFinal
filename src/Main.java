@@ -47,6 +47,7 @@ public class Main {
     private static void case1(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Bronze en proceso..");
+        System.out.println("Confirme opcion");
         int respuesta;
         respuesta = scan.nextInt();
         do {
@@ -71,6 +72,7 @@ public class Main {
     private static void case2(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Plata en proceso..");
+        System.out.println("Confirme opcion");
         int respuesta;
         respuesta = scan.nextInt();
         do {
@@ -95,6 +97,7 @@ public class Main {
     private static void case3(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Gold en proceso..");
+        System.out.println("Confirme opcion");
         int respuesta;
         respuesta = scan.nextInt();
         do {
