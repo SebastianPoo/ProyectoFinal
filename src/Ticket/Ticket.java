@@ -1,32 +1,31 @@
 package Ticket;
 
 import FolderPlane.Plane;
+import Person.Person;
 import Travel.Distances;
 
+import java.util.UUID;
+
 public class Ticket {
-    private int ticket;
+    private UUID idTicket;
     private int price;
-    Distances destination;
-    Plane plane;
-    String Seat;
+    private Distances destination;
+    private Plane plane;
+    private Person passager;
+    private String Seat;
 
     public Ticket() {
     }
 
-    public Ticket(int ticket, Distances destination, String seat, Plane plane) {
-        this.ticket = ticket;
+    public Ticket( Distances destination, String seat, Plane plane, Person passager) {
+        this.idTicket= UUID.randomUUID();
         this.destination = destination;
-        Seat = seat;
+        this.Seat = seat;
         this.plane = plane;
+        this.passager = passager;
     }
 
-    public int getTicket() {
-        return ticket;
-    }
 
-    public void setTicket(int ticket) {
-        this.ticket = ticket;
-    }
 
     public Distances getDestination() {
         return destination;
@@ -36,27 +35,33 @@ public class Ticket {
         return Seat;
     }
 
-    public void setSeat(String seat) {
-        Seat = seat;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-/*    public int travelCost(Plane plane){
-        int cantidad=plane
+/*    public int travelCost(Plane plane, Distances distances){
+        int coste=0;
+        coste=(distances.retornarNumero()*plane.getKmTraveled());
                 //(canKm * cosKm)+(canPas * 3500)+(tarifaTipoAvion)
+        return coste;
     }*/
 
-    public Ticket costoTicket() {
-        Ticket ticket = new Ticket();
-        ticket.price=plane.carry_on_bag(plane.getCoste());
-        return ticket;
+    public void costoTicket(Ticket ticket) {
+        int costo=0;
+        costo=plane.carry_on_bag(costo)+plane.confort(costo)+plane.catering(costo)+ plane.wifi(costo)+plane.getCoste();
+
+        System.out.println(costo);
+        ticket.price+=costo;
     }
     @Override
     public String toString() {
         return "Ticket.Ticket{" +
-                "ticket=" + ticket +
+                "ticket=" + idTicket +
                 ", destination=" + destination.retornarNumero() +
                 ", Seat='" + Seat +
+                ", Persona=' " + passager.getNombre() + passager.getApellido() +
                 ", Price='"+ price + '\'' +
                 '}';
     }
 }
+

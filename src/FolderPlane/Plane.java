@@ -8,18 +8,8 @@ public abstract class Plane implements Service {
     private double kmTraveled;
     private  TipoMotor tipoMotor;
 
-    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        this.coste = coste;
-        this.fuel = fuel;
-        this.maxPassenger = maxPassenger;
-        this.kmXhs = kmXhs;
-        this.kmTraveled = kmTraveled;
-        this.tipoMotor = tipoMotor;
-    }
 
-    public int getCoste() {
-        return coste;
-    }
+
 
     public Plane (){
     }
@@ -31,6 +21,29 @@ public abstract class Plane implements Service {
         this.kmXhs = kmXhs;
         this.kmTraveled = kmTraveled;
         this.tipoMotor = tipoMotor;
+    }
+    public int getCoste() {
+        return coste;
+    }
+
+    public double getFuel() {
+        return fuel;
+    }
+
+    public int getMaxPassenger() {
+        return maxPassenger;
+    }
+
+    public double getKmXhs() {
+        return kmXhs;
+    }
+
+    public double getKmTraveled() {
+        return kmTraveled;
+    }
+
+    public TipoMotor getTipoMotor() {
+        return tipoMotor;
     }
 
     public enum TipoMotor {
