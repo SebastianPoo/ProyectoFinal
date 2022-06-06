@@ -28,67 +28,13 @@ public class Main {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    System.out.println("Bronze en proceso..");
-                    do {
-                        opcion0();
-                        respuesta = scan.nextInt();
-                        switch (respuesta){
-                            case 1:
-                                opcion1();
-                                break;
-                            case 2:
-                                opcion2();
-                                break;
-                            case 0:
-                                opcion3();
-                                break;
-                            default:
-                                opcionDefault();
-                                break;
-                        }
-                    }while (respuesta != 0);
+                    case1();
                     break;
                 case 2:
-                    System.out.println("Plata en proceso..");
-                    do {
-                        opcion4();
-                        respuesta = scan.nextInt();
-                        switch (respuesta){
-                            case 1:
-                                opcion5();
-                                break;
-                            case 2:
-                                opcion6();
-                                break;
-                            case 0:
-                                opcion3();
-                                break;
-                            default:
-                                opcionDefault();
-                                break;
-                        }
-                    }while (respuesta != 0);
+                    case2();
                     break;
                 case 3:
-                    System.out.println("Gold en proceso..");
-                    do {
-                        opcion7();
-                        respuesta = scan.nextInt();
-                        switch (respuesta){
-                            case 1:
-                                opcion8();
-                                break;
-                            case 2:
-                                opcion9();
-                                break;
-                            case 0:
-                                opcion3();
-                                break;
-                        default:
-                            opcionDefault();
-                            break;
-                        }
-                    }while (respuesta != 0);
+                    case3();
                     break;
                 default:
                     System.out.println("Solo puede elegir las opciones 1, 2, 3 o 0...");
@@ -99,13 +45,76 @@ public class Main {
     }
 
     private static void case1(){
-
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Bronze en proceso..");
+        int respuesta;
+        respuesta = scan.nextInt();
+        do {
+            opcion0();
+            respuesta = scan.nextInt();
+            switch (respuesta){
+                case 1:
+                    opcion1();
+                    break;
+                case 2:
+                    opcion2();
+                    break;
+                case 0:
+                    opcion3();
+                    break;
+                default:
+                    opcionDefault();
+                    break;
+            }
+        }while (respuesta != 0);
     }
     private static void case2(){
-
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Plata en proceso..");
+        int respuesta;
+        respuesta = scan.nextInt();
+        do {
+            opcion4();
+            respuesta = scan.nextInt();
+            switch (respuesta){
+                case 1:
+                    opcion5();
+                    break;
+                case 2:
+                    opcion6();
+                    break;
+                case 0:
+                    opcion3();
+                    break;
+                default:
+                    opcionDefault();
+                    break;
+            }
+        }while (respuesta != 0);
     }
     private static void case3(){
-
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Gold en proceso..");
+        int respuesta;
+        respuesta = scan.nextInt();
+        do {
+            opcion7();
+            respuesta = scan.nextInt();
+            switch (respuesta){
+                case 1:
+                    opcion8();
+                    break;
+                case 2:
+                    opcion9();
+                    break;
+                case 0:
+                    opcion3();
+                    break;
+                default:
+                    opcionDefault();
+                    break;
+            }
+        }while (respuesta != 0);
     }
     private static void opcionIntro() {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
