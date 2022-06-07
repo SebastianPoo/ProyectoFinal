@@ -2,10 +2,8 @@ package FolderPlane;
 
 public interface Service {
 
-    void  catering();
-    void wifi();
-    void landingStrip();
-    void sevice();
-    void carry_on_bag();
-    void confort();
+    int catering(int costo);
+    int wifi(int costo);
+    int carry_on_bag(int costo);
+    int confort(int costo);
 }
