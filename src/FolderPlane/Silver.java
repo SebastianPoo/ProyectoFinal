@@ -7,6 +7,9 @@ public class Silver extends Plane{
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
 
+    public Silver() {
+    }
+
     @Override
     public int catering(int costo) {
         System.out.println("Precio $250");

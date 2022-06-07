@@ -7,6 +7,9 @@ public class Gold extends Plane{
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
 
+    public Gold() {
+    }
+
     @Override
     public int catering(int costo) {
         System.out.println("Precio $500");

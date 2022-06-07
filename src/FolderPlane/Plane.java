@@ -17,11 +17,6 @@ public abstract class Plane implements Service {
         this.tipoMotor = tipoMotor;
     }
 
-    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-    }
-
-    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-    }
 
     public int getCoste() {
         return coste;
@@ -30,14 +25,6 @@ public abstract class Plane implements Service {
     public Plane (){
     }
 
-    public Plane(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        this.coste = coste;
-        this.fuel = fuel;
-        this.maxPassenger = maxPassenger;
-        this.kmXhs = kmXhs;
-        this.kmTraveled = kmTraveled;
-        this.tipoMotor = tipoMotor;
-    }
 
     public enum TipoMotor {
         MOTOR_A_REACCION,

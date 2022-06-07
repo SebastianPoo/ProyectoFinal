@@ -7,6 +7,9 @@ public class Bronze extends Plane{
         super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
 
+    public Bronze() {
+    }
+
     @Override
     public int catering(int costo) {
         System.out.println("servicio no disponible");
