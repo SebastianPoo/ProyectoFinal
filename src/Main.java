@@ -26,10 +26,11 @@ public class Main {
         List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
 
         // TODO muestra ArrayList
-        muestraLista(Gestion.add_a_Flota(new ArrayList<Plane>()));
+        muestraLista((ArrayList<Plane>) misAviones);
         Ticket ticket = new Ticket(12, Distances.BsAs_Cor,"12", misAviones.get(1));
         System.out.println("El ticket es " +  ticket.toString());
-        Travel viaje1 = new Travel(ticket);
+
+        Travel viaje1 = new Travel(ticket, misAviones.get(1));
         System.out.println("El primer viaje es " + viaje1.toString());
 
 

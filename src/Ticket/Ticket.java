@@ -1,6 +1,7 @@
 package Ticket;
 
 import FolderPlane.Plane;
+import Person.Person;
 import Travel.Distances;
 
 import java.time.LocalDate;
@@ -8,8 +9,9 @@ import java.time.LocalDate;
 public class Ticket {
     private int ticket;
     private int price;
-    private Distances destination;        // --AGREGUE ENCAPSULAMIENTO
-    private Plane plane;                  // --AGREGUE ENCAPSULAMIENTO
+    private Distances destination;
+    private Plane plane;
+    private Person passager;
     private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
     private LocalDate fechaDeViaje;         // ---AGREGAR FECHA DE VIAJE-NECESARIO EN TICKET-
 
@@ -45,9 +47,10 @@ public class Ticket {
     }
 
   public int travelCost(Plane plane){
-           int cantidad=plane.getCoste();
+           int coste=0;
+                   coste = plane.getCoste();
                 //(canKm * cosKm)+(canPas * 3500)+(tarifaTipoAvion)
-      return cantidad;
+      return coste;
     }
 
     public Ticket costoTicket() {

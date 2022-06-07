@@ -28,11 +28,11 @@ public class Travel {                   //Resultado final de un viaje- esto es u
         this.tickets = tickets;
     }
 
-    public Travel (Ticket ticket){
+    public Travel (Ticket ticket, Plane plane){
         this.fecha = LocalDateTime.now();           // TODO: 05/06/2022 --Es necesario un get de la fecha del  ticket--
-        this.earnings = ticket.travelCost(this.plane);
+        this.earnings = ticket.travelCost(plane);
         this.plane = plane;
-        this.distance = this.ticket.getDestination();
+        this.distance = ticket.getDestination();
     }
 
     @Override
