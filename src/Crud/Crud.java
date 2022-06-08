@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Crud extends Person {
+public class Crud{
     ArrayList<Passenger> passengers = new ArrayList<>();
     FileManagement file = new FileManagement();
 
