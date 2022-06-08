@@ -1,6 +1,7 @@
 package Person;
 
 public class Passenger extends Person{
+
     public Passenger(String nombre, String apellido, String dni, int edad) {
         super(nombre, apellido, dni, edad);
     }

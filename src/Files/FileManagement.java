@@ -63,9 +63,6 @@ public class FileManagement {
                             (new TypeToken<ArrayList<Passenger>>() {}.getType())
                     );
 
-                    for(var passenger : passengers) {
-                        System.out.println(passenger);
-                    }
 
                 } catch (IOException e) {
                     e.printStackTrace();

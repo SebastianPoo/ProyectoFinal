@@ -22,8 +22,10 @@ public class Main {
         System.out.println(ticket1.toString());
         Crud crud = new Crud();
 
-        //crud.AltaPassenger("pasajeros.txt");
-        crud.bajaPassenger("pasajeros.txt", "14936289");
-
+        //crud.AltaPassenger("pasajeros.json");
+        /// System.out.println("---------------------- --------------------");
+        ///System.out.println( " Esta es la persona buscada" + crud.buscaPorDni("pasajeros.json", "35942699"));
+         crud.bajaPassenger("pasajeros.json", "35942699");
+         crud.modificarDatosPasajero("pasajeros.json");
     }
 }

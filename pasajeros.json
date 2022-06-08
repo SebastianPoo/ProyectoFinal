@@ -24,15 +24,15 @@
     "age": 30
   },
   {
-    "name": "Maximiliano",
-    "LastName": "fernandez",
-    "Dni": "35942699",
-    "age": 30
-  },
-  {
     "name": "Miguel",
     "LastName": "Fernandez",
     "Dni": "14936289",
     "age": 60
+  },
+  {
+    "name": "Sebastian",
+    "LastName": "Poo",
+    "Dni": "3566999",
+    "age": 30
   }
 ]

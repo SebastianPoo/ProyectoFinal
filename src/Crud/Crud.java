@@ -47,7 +47,7 @@ public class Crud{
             }
 
 
-            file.arrayToJsonFormat(passengers, "pasajeros.txt");
+            file.arrayToJsonFormat(passengers, "pasajeros.json");
         } else {
             ArrayList<Passenger> aux = new ArrayList<>();
             aux = file.jSonToArrayList(nombreArchivo);
@@ -73,29 +73,73 @@ public class Crud{
 
     public void bajaPassenger (String archivoPasajero, String Dni){
          ArrayList <Passenger> aux = file.jSonToArrayList(archivoPasajero);
-         Passenger passenger = new Passenger();
-         passenger=buscaPorDni(archivoPasajero,Dni);
-        for (Passenger pasajero: aux) {
-            if (pasajero.equals(passenger)){
-                aux.remove(pasajero);
-            }
-        }
+         try {
+             int index = buscaPorDni(archivoPasajero, Dni);
+             aux.remove(index);
+             for (var pasajero : aux) {
+                 System.out.println(pasajero);
+             }
 
-        file.arrayToJsonFormat(aux, archivoPasajero);
-        System.out.println("El pasajero ha sido eliminado correctamente");
+             file.arrayToJsonFormat(aux, archivoPasajero);
+             System.out.println("El pasajero ha sido eliminado correctamente");
+         } catch (Exception e){
+             System.out.println("El Pasajero Buscado No Existe");
+         }
     }
 
-    public Passenger buscaPorDni (String archivoPasajero, String dni) {
+    public int buscaPorDni (String archivoPasajero, String dni) {
         ArrayList <Passenger>  aux = file.jSonToArrayList(archivoPasajero);
-       Passenger aux2 = new Passenger();
+        int index= -1;
 
         for (var pasajero: aux) {
             if (pasajero.getDni().contains(dni)){
-             aux2=pasajero;
+                index= aux.indexOf(pasajero);
             }
         }
 
-        return aux2;
+        return index;
+    }
+
+    public void modificarDatosPasajero (String archivoPasajero){
+        Scanner scan = new Scanner(System.in);
+        System.out.println(" Ingrese el dni del pasajero a buscar ");
+        String dni= scan.nextLine();
+        ArrayList <Passenger>  aux = file.jSonToArrayList(archivoPasajero);
+        int index =buscaPorDni(archivoPasajero, dni);
+        System.out.println(" Que desea modificar ?");
+        System.out.println("1 - NOMBRE Y APELLIDO");
+        System.out.println("1 - EDAD");
+        System.out.println("3 - DNI");
+        int option = scan.nextInt();
+        scan.nextLine();
+        switch (option){
+            case 1 :
+                System.out.println("Ingrese De Nuevo El Nombre");
+                String name = scan.nextLine();
+                aux.get(index).setName(name);
+                scan.nextLine();
+                System.out.println("Ingrese De Nuevo El Apellido");
+                String apellido = scan.nextLine();
+                aux.get(index).setLastName(apellido);
+                break;
+            case 2:
+                System.out.println("Ingrese La Edad");
+                Integer edad = scan.nextInt();
+                aux.get(index).setAge(edad);
+            case 3 :
+                System.out.println("Ingrese El Nuevo DNI");
+                String newDNI = scan.nextLine();
+                aux.get(index).setDni(newDNI);
+                break;
+
+            default:
+                System.out.println("La opcion es incorrecta");
+        }
+
+        file.arrayToJsonFormat(aux, archivoPasajero);
     }
 
 }
+
+
+
