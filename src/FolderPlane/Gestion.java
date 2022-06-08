@@ -2,7 +2,7 @@ package FolderPlane;
 
 import Person.Person;
 import Ticket.Ticket;
-import Travel.Travel;
+import Travel.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,7 +18,7 @@ public abstract class Gestion {
 
     private static List <Plane> planes;
     private static List <Person> passenger;
-    private static List <Ticket> ticket;
+    private static List <Ticket> tickets;
     private static List <Travel> travel;
 
 
@@ -73,5 +73,7 @@ public abstract class Gestion {
             }
         }
     }
+
+    
 
 }
