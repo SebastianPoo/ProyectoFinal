@@ -1,10 +1,13 @@
+import Crud.Crud;
 import FolderPlane.Gold;
 import FolderPlane.Plane;
 import Ticket.Ticket;
 import Travel.Distances;
 
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Distances distancia = Distances.BsAs_Cor;
         Distances distancia2 = Distances.Cor_Mon;
@@ -17,5 +20,10 @@ public class Main {
         ticket1.costoTicket();
 
         System.out.println(ticket1.toString());
+        Crud crud = new Crud();
+
+        //crud.AltaPassenger("pasajeros.txt");
+        crud.bajaPassenger("pasajeros.txt", "14936289");
+
     }
 }
