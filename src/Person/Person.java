@@ -4,7 +4,6 @@ public abstract class Person {//
     private String nombre;
     private String apellido;
     private String dni;
-
     private int edad;
 
     public Person() {

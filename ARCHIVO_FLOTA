@@ -1,0 +1,64 @@
+[
+  {
+    "planeType": 500,
+    "category": "Bronze",
+    "nombre": "Bronze01",
+    "coste": 150,
+    "fuel": 19325.44,
+    "maxPassenger": 60,
+    "kmXhs": 876.0,
+    "kmTraveled": 3440.0,
+    "tipoMotor": "MOTOR_DE_PISTONES"
+  },
+  {
+    "planeType": 500,
+    "category": "Bronze",
+    "nombre": "Bronze01",
+    "coste": 150,
+    "fuel": 19325.44,
+    "maxPassenger": 60,
+    "kmXhs": 876.0,
+    "kmTraveled": 3440.0,
+    "tipoMotor": "MOTOR_DE_PISTONES"
+  },
+  {
+    "planeType": 4000,
+    "nombre": "Silver01",
+    "coste": 150,
+    "fuel": 1141.0,
+    "maxPassenger": 4,
+    "kmXhs": 694.0,
+    "kmTraveled": 2084.0,
+    "tipoMotor": "MOTOR_A_HELICE"
+  },
+  {
+    "planeType": 6000,
+    "nombre": "Gold01",
+    "coste": 300,
+    "fuel": 3260.0,
+    "maxPassenger": 8,
+    "kmXhs": 746.0,
+    "kmTraveled": 3700.0,
+    "tipoMotor": "MOTOR_A_REACCION"
+  },
+  {
+    "planeType": 4000,
+    "nombre": "Silver01",
+    "coste": 150,
+    "fuel": 1141.0,
+    "maxPassenger": 4,
+    "kmXhs": 694.0,
+    "kmTraveled": 2084.0,
+    "tipoMotor": "MOTOR_A_HELICE"
+  },
+  {
+    "planeType": 6000,
+    "nombre": "Gold01",
+    "coste": 300,
+    "fuel": 3260.0,
+    "maxPassenger": 8,
+    "kmXhs": 746.0,
+    "kmTraveled": 3700.0,
+    "tipoMotor": "MOTOR_A_REACCION"
+  }
+]

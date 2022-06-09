@@ -4,30 +4,37 @@ import FolderPlane.Plane;
 import Person.Person;
 import Travel.Distances;
 
-import java.util.UUID;
+import java.time.LocalDate;
 
 public class Ticket {
-    private UUID idTicket;
+    private int ticket;
     private int price;
     private Distances destination;
     private Plane plane;
     private Person passager;
-    private String Seat;
+    private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
+    private LocalDate fechaDeViaje;         // ---AGREGAR FECHA DE VIAJE-NECESARIO EN TICKET-
 
     public Ticket() {
     }
 
-    public Ticket( Distances destination, String seat, Plane plane, Person passager) {
-        this.idTicket= UUID.randomUUID();
+    public Ticket(int ticket, Distances destination, String seat, Plane plane) {
+        this.ticket = ticket;
         this.destination = destination;
-        this.Seat = seat;
+        Seat = seat;
         this.plane = plane;
-        this.passager = passager;
     }
 
+    public int getTicket() {
+        return ticket;
+    }
 
+    public void setTicket(int ticket) {
+        this.ticket = ticket;
+    }
 
     public Distances getDestination() {
+
         return destination;
     }
 
@@ -35,33 +42,30 @@ public class Ticket {
         return Seat;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setSeat(String seat) {
+        Seat = seat;
     }
 
-/*    public int travelCost(Plane plane, Distances distances){
-        int coste=0;
-        coste=(distances.retornarNumero()*plane.getKmTraveled());
+  public int travelCost(Plane plane){
+           int coste=0;
+                   coste = plane.getCoste();
                 //(canKm * cosKm)+(canPas * 3500)+(tarifaTipoAvion)
-        return coste;
-    }*/
+      return coste;
+    }
 
-    public void costoTicket(Ticket ticket) {
-        int costo=0;
-        costo=plane.carry_on_bag(costo)+plane.confort(costo)+plane.catering(costo)+ plane.wifi(costo)+plane.getCoste();
-
-        System.out.println(costo);
-        ticket.price+=costo;
+    public Ticket costoTicket() {
+        Ticket ticket = new Ticket();
+        ticket.price=plane.carry_on_bag(plane.getCoste());
+        return ticket;
     }
     @Override
     public String toString() {
         return "Ticket.Ticket{" +
-                "ticket=" + idTicket +
+                "ticket=" + ticket +
                 ", destination=" + destination.retornarNumero() +
                 ", Seat='" + Seat +
-                ", Persona=' " + passager.getNombre() + passager.getApellido() +
                 ", Price='"+ price + '\'' +
+                ", Plane='" + plane.getNombre() + '\'' +
                 '}';
     }
 }
-
