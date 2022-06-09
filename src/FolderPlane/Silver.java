@@ -10,6 +10,9 @@ public class Silver extends Plane{
         super("Silver01", 150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
     }
 
+    public Silver() {
+    }
+
     @Override
     public int catering(int costo) {
         System.out.println("Precio $250");

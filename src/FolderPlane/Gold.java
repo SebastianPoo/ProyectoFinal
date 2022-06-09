@@ -10,6 +10,9 @@ public class Gold extends Plane{
         super("Gold01", 300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
     }
 
+    public Gold() {
+    }
+
     @Override
     public int catering(int costo) {
         System.out.println("Precio $500");

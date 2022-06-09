@@ -21,6 +21,9 @@ public class Bronze extends Plane{
 
     }
 
+    public Bronze() {
+    }
+
     @Override
     public int catering(int costo) {
         System.out.println("servicio no disponible");
