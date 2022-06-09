@@ -19,7 +19,7 @@ public abstract class Gestion {
     private static List <Plane> planes;
     private static List <Person> passenger;
     private static List <Ticket> tickets;
-    private static List <Travel> travel;
+    private static List <Travel> travels;
 
 
     public Gestion (){
@@ -58,8 +58,7 @@ public abstract class Gestion {
         try {
             whrite = new BufferedWriter(new FileWriter(new File(nombre)));
             gson.toJson(t, t.getClass(), whrite);
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,6 +73,20 @@ public abstract class Gestion {
         }
     }
 
-    
+    public static ArrayList<Ticket> add_a_Ticket(ArrayList tickets, Ticket ticket){
+
+        tickets.add(ticket);
+
+        return tickets;
+
+    }
+
+    public static ArrayList<Travel> add_a_Array (ArrayList travels, Travel travel){
+        travels.add(travel);
+
+        return travels;
+    }
+
+
 
 }
