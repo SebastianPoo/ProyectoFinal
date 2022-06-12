@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import Passenger.Passenger;
+import Ticket.Ticket;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -18,9 +19,6 @@ public class FileManagement {
     }
 
     Gson gson = new Gson();
-
-
-
 
     public void escribiendoArchivo(String string) throws IOException {
 
@@ -34,7 +32,7 @@ public class FileManagement {
         }
     }
 
-   public void arrayListToJson (ArrayList array, String nombreArchivo) throws IOException {
+    public void arrayListToJson (ArrayList array, String nombreArchivo) throws IOException {
         try{
             String jSon=gson.toJson(array);
             BufferedWriter buffer = new BufferedWriter(new FileWriter(new File(nombreArchivo)));
@@ -47,7 +45,6 @@ public class FileManagement {
         }
 
         }
-
 
         public ArrayList jSonToArrayList (String archivoJson){
 
@@ -63,7 +60,6 @@ public class FileManagement {
                             (new TypeToken<ArrayList<Passenger>>() {}.getType())
                     );
 
-
                 } catch (IOException e) {
                     e.printStackTrace();
 
@@ -78,7 +74,7 @@ public class FileManagement {
                 }
 
          return passengers;
-        }
+    }
 
     public  <T> void arrayToJsonFormat(ArrayList<T> t, String nombreArchivo) {
 
@@ -102,6 +98,36 @@ public class FileManagement {
                 }
             }
         }
+    }
+
+    public ArrayList jSonToArrayListTicket (String archivoJson){
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        BufferedReader reader = null;
+
+        ArrayList<Ticket> tickets= new ArrayList<>();
+
+        try {
+            reader = new BufferedReader(new FileReader(new File(archivoJson)));
+            tickets = gson.fromJson(reader,
+                    (new TypeToken<ArrayList<Ticket>>() {}.getType())
+            );
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return tickets;
     }
 
 }

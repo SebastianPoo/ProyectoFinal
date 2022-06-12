@@ -2,8 +2,6 @@ package Crud;
 
 import Files.FileManagement;
 import Passenger.Passenger;
-import Person.Person;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,8 +11,7 @@ public class Crud{
     FileManagement file = new FileManagement();
 
 
-    public Crud() {
-    }
+    public Crud() {}
 
     public ArrayList<Passenger> getPassengers() {
         return passengers;
@@ -47,7 +44,7 @@ public class Crud{
             }
 
 
-            file.arrayToJsonFormat(passengers, "pasajeros.json");
+            file.arrayToJsonFormat(passengers, nombreArchivo);
         } else {
             ArrayList<Passenger> aux = new ArrayList<>();
             aux = file.jSonToArrayList(nombreArchivo);

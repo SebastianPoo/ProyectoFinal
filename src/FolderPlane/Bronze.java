@@ -10,18 +10,16 @@ public class Bronze extends Plane{
     }
 
 
+
     public Integer getPlaneType() {
         return planeType;
     }
 
 
-    public Bronze() {
-        super("Bronze01" ,150, 19325.44, 60,
+    public Bronze(String nombre) {
+        super(nombre ,150, 19325.44, 60,
                 876, 3440, TipoMotor.MOTOR_DE_PISTONES);
 
-    }
-
-    public Bronze() {
     }
 
     @Override

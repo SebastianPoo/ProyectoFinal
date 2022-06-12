@@ -1,13 +1,14 @@
 package FolderPlane;
 
 public abstract class Plane implements Service {
-    private String nombre;                   //todo --Ver como traer el nombre de la variable al ser instanciada
+    private String nombre;
     private int coste;
     private double fuel;
     private int maxPassenger;
     private double kmXhs;
     private double kmTraveled;
     private  TipoMotor tipoMotor;
+
 
     public Plane (){
     }
@@ -20,7 +21,8 @@ public abstract class Plane implements Service {
         return nombre;
     }
 
-    public Plane(String nombre, int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+    public Plane(String nombre, int coste, double fuel, int maxPassenger,
+                 double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         this.nombre = nombre;
         this.coste = coste;
         this.fuel = fuel;
@@ -30,6 +32,23 @@ public abstract class Plane implements Service {
         this.tipoMotor = tipoMotor;
     }
 
+    public int getMaxPassenger() {
+        return maxPassenger;
+    }
+
+    public void setMaxPassenger(int maxPassenger) {
+        this.maxPassenger = maxPassenger;
+    }
+
+    public boolean vacantSeat (int seats_to_be_used){
+        int vacanS = getMaxPassenger();
+        if (vacanS > seats_to_be_used){
+            vacanS -= seats_to_be_used;
+            setMaxPassenger(vacanS);
+            return true;
+        }
+        return false;
+    }
     public enum TipoMotor {
         MOTOR_A_REACCION,
         MOTOR_A_HELICE,

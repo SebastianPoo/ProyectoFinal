@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Sebas00",
+    "LastName": "Poo00",
+    "Dni": "00000000",
+    "age": 0
+  },
+  {
+    "name": "Sebas01",
+    "LastName": "Poo01",
+    "Dni": "00000001",
+    "age": 1
+  },
+  {
+    "name": "Sebas02",
+    "LastName": "Poo02",
+    "Dni": "00000002",
+    "age": 2
+  }
+]

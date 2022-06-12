@@ -1,0 +1,23 @@
+[
+  {
+    "price": 0
+  },
+  {
+    "price": 0
+  },
+  {
+    "price": 0,
+    "destination": "BsAs_Cor",
+    "plane": {
+      "planeType": 500,
+      "category": "Bronze",
+      "nombre": "boeing 124",
+      "coste": 150,
+      "fuel": 19325.44,
+      "maxPassenger": 60,
+      "kmXhs": 876.0,
+      "kmTraveled": 3440.0,
+      "tipoMotor": "MOTOR_DE_PISTONES"
+    }
+  }
+]

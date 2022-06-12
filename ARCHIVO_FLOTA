@@ -2,7 +2,7 @@
   {
     "planeType": 500,
     "category": "Bronze",
-    "nombre": "Bronze01",
+    "nombre": "boeing 123",
     "coste": 150,
     "fuel": 19325.44,
     "maxPassenger": 60,
@@ -13,7 +13,7 @@
   {
     "planeType": 500,
     "category": "Bronze",
-    "nombre": "Bronze01",
+    "nombre": "boeing 124",
     "coste": 150,
     "fuel": 19325.44,
     "maxPassenger": 60,
@@ -23,7 +23,7 @@
   },
   {
     "planeType": 4000,
-    "nombre": "Silver01",
+    "nombre": "eclipse 555",
     "coste": 150,
     "fuel": 1141.0,
     "maxPassenger": 4,
@@ -33,7 +33,15 @@
   },
   {
     "planeType": 6000,
-    "nombre": "Gold01",
+    "diaVuelo": {
+      "year": 2022,
+      "month": 5,
+      "dayOfMonth": 12,
+      "hourOfDay": 13,
+      "minute": 19,
+      "second": 21
+    },
+    "nombre": "cessna 650",
     "coste": 300,
     "fuel": 3260.0,
     "maxPassenger": 8,
@@ -43,7 +51,7 @@
   },
   {
     "planeType": 4000,
-    "nombre": "Silver01",
+    "nombre": "eclipse 550",
     "coste": 150,
     "fuel": 1141.0,
     "maxPassenger": 4,
@@ -53,7 +61,15 @@
   },
   {
     "planeType": 6000,
-    "nombre": "Gold01",
+    "diaVuelo": {
+      "year": 2022,
+      "month": 5,
+      "dayOfMonth": 12,
+      "hourOfDay": 13,
+      "minute": 19,
+      "second": 21
+    },
+    "nombre": "cessna 550",
     "coste": 300,
     "fuel": 3260.0,
     "maxPassenger": 8,

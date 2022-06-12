@@ -21,18 +21,16 @@ public abstract class Gestion {
     private static List <Ticket> tickets;
     private static List <Travel> travels;
 
-
-    public Gestion (){
-    }
+    public Gestion (){}
 
     public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
-        Bronze boeing123 = new Bronze();
-        Bronze boeing124 = new Bronze();
-        Silver eclipse550 = new Silver();
-        Silver eclipse555 = new Silver();
-        Gold cessna550 = new Gold();
-        Gold cessna650 = new Gold();
+        Bronze boeing123 = new Bronze("boeing 123");
+        Bronze boeing124 = new Bronze("boeing 124");
+        Silver eclipse550 = new Silver("eclipse 550");
+        Silver eclipse555 = new Silver("eclipse 555");
+        Gold cessna550 = new Gold("cessna 550");
+        Gold cessna650 = new Gold("cessna 650");
 
         planes.add(boeing123);
         planes.add(boeing124);
