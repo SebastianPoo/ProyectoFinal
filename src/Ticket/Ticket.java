@@ -134,29 +134,21 @@ public class Ticket {
             respuesta = scan.nextInt();
             switch (respuesta) {
                 case 1:
-                   //ticket1.setPlane(misAviones.get(0));
                    pos = 0;
                     break;
                 case 2:
-                    /*System.out.println("avion" + misAviones.get(1));
-                    //ticket1.setPlane(misAviones.get(1));
-                    System.out.println("ticket " + ticket1.getPlane().toString());*/
                     pos = 1;
                     break;
                 case 3:
-                    //ticket1.setPlane(misAviones.get(2));
                     pos = 2;
                     break;
                 case 4:
-                    //ticket1.setPlane(misAviones.get(3));
                     pos = 3;
                     break;
                 case 5:
-                   // ticket1.setPlane(misAviones.get(4));
                     pos = 4;
                     break;
                 case 6:
-                    //ticket1.setPlane(misAviones.get(5));
                     pos = 5;
                     break;
                 case 0:
@@ -166,7 +158,6 @@ public class Ticket {
                     respuesta = 0;
                     System.out.println("Solo puede elegir las opciones 1, 2, 3, 4, 5, 6 o 0...");
                     break;
-
             }
             return pos;
 
@@ -236,8 +227,8 @@ public class Ticket {
     public String toString() {
         return "Ticket{" +
                 "ID ticket=" + ticket +
-                ", destination=" + destination.retornarNumero() +
-                ", Seat='" + Seat +
+                ", destination=" + destination + '\'' +
+                ", Seat='" + Seat + '\'' +
                 ", Price='" + price + '\'' +
                 ", Plane='" + plane.getNombre() + '\'' +
                 '}';
