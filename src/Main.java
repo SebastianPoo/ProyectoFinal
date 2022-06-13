@@ -1,9 +1,12 @@
 
-import FolderPlane.Gestion;
+import FolderPlane.Bronze;
+import FolderPlane.Gold;
 import FolderPlane.Plane;
 
+import Person.Person;
 import Ticket.Ticket;
 import Travel.Distances;
+import Ticket.Fechas;
 import Travel.Travel;
 import com.google.gson.Gson;
 
@@ -13,74 +16,78 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // TODO: 02/06/2022 Pruebas de metodos
-        Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");     //todo metodo persistencia funciona
-        //  muestraJson();
-       // String nombre = JOptionPane.showInputDialog("Introduce tu nombre");
-        //int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduce tu edad"));
-        //System.out.println("nombre es " + nombre + " edad: " + edad );
-        List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
+        Person person = new Person() {        };
 
-        // TODO muestra ArrayList
-        muestraLista((ArrayList<Plane>) misAviones);
-        Ticket ticket = new Ticket(12, Distances.BsAs_Cor,"12", misAviones.get(1));
-        System.out.println("El ticket es " +  ticket.toString());
+        Gold avionGold= new Gold(6000, 500,10,1200,50000, Plane.TipoMotor.MOTOR_A_REACCION);
 
-        Travel viaje1 = new Travel(ticket, misAviones.get(1));
-        System.out.println("El primer viaje es " + viaje1.toString());
 
-        //Gestion.persistencia(Gestion.add_a_List_Ticket(new ArrayList<>(),misAviones.get(1)), "ARCHIVO_TICKETS");
-        List<Ticket> misTickets = Gestion.add_a_Ticket(new ArrayList<>(),new Ticket(12,Distances.BsAs_Mon,"15", misAviones.get(5)));
-        misTickets.add(new Ticket(15,Distances.BsAs_Cor,"11",misAviones.get(2)));
-        for (Ticket ticket1 : misTickets){
-            System.out.println(ticket1.toString());
-        }
-        //Gestion.persistencia((List<Ticket>) misTickets,"archiTickets");
-        List<Travel> misTravel = 
+        Bronze avionBronze= new Bronze(2000, 200, 15, 900, 20000, Plane.TipoMotor.MOTOR_A_HELICE);
 
 
 
+
+        Fechas fecha = new Fechas();
+       /* Calendar calendar1 =fecha.elegir();
+        Calendar calendar2 =fecha.elegir();
+        Calendar calendar3 =fecha.elegir();
+
+        //System.out.println(calendar1.get(Calendar.DATE)+"/"+calendar1.get(Calendar.MONTH)+"/"+calendar1.get(Calendar.YEAR));
+
+        avionGold.setList(calendar1);
+        avionGold.setList(calendar2);
+        avionGold.setList(calendar3);
+
+        for (Calendar calendar: avionGold.listPlane) {
+            System.out.println(calendar.get(Calendar.DATE)+"/"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.YEAR));
+        }*/
+
+        Calendar calendar4 =fecha.elegir();
+        //Calendar calendar5 =fecha.elegir();
+       // Calendar calendar6 =fecha.elegir();
+        Calendar calendar7 = Calendar.getInstance();
+        calendar7.set(2022,7,15);
+        Calendar calendar8 = Calendar.getInstance();
+        calendar8.set(2022,8,15);
+        Calendar calendar9 = Calendar.getInstance();
+        calendar9.set(2022,9,15);
+
+        Ticket ticket1 = new Ticket(Distances.BsAs_Cor, "hola", avionGold, person,calendar4);
+        ticket1.costoTicket(ticket1);
+        //System.out.println(ticket1.toString());
+
+        //avionBronze.setList(calendar4);
+        //avionBronze.setList(calendar5);
+        //avionBronze.setList(calendar6);
+        avionBronze.setList(calendar7);
+        avionBronze.setList(calendar8);
+        avionBronze.setList(calendar9);
+
+        //System.out.println(avionBronze.toString());
+        //avionBronze.getDates();
 
 
     }
 
-    public static void muestraJson(){     //TODO --no funciona leer archivo
-        Gson gson = new Gson();
-        try {
-            File file = new File("ARCHIVO_DE_AVIONES");
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            Plane avion = gson.fromJson(bufferedReader, Plane.class);
-            System.out.println("Lo traido del archivo gson " + avion);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     public static void muestraLista(ArrayList<Plane> lista){
 
         for (Plane plane : lista){
             System.out.println(plane.toString());
         }
     }
+    public static void compareDates(Plane plane, Ticket ticket) {
 
-    public static void dias_semana(){
-        System.out.println(LocalDate.now().getDayOfWeek());
-        LocalDate hoy = LocalDate.parse("2022-06-07");
-        System.out.println("1 miercoles " + hoy.getDayOfWeek().plus(01));
-        System.out.println("2 jueves " + hoy.getDayOfWeek().plus(02));
-        System.out.println("3 viernes " + hoy.getDayOfWeek().plus(03));
-        System.out.println("4 sabado " + hoy.getDayOfWeek().plus(04));
-        System.out.println("5 domingo " + hoy.getDayOfWeek().plus(05));
-        System.out.println("6 lunes " + hoy.getDayOfWeek().plus(06));
-        System.out.println("7 martes " + hoy.getDayOfWeek().plus(07));
-        String viaje_a_Cordoba = String.valueOf(hoy.getDayOfWeek().plus(01));
-        System.out.println("El viaje a Cordoba es " + viaje_a_Cordoba );
-        String dia_de_viaje_solicitado = String.valueOf(hoy.getDayOfWeek().plus(01));
-        System.out.println("Dia solicitado es " + dia_de_viaje_solicitado);
+        boolean flame=false;
+        System.out.println(ticket.travelDate.get(Calendar.DATE)+"/"+ticket.travelDate.get(Calendar.MONTH));
+        for (Calendar calendar: plane.listPlane ) {
+            flame = ticket.equalsTicket(calendar);
+            System.out.println("Posterior: "+ flame +"   "+calendar.get(Calendar.DATE)+"/"+calendar.get(Calendar.MONTH) );
+        }
     }
 }
