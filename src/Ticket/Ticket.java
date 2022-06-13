@@ -33,6 +33,9 @@ public class Ticket {
         this.plane = plane;
     }
 
+    public void setFechaDeViaje(Calendar fechaDeViaje) {
+        this.fechaDeViaje = fechaDeViaje;
+    }
 
     public Distances getDestination() {
         return destination;
@@ -71,16 +74,6 @@ public class Ticket {
         return ticket;
     }
 
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "ID ticket=" + ticket +
-                ", destination=" + destination.retornarNumero() +
-                ", Seat='" + Seat +
-                ", Price='" + price + '\'' +
-                 ", Plane='" + plane.getNombre() + '\'' +
-                '}';
-    }
 
     public static void ticket_registration(String nombreArchivo) throws IOException {
         List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
@@ -93,7 +86,10 @@ public class Ticket {
 
             while (option != 2) {
                 Ticket ticket = new Ticket();
+                Fechas fechas = new Fechas();
                 eligeDestino(ticket);
+                Calendar calendar= fechas.elegir();
+                ticket.setFechaDeViaje(calendar);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
@@ -110,7 +106,10 @@ public class Ticket {
             aux = file.jSonToArrayListTicket(nombreArchivo);
             while (option != 2) {
                 Ticket ticket = new Ticket();
+                Fechas fechas = new Fechas();
                 eligeDestino(ticket);
+                Calendar calendar= fechas.elegir();
+                ticket.setFechaDeViaje(calendar);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
@@ -232,5 +231,15 @@ public class Ticket {
         System.out.println("5- Bs.As_Cordoba ");
         System.out.println("6- Bs.As_Montevideo ");
         System.out.println("0- ESC");
+    }
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ID ticket=" + ticket +
+                ", destination=" + destination.retornarNumero() +
+                ", Seat='" + Seat +
+                ", Price='" + price + '\'' +
+                ", Plane='" + plane.getNombre() + '\'' +
+                '}';
     }
 }

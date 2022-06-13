@@ -1,11 +1,14 @@
 package Menu;
 
+import Files.FileManagement;
 import FolderPlane.Gestion;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 import Crud.*;
+import Passenger.Passenger;
 import Ticket.Ticket;
 
 import java.util.function.ToDoubleBiFunction;
@@ -15,6 +18,8 @@ public class Menu {
     static Crud crud = new Crud();
 
     public static void primerMenu () throws IOException {
+        FileManagement file = new FileManagement();
+        ArrayList<Passenger> aux = file.jSonToArrayList("PruebaMenu-borrar");
         Scanner scan = new Scanner(System.in);
         int respuesta;
         do {
@@ -30,7 +35,14 @@ public class Menu {
                     Ticket.ticket_registration("ARCHIVO_TICKET");
                     break;
                 case 3:
-                    opcion14();
+                    //opcion13();
+                    Scanner scanner = new Scanner(System.in);
+                    System.out.println("Ingrese DNI a buscar: ");
+                    String DNI;
+                    DNI = scanner.nextLine();
+                    int usuario=crud.buscaPorDni("PruebaMenu-borrar",DNI);
+                    System.out.println(aux.get(usuario).toString());
+
                     break;
                 case 4:
                     case5();
