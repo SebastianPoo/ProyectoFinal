@@ -23,11 +23,12 @@ public class Menu {
             switch (respuesta){
                 case 1:
                     //case1();
-                    crud.AltaPassenger("PruebaMenu-borrar");
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 2:
                     //opcion13();
-                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
+                    crud.AltaPassenger("PruebaMenu-borrar");
+
                     break;
                 case 3:
                     opcion14();
@@ -173,7 +174,7 @@ public class Menu {
     }
     private static void cuestionarioInicial() {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
-        System.out.println("1- Elija fecha para realizar el viaje: ");
+        System.out.println("1- VIAJE");
         System.out.println("2- Seleccionar origen y destino: ");
         System.out.println("3- Indicar acompanantes: ");
         System.out.println("4- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");

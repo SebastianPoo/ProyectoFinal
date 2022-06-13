@@ -73,6 +73,10 @@ public class Ticket {
         //(canKm * cosKm)+(canPas * 3500)+(tarifaTipoAvion)
         return coste;
     }
+    public void setFechaDeViaje(Calendar fechaDeViaje) {
+        this.fechaDeViaje = fechaDeViaje;
+    }
+
 
     public Ticket costoTicket() {
         Ticket ticket = new Ticket();
@@ -101,8 +105,12 @@ public class Ticket {
         if (nombreArchivo.isEmpty()) {
 
             while (option != 2) {
+
                 Ticket ticket = new Ticket();
+                Fechas fechas = new Fechas();
                 eligeDestino(ticket);
+                Calendar calendar= fechas.elegir();
+                ticket.setFechaDeViaje(calendar);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
@@ -120,7 +128,10 @@ public class Ticket {
             aux = file.jSonToArrayListTicket(nombreArchivo);
             while (option != 2) {
                 Ticket ticket = new Ticket();
+                Fechas fechas = new Fechas();
                 eligeDestino(ticket);
+                Calendar calendar= fechas.elegir();
+                ticket.setFechaDeViaje(calendar);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
