@@ -22,5 +22,11 @@
     "LastName": "Poo01",
     "Dni": "00000000",
     "age": 0
+  },
+  {
+    "name": "sebas04",
+    "LastName": "poo04",
+    "Dni": "00000004",
+    "age": 4
   }
 ]
