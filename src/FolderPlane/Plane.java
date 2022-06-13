@@ -1,6 +1,8 @@
 package FolderPlane;
 
-public abstract class Plane implements Service {
+import java.io.Serializable;
+
+public abstract class Plane implements Service, Serializable {
     private String nombre;
     private int coste;
     private double fuel;
@@ -8,6 +10,7 @@ public abstract class Plane implements Service {
     private double kmXhs;
     private double kmTraveled;
     private  TipoMotor tipoMotor;
+
 
 
     public Plane (){

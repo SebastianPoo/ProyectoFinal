@@ -23,6 +23,7 @@ public class Ticket {
 
 
     public Ticket() {
+        this.ticket = UUID.randomUUID();
     }
 
     public Ticket(Distances destination, String seat, Plane plane) {
@@ -72,9 +73,9 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket.Ticket{" +
-                "ticket=" + ticket +
-               // ", destination=" + destination.retornarNumero() +
+        return "Ticket{" +
+                "ID ticket=" + ticket +
+                ", destination=" + destination.retornarNumero() +
                 ", Seat='" + Seat +
                 ", Price='" + price + '\'' +
                  ", Plane='" + plane.getNombre() + '\'' +
@@ -92,7 +93,7 @@ public class Ticket {
 
             while (option != 2) {
                 Ticket ticket = new Ticket();
-               eligeDestino(ticket);
+                eligeDestino(ticket);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
@@ -126,8 +127,6 @@ public class Ticket {
     }
 
     public static int eligeAvion() throws IOException {
-       // List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
-
         Scanner scan = new Scanner(System.in);
         int respuesta;
         int pos = -1;

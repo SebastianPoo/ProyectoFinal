@@ -6,20 +6,17 @@ public class Gold extends Plane{
     private int planeType = 6000;               //todo -- para que era este atributo??
     private Calendar diaVuelo;
 
-    public Gold(String nombre, int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+    public Gold(String nombre, int coste, double fuel, int maxPassenger,
+                double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
-    public Gold(String nombre) {
+    public Gold(String nombre, int day) {
         super(nombre, 300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
         Calendar dia = Calendar.getInstance();
-        dia.set(Calendar.DAY_OF_WEEK,1);
+        dia.set(Calendar.DAY_OF_WEEK,day);
         this.diaVuelo = dia;
     }
 
-
-    public void setDiaVuelo(Calendar diaVuelo) {
-        this.diaVuelo = diaVuelo;
-    }
 
     @Override
     public int catering(int costo) {

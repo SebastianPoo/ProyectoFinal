@@ -25,12 +25,12 @@ public abstract class Gestion {
 
     public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
-        Bronze boeing123 = new Bronze("boeing 123");
-        Bronze boeing124 = new Bronze("boeing 124");
-        Silver eclipse550 = new Silver("eclipse 550");
-        Silver eclipse555 = new Silver("eclipse 555");
-        Gold cessna550 = new Gold("cessna 550");
-        Gold cessna650 = new Gold("cessna 650");
+        Bronze boeing123 = new Bronze("boeing 123",1);
+        Bronze boeing124 = new Bronze("boeing 124",2);
+        Silver eclipse550 = new Silver("eclipse 550",3);
+        Silver eclipse555 = new Silver("eclipse 555",4);
+        Gold cessna550 = new Gold("cessna 550",5);
+        Gold cessna650 = new Gold("cessna 650",6);
 
         planes.add(boeing123);
         planes.add(boeing124);

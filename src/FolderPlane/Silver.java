@@ -1,13 +1,20 @@
 package FolderPlane;
 
-public class Silver extends Plane{
-    private int planeType = 4000;     //todo -- para que era este atributo??
+import java.util.Calendar;
 
-    public Silver(String nombre, int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+public class Silver extends Plane{
+    private int planeType = 4000;
+    private Calendar diaVuelo;
+
+    public Silver(String nombre, int coste, double fuel, int maxPassenger,
+                  double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
-    public Silver(String nombre) {
+    public Silver(String nombre, int day) {
         super(nombre, 150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
+        Calendar dia = Calendar.getInstance();
+        dia.set(Calendar.DAY_OF_WEEK,day);
+        this.diaVuelo = dia;
     }
 
 
