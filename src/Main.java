@@ -2,6 +2,7 @@
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
 
+import Menu.Menu;
 import Ticket.Ticket;
 import Travel.Distances;
 import Travel.Travel;
@@ -17,35 +18,10 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
-
-        // TODO: 02/06/2022 Pruebas de metodos
-        Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");     //todo metodo persistencia funciona
-        //  muestraJson();
-       // String nombre = JOptionPane.showInputDialog("Introduce tu nombre");
-        //int edad = Integer.parseInt(JOptionPane.showInputDialog("Introduce tu edad"));
-        //System.out.println("nombre es " + nombre + " edad: " + edad );
-        List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
-
-        // TODO muestra ArrayList
-        muestraLista((ArrayList<Plane>) misAviones);
-        Ticket ticket = new Ticket(12, Distances.BsAs_Cor,"12", misAviones.get(1));
-        System.out.println("El ticket es " +  ticket.toString());
-
-        Travel viaje1 = new Travel(ticket, misAviones.get(1));
-        System.out.println("El primer viaje es " + viaje1.toString());
-
-        //Gestion.persistencia(Gestion.add_a_List_Ticket(new ArrayList<>(),misAviones.get(1)), "ARCHIVO_TICKETS");
-        List<Ticket> misTickets = Gestion.add_a_Ticket(new ArrayList<>(),new Ticket(12,Distances.BsAs_Mon,"15", misAviones.get(5)));
-        misTickets.add(new Ticket(15,Distances.BsAs_Cor,"11",misAviones.get(2)));
-        for (Ticket ticket1 : misTickets){
-            System.out.println(ticket1.toString());
-        }
-        //Gestion.persistencia((List<Ticket>) misTickets,"archiTickets");
-        List<Travel> misTravel = 
+    public static void main(String[] args) throws IOException {
 
 
-
+        Menu.primerMenu();
 
 
     }

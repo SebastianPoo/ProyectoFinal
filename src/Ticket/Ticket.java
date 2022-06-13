@@ -14,6 +14,7 @@ import java.util.*;
 
 public class Ticket {
     private UUID ticket;
+    private int id;
     private int price;
     private Distances destination;
     private Plane plane;
@@ -44,6 +45,14 @@ public class Ticket {
 
     public Plane getPlane() {
         return plane;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPlane(Plane plane) {
@@ -97,14 +106,15 @@ public class Ticket {
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
-                System.out.println("TICKET " + ticket.getPlane().toString());
+                System.out.println(ticket.toString());
                 tickets.add(ticket);
                 //System.out.println("tickets " + tickets.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
+                file.arrayToJsonFormat(tickets, nombreArchivo);
             }
-            file.arrayToJsonFormat(tickets, nombreArchivo);
+            file.arrayToJsonFormatTicket(tickets, nombreArchivo);
         } else {
             ArrayList<Ticket> aux = new ArrayList<>();
             aux = file.jSonToArrayListTicket(nombreArchivo);
@@ -114,13 +124,13 @@ public class Ticket {
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
-                System.out.println("TICKET " + ticket.getPlane().toString());
+                System.out.println(ticket.toString());
                 aux.add(ticket);
                 //System.out.println("Aux" + aux.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
-                file.arrayToJsonFormat(aux, nombreArchivo);
+                file.arrayToJsonFormatTicket(aux, nombreArchivo);
             }
 
         }

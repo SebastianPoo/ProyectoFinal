@@ -13,8 +13,10 @@ public abstract class Plane implements Service, Serializable {
 
 
 
-    public Plane (){
+    private Plane (){
     }
+
+
 
     public int getCoste() {
         return coste;

@@ -27,7 +27,7 @@ public class Menu {
                     break;
                 case 2:
                     //opcion13();
-                    Ticket.ticket_registration("ARCHIVO_TICKET");
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 3:
                     opcion14();

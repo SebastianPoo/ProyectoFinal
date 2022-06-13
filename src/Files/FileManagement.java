@@ -106,12 +106,12 @@ public class FileManagement {
 
         BufferedReader reader = null;
 
-        ArrayList<Ticket> tickets= new ArrayList<>();
+        ArrayList<Object> tickets= new ArrayList<>();
 
         try {
             reader = new BufferedReader(new FileReader(new File(archivoJson)));
             tickets = gson.fromJson(reader,
-                    (new TypeToken<ArrayList<Ticket>>() {}.getType())
+                    (new TypeToken<ArrayList<Object>>() {}.getType())
             );
 
         } catch (IOException e) {
@@ -129,6 +129,31 @@ public class FileManagement {
 
         return tickets;
     }
+
+    public  <Ticket> void arrayToJsonFormatTicket(ArrayList<Ticket> t, String nombreArchivo) {
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        BufferedWriter whrite = null;
+
+        try {
+            whrite = new BufferedWriter(new FileWriter(new File(nombreArchivo)));
+            gson.toJson(t, t.getClass(), whrite);
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (whrite != null) {
+                try {
+                    whrite.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
 }
 

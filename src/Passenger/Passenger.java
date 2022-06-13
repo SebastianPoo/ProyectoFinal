@@ -1,11 +1,14 @@
 package Passenger;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Passenger implements Serializable {
     private String name;
     private String LastName;
     private String Dni;
+    private static int id=1;
+    private int myId;
     private Integer age;
 
     public Passenger() {
@@ -16,6 +19,23 @@ public class Passenger implements Serializable {
         LastName = lastName;
         Dni = dni;
         this.age = age;
+        this.myId=generateId();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int generateId() {
+       return ++id;
+    }
+
+    public int getMyId() {
+        return myId;
+    }
+
+    public void setMyId(int myId) {
+        this.myId = myId;
     }
 
     public String getName() {
