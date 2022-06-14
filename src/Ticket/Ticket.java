@@ -225,6 +225,7 @@ public class Ticket {
     public static void eligeDestino(Ticket tick) throws IOException {
         Scanner scan = new Scanner(System.in);
         int respuesta;
+
         do {
             destinos();
             respuesta = scan.nextInt();
@@ -247,15 +248,13 @@ public class Ticket {
                 case 6:
                     tick.setDestination(Distances.BsAs_Mon);
                     break;
-                case 0:
-                    System.out.println("ESC");
-                    break;
                 default:
                     respuesta = 0;
                     System.out.println("Solo puede elegir las opciones 1, 2, 3, 4, 5, 6 o 0...");
                     break;
             }
-        } while (respuesta != 0);
+
+        } while (respuesta == 0);
         System.out.println("Destino seleccionado !!");
     }
 
