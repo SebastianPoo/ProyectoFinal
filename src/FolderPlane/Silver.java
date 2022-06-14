@@ -13,7 +13,7 @@ public class Silver extends Plane{
     public Silver(String nombre, int day) {
         super(nombre, 150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
         Calendar dia = Calendar.getInstance();
-        dia.set(Calendar.DAY_OF_WEEK,day);
+        dia.set(Calendar.DATE,day);
         this.diaVuelo = dia;
     }
 

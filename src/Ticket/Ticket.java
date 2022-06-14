@@ -93,9 +93,8 @@ public class Ticket {
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
-                System.out.println("TICKET " + ticket.getPlane().toString());
+                System.out.println("TICKET " + ticket.toString());
                 tickets.add(ticket);
-                //System.out.println("tickets " + tickets.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -113,9 +112,8 @@ public class Ticket {
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
-                System.out.println("TICKET " + ticket.getPlane().toString());
+                System.out.println("TICKET " + ticket.toString());
                 aux.add(ticket);
-                //System.out.println("Aux" + aux.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -231,6 +229,7 @@ public class Ticket {
                 ", Seat='" + Seat + '\'' +
                 ", Price='" + price + '\'' +
                 ", Plane='" + plane.getNombre() + '\'' +
+                " Fecha= " + fechaDeViaje.get(Calendar.DATE) + "/" + fechaDeViaje.get(Calendar.MONTH) +
                 '}';
     }
 }

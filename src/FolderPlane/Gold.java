@@ -13,7 +13,7 @@ public class Gold extends Plane{
     public Gold(String nombre, int day) {
         super(nombre, 300,3260,8,746,3700,TipoMotor.MOTOR_A_REACCION);
         Calendar dia = Calendar.getInstance();
-        dia.set(Calendar.DAY_OF_WEEK,day);
+        dia.set(Calendar.DATE,day);
         this.diaVuelo = dia;
     }
 

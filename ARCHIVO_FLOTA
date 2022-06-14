@@ -4,10 +4,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 19,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 3
+      "dayOfMonth": 1,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 16
     },
     "nombre": "boeing 123",
     "coste": 150,
@@ -22,10 +22,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 13,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 3
+      "dayOfMonth": 2,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "boeing 124",
     "coste": 150,
@@ -40,10 +40,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 15,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 3
+      "dayOfMonth": 4,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "eclipse 555",
     "coste": 150,
@@ -58,10 +58,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 17,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 3
+      "dayOfMonth": 6,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "cessna 650",
     "coste": 300,
@@ -76,10 +76,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 14,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 3
+      "dayOfMonth": 3,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "eclipse 550",
     "coste": 150,
@@ -94,10 +94,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 16,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 3
+      "dayOfMonth": 5,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "cessna 550",
     "coste": 300,
