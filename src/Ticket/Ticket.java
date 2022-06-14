@@ -128,7 +128,13 @@ public class Ticket {
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
                 System.out.println(ticket.toString());
-                tickets.add(ticket);
+                System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                String conf= scan.nextLine().toUpperCase();
+                if (conf.contains("S")){
+                    tickets.add(ticket);
+                }else{
+                    break;
+                }
                 //System.out.println("tickets " + tickets.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
@@ -151,7 +157,13 @@ public class Ticket {
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
                 System.out.println(ticket.toString());
-                aux.add(ticket);
+                System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                String conf= scan.nextLine().toUpperCase();
+                if (conf.contains("S")){
+                    aux.add(ticket);
+                }else{
+                    break;
+                }
                 //System.out.println("Aux" + aux.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();

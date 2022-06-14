@@ -105,7 +105,7 @@ public class Crud{
         int index =buscaPorDni(archivoPasajero, dni);
         System.out.println(" Que desea modificar ?");
         System.out.println("1 - NOMBRE Y APELLIDO");
-        System.out.println("1 - EDAD");
+        System.out.println("2 - EDAD");
         System.out.println("3 - DNI");
         int option = scan.nextInt();
         scan.nextLine();
@@ -118,15 +118,19 @@ public class Crud{
                 System.out.println("Ingrese De Nuevo El Apellido");
                 String apellido = scan.nextLine();
                 aux.get(index).setLastName(apellido);
+                scan.nextLine();
                 break;
             case 2:
                 System.out.println("Ingrese La Edad");
                 Integer edad = scan.nextInt();
                 aux.get(index).setAge(edad);
+                scan.nextLine();
+                break;
             case 3 :
                 System.out.println("Ingrese El Nuevo DNI");
                 String newDNI = scan.nextLine();
                 aux.get(index).setDni(newDNI);
+                scan.nextLine();
                 break;
 
             default:
