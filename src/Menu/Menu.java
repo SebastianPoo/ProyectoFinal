@@ -31,7 +31,7 @@ public class Menu {
 
                     break;
                 case 3:
-                    opcion14();
+
                     break;
                 case 4:
                     case5();
@@ -262,18 +262,23 @@ public class Menu {
         System.out.println("Su destino es: "+destino);
         System.out.println("Vuelo desde "+origen+" hacia "+destino);
     }
-    private static void opcion14() {
+    public int addCompa() {
         Scanner scanner = new Scanner(System.in);
+
         int cantAcompanantes = 0;
         System.out.println("Ingrese la cantidad de acompanantes: ");
         cantAcompanantes = scanner.nextInt();
+        int suma = 1;
         if (cantAcompanantes > 0) {
-            int suma = 1; // yo
-            System.out.println("Usted reserva "+(suma+=cantAcompanantes)+" lugares ");
+            // yo
+            suma=suma+cantAcompanantes;
+            System.out.println("Usted reserva "+suma+" lugares ");
         }else {
             System.out.println("sin acompanantes..");
         }
-    }    private static void opcion15() {
+        return suma;
+    }
+    private static void opcion15() {
         System.out.println("Imprimiendo pasaje...");// TODO: 10/06/2022 se puede cambiar el msj, de singular a plural, según la cantidad de pasajes que se compren
     }
 

@@ -3,6 +3,7 @@ package Ticket;
 import Files.FileManagement;
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
+import Menu.Menu;
 import Passenger.Passenger;
 import Person.Person;
 import Travel.Distances;
@@ -22,6 +23,8 @@ public class Ticket {
     private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
     private Calendar fechaDeViaje;
 
+    private int agregarPasajeros;
+
 
     public Ticket() {
         this.ticket = UUID.randomUUID();
@@ -34,6 +37,13 @@ public class Ticket {
         this.plane = plane;
     }
 
+    public int getAgregarPasajeros() {
+        return agregarPasajeros;
+    }
+
+    public void setAgregarPasajeros(int agregarPasajeros) {
+        this.agregarPasajeros = agregarPasajeros;
+    }
 
     public Distances getDestination() {
         return destination;
@@ -89,7 +99,7 @@ public class Ticket {
         return "Ticket{" +
                 "ID ticket=" + ticket +
                 ", destination=" + destination.retornarNumero() +
-                ", Seat='" + Seat +
+                ", Seats='" + this.getAgregarPasajeros() +
                 ", Price='" + price + '\'' +
                  ", Plane='" + plane.getNombre() + '\'' +
                 '}';
@@ -100,6 +110,7 @@ public class Ticket {
         ArrayList<Ticket> tickets = new ArrayList<>();
         FileManagement file = new FileManagement();
         Scanner scan = new Scanner(System.in);
+        Menu menu = new Menu();
 
         int option = 0;
         if (nombreArchivo.isEmpty()) {
@@ -111,6 +122,8 @@ public class Ticket {
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
+                 int companions= menu.addCompa();
+                 ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
@@ -132,6 +145,8 @@ public class Ticket {
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
+                int companions= menu.addCompa();
+                ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
