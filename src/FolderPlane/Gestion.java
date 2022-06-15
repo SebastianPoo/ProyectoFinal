@@ -10,9 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Gestion {
 
@@ -83,6 +81,21 @@ public abstract class Gestion {
         travels.add(travel);
 
         return travels;
+    }
+
+    public static void bestPlane (List<Plane> lista){
+        Collections.sort(lista,new Comparator<Plane>() {
+            public int compare(Plane plane1, Plane plane2) {
+                return Integer.compare(plane2.getCoste(), plane1.getCoste());
+            }
+        });
+        System.out.println("El metodo sort es   ; " + lista.get(0).getNombre());
+
+        Plane mayor = Collections.max(lista, Comparator.comparing(c -> c.getCoste()));
+        System.out.println("El mayor es   ; " + mayor.getNombre());
+        for (Plane plane : lista){
+            System.out.println(plane.toString());
+        }
     }
 
 

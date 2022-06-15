@@ -146,7 +146,6 @@ public class Ticket {
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
                 if (conf.contains("S")){
-                    System.out.println("Prueba getID de aux " + aux.size());
                     aux.add(ticket);
                 }else{
                     break;
