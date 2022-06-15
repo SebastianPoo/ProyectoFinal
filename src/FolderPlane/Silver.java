@@ -13,7 +13,7 @@ public class Silver extends Plane{
 
 
     public Silver(String nombre, int day) {
-        super(nombre, 150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
+        super(nombre, 4000,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
         Calendar dia = Calendar.getInstance();
         dia.set(Calendar.DAY_OF_WEEK,day);
         this.diaVuelo = dia;
@@ -22,25 +22,25 @@ public class Silver extends Plane{
 
     @Override
     public int catering(int costo) {
-        System.out.println("Precio $250");
+        System.out.println("Precio de catering: $250");
         return costo=costo+250;
     }
 
     @Override
     public int wifi(int costo) {
-        System.out.println("Precio $25");
+        System.out.println("Precio de wifi: $25");
         return costo=costo+25;
     }
 
     @Override
     public int carry_on_bag(int costo) {
-        System.out.println("precio $300");
+        System.out.println("Precio de equipaje de mano: $300");
         return costo=costo+300;
     }
 
     @Override
     public int confort(int costo) {
-        System.out.println("Precio $200");
+        System.out.println("Precio de confort: $200");
         return costo=costo+200;
     }
 }

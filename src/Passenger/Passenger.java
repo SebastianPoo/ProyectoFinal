@@ -1,7 +1,11 @@
 package Passenger;
 
+import Ticket.Ticket;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class Passenger implements Serializable {
     private String name;
@@ -10,6 +14,7 @@ public class Passenger implements Serializable {
     private static int id=1;
     private int myId;
     private Integer age;
+    public List<Ticket> listTicket;
 
     public Passenger() {
     }
@@ -20,8 +25,13 @@ public class Passenger implements Serializable {
         Dni = dni;
         this.age = age;
         this.myId=generateId();
+        this.listTicket=new ArrayList<>();
     }
 
+    public void setListTicket(Ticket ticket) {
+        listTicket.add(ticket);
+        this.listTicket = listTicket;
+    }
     public int getId() {
         return id;
     }

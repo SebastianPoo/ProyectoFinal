@@ -41,13 +41,13 @@ public class Fechas {
 
         if (mes==mesHoy) {
             do {
-                System.out.println("if"+diaHoy);
+
                 showdates();
                 respuesta = scan.nextInt();
             } while (respuesta < diaHoy || respuesta > 31);
         }else {
             do {
-                System.out.println("else");
+
                 showdates();
                 respuesta = scan.nextInt();
             }while (respuesta < 1 || respuesta > 31);
@@ -62,7 +62,7 @@ public class Fechas {
     }
 
     private static void showdates(){
-        System.out.println("Marque el dia para viajar");
+        System.out.println("Marque el dia para viajar....");
     }
     private static void dateMonths(){
         System.out.println("1-Enero  2-Febrero  3-Marzo  4-Abril" );

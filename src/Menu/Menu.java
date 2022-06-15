@@ -6,8 +6,10 @@ import FolderPlane.Gestion;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import Crud.*;
+import FolderPlane.Plane;
 import Person.Passenger;
 import Ticket.Ticket;
 
@@ -26,22 +28,16 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    //case1();
+
                     Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 2:
-                    //opcion13();
+
                      gestionPasajeros("pasajeros.json");
 
                     break;
                 case 3:
-
-                    break;
-                case 4:
-                    case5();
-                    break;
-                case 5:
-                    opcion15();
+                    gestionTicket("ARCHIVO_TICKET.json");
                     break;
                 case 0:
                     opcion3();
@@ -54,6 +50,44 @@ public class Menu {
         }while(respuesta != 0);
         System.out.println("despegue !!");
     }
+    public static void gestionTicket(String nombreArchivo) throws IOException{
+        ArrayList<Ticket> aux = new ArrayList<>();
+        aux = file.jSonToArrayListTicket(nombreArchivo);
+        Scanner scan = new Scanner(System.in);
+        opcion0();
+        int respuesta;
+        do {
+            opcion0();
+            respuesta = scan.nextInt();
+            switch (respuesta){
+                case 1:
+                    opcion1(aux);
+                    break;
+                case 2:
+                    opcion2();
+                    break;
+                case 0:
+                    opcion3();
+                    break;
+                default:
+                    opcionDefault(); // solo puede elegir opción 1 o 2
+                    break;
+            }
+        }while (respuesta != 0);
+    }
+
+    private static void opcion0() {
+        System.out.println("CANCELAR VUELO");
+        System.out.println("MOSTRAR TICKETS");
+        System.out.println("0- ESC");
+    }
+    private static void opcion1( ArrayList<Ticket> tickets) {
+        System.out.println("");
+    }
+    private static void opcion2() {
+        System.out.println("en pasillo");
+    }
+
     // Menu del cuestionario inicial
     private static void case1(){
         Scanner scan = new Scanner(System.in);
@@ -79,29 +113,7 @@ public class Menu {
         }while (respuesta != 0);
     }
     // Elección de ubicación para Bronce
-    public static void case4() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Bronce en proceso..");
-        int respuesta;
-        do {
-            opcion0();
-            respuesta = scan.nextInt();
-            switch (respuesta){
-                case 1:
-                    opcion1();
-                    break;
-                case 2:
-                    opcion2();
-                    break;
-                case 0:
-                    opcion3();
-                    break;
-                default:
-                    opcionDefault(); // solo puede elegir opción 1 o 2
-                    break;
-            }
-        }while (respuesta != 0);
-    }
+
     // Elección de Confort para Plata
     private static void case2(){
         Scanner scan = new Scanner(System.in);
@@ -160,7 +172,7 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    case4();
+
                     break;
                 case 2:
                     case2();
@@ -180,8 +192,7 @@ public class Menu {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
         System.out.println("1- VIAJE");
         System.out.println("2- GESTION DE PASAJEROS");
-        System.out.println("4- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
-        System.out.println("5- Imprimir pasajes..");
+        System.out.println("3- GESTION DE TICKET");
         System.out.println("0- ESC");
     }
     /*public static void case6() {
@@ -197,18 +208,8 @@ public class Menu {
         System.out.println("3- AeroTaxi Gold");
         System.out.println("0- ESC");
     }
-    private static void opcion0() {
-        System.out.println("Elija ubicacion:");
-        System.out.println("1- Ventana");
-        System.out.println("2- Pasillo");
-        System.out.println("0- ESC");
-    }
-    private static void opcion1() {
-        System.out.println("con ventana");
-    }
-    private static void opcion2() {
-        System.out.println("en pasillo");
-    }
+
+
     private static void opcion3() {
         System.out.println("ESC");
     }
