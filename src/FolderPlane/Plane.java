@@ -1,6 +1,9 @@
 package FolderPlane;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public abstract class Plane implements Service, Serializable {
     private String nombre;
@@ -10,6 +13,7 @@ public abstract class Plane implements Service, Serializable {
     private double kmXhs;
     private double kmTraveled;
     private  TipoMotor tipoMotor;
+    public List<Calendar> listPlane ;
 
 
 
@@ -35,6 +39,15 @@ public abstract class Plane implements Service, Serializable {
         this.kmXhs = kmXhs;
         this.kmTraveled = kmTraveled;
         this.tipoMotor = tipoMotor;
+        this.listPlane = new ArrayList<>();
+    }
+
+    public List<Calendar> getListPlane() {
+        return listPlane;
+    }
+    public void setList(Calendar calendar) {
+        listPlane.add(calendar);
+        this.listPlane = listPlane;
     }
 
     public int getMaxPassenger() {

@@ -15,7 +15,7 @@ public class Bronze extends Plane{
 
 
     public Bronze(String nombre,int day) {
-        super(nombre ,150, 19325.44, 60, 876, 3440, TipoMotor.MOTOR_DE_PISTONES);
+        super(nombre ,3500, 19325.44, 60, 876, 3440, TipoMotor.MOTOR_DE_PISTONES);
         Calendar dia = Calendar.getInstance();
         dia.set(Calendar.DAY_OF_WEEK,day);
         this.diaVuelo = dia;
@@ -36,13 +36,13 @@ public class Bronze extends Plane{
 
     @Override
     public int carry_on_bag(int costo) {
-        System.out.println("precio $300");
+        System.out.println("Precio de equipaje de mano: $300");
         return costo=costo+300;
     }
 
     @Override
     public int confort(int costo) {
-        System.out.println("Precio $200");
+        System.out.println("Precio de confort: $200");
         return costo=costo+200;
     }
 

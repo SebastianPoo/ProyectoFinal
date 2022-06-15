@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,12 +26,23 @@ public abstract class Gestion {
 
     public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
-        Bronze boeing123 = new Bronze("boeing 123",1);
-        Bronze boeing124 = new Bronze("boeing 124",2);
-        Silver eclipse550 = new Silver("eclipse 550",3);
-        Silver eclipse555 = new Silver("eclipse 555",4);
-        Gold cessna550 = new Gold("cessna 550",5);
-        Gold cessna650 = new Gold("cessna 650",6);
+        Bronze boeing123 = new Bronze("boeing 123-Bronce",1);
+        Bronze boeing124 = new Bronze("boeing 124-Bronce",2);
+        Silver eclipse550 = new Silver("eclipse 550-Silver",3);
+        Silver eclipse555 = new Silver("eclipse 555-Silver",4);
+        Gold cessna550 = new Gold("cessna 550-Gold",5);
+        Gold cessna650 = new Gold("cessna 650-Gold",6);
+
+        Calendar calendar7 = Calendar.getInstance();
+        calendar7.set(2022,7,7);
+        Calendar calendar8 = Calendar.getInstance();
+        calendar8.set(2022,7,7);
+        Calendar calendar9 = Calendar.getInstance();
+        calendar9.set(2022,7,7);
+
+        cessna550.setList(calendar7);
+        cessna650.setList(calendar8);
+        boeing123.setList(calendar9);
 
         planes.add(boeing123);
         planes.add(boeing124);
