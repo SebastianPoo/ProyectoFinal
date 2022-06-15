@@ -3,17 +3,15 @@ package Ticket;
 import Files.FileManagement;
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
-import Passenger.Passenger;
+import Menu.Menu;
 import Person.Person;
 import Travel.Distances;
-
-
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Ticket {
     private UUID ticket;
+    private int ID;
     private int price;
     private Distances destination;
     private Plane plane;
@@ -21,9 +19,20 @@ public class Ticket {
     private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
     private Calendar fechaDeViaje;
 
+    private int agregarPasajeros;
+
+
 
     public Ticket() {
         this.ticket = UUID.randomUUID();
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public Ticket(Distances destination, String seat, Plane plane) {
@@ -31,6 +40,10 @@ public class Ticket {
         this.destination = destination;
         Seat = seat;
         this.plane = plane;
+    }
+
+    public void setAgregarPasajeros(int agregarPasajeros) {
+        this.agregarPasajeros = agregarPasajeros;
     }
 
     public void setFechaDeViaje(Calendar fechaDeViaje) {
@@ -75,31 +88,45 @@ public class Ticket {
     }
 
 
+
     public static void ticket_registration(String nombreArchivo) throws IOException {
         List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
         ArrayList<Ticket> tickets = new ArrayList<>();
         FileManagement file = new FileManagement();
         Scanner scan = new Scanner(System.in);
+        Menu menu = new Menu();
+        IOException error1 = new IOException();
 
         int option = 0;
         if (nombreArchivo.isEmpty()) {
 
             while (option != 2) {
+
                 Ticket ticket = new Ticket();
                 Fechas fechas = new Fechas();
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
+                ticket.setID(1);
+                int companions = menu.addCompa();
+                ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
-                System.out.println("TICKET " + ticket.toString());
-                tickets.add(ticket);
+                System.out.println(ticket.toString());
+                System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                String conf= scan.nextLine().toUpperCase();
+                if (conf.contains("S")){
+                    tickets.add(ticket);
+                }else{
+                    break;
+                }
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
+                file.arrayToJsonFormat(tickets, nombreArchivo);
             }
-            file.arrayToJsonFormat(tickets, nombreArchivo);
+            file.arrayToJsonFormatTicket(tickets, nombreArchivo);
         } else {
             ArrayList<Ticket> aux = new ArrayList<>();
             aux = file.jSonToArrayListTicket(nombreArchivo);
@@ -109,20 +136,29 @@ public class Ticket {
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
+                ticket.setID(aux.size());
+                int companions= menu.addCompa();
+                ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
                 System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
-                System.out.println("TICKET " + ticket.toString());
-                aux.add(ticket);
+                System.out.println(ticket.toString());
+                System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                String conf= scan.nextLine().toUpperCase();
+                if (conf.contains("S")){
+                    System.out.println("Prueba getID de aux " + aux.size());
+                    aux.add(ticket);
+                }else{
+                    break;
+                }
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
-                file.arrayToJsonFormat(aux, nombreArchivo);
+                file.arrayToJsonFormatTicket(aux, nombreArchivo);
             }
 
         }
     }
-
     public static int eligeAvion() throws IOException {
         Scanner scan = new Scanner(System.in);
         int respuesta;

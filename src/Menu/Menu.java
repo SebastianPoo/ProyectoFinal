@@ -273,6 +273,25 @@ public class Menu {
         System.out.println("Su destino es: "+destino);
         System.out.println("Vuelo desde "+origen+" hacia "+destino);
     }
+
+    public int addCompa() {
+        Scanner scanner = new Scanner(System.in);
+
+        int cantAcompanantes = 0;
+        System.out.println("Ingrese la cantidad de acompanantes: ");
+        cantAcompanantes = scanner.nextInt();
+        int suma = 1;
+        if (cantAcompanantes > 0) {
+            // yo
+            suma=suma+cantAcompanantes;
+            System.out.println("Usted reserva "+suma+" lugares ");
+        }else {
+            System.out.println("sin acompanantes..");
+        }
+        return suma;
+    }
+
+
     private static void opcion14() {
         Scanner scanner = new Scanner(System.in);
         int cantAcompanantes = 0;
