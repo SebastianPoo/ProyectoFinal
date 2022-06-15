@@ -2,7 +2,7 @@ package FolderPlane;
 
 import Person.Person;
 import Ticket.Ticket;
-import Travel.Travel;
+import Travel.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,21 +18,19 @@ public abstract class Gestion {
 
     private static List <Plane> planes;
     private static List <Person> passenger;
-    private static List <Ticket> ticket;
-    private static List <Travel> travel;
+    private static List <Ticket> tickets;
+    private static List <Travel> travels;
 
-
-    public Gestion (){
-    }
+    public Gestion (){}
 
     public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
-        Bronze boeing123 = new Bronze();
-        Bronze boeing124 = new Bronze();
-        Silver eclipse550 = new Silver();
-        Silver eclipse555 = new Silver();
-        Gold cessna550 = new Gold();
-        Gold cessna650 = new Gold();
+        Bronze boeing123 = new Bronze("boeing 123",1);
+        Bronze boeing124 = new Bronze("boeing 124",2);
+        Silver eclipse550 = new Silver("eclipse 550",3);
+        Silver eclipse555 = new Silver("eclipse 555",4);
+        Gold cessna550 = new Gold("cessna 550",5);
+        Gold cessna650 = new Gold("cessna 650",6);
 
         planes.add(boeing123);
         planes.add(boeing124);
@@ -58,8 +56,7 @@ public abstract class Gestion {
         try {
             whrite = new BufferedWriter(new FileWriter(new File(nombre)));
             gson.toJson(t, t.getClass(), whrite);
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,5 +70,21 @@ public abstract class Gestion {
             }
         }
     }
+
+    public static ArrayList<Ticket> add_a_Ticket(ArrayList tickets, Ticket ticket){
+
+        tickets.add(ticket);
+
+        return tickets;
+
+    }
+
+    public static ArrayList<Travel> add_a_Array (ArrayList travels, Travel travel){
+        travels.add(travel);
+
+        return travels;
+    }
+
+
 
 }

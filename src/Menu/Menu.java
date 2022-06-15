@@ -1,47 +1,59 @@
 package Menu;
 
+import Files.FileManagement;
 import FolderPlane.Gestion;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
+import Crud.*;
+import Person.Passenger;
+import Ticket.Ticket;
+
 import java.util.function.ToDoubleBiFunction;
 
 public class Menu {
     // comente clase Gestión
+    static Crud crud = new Crud();
+    static FileManagement file = new FileManagement();
 
-    public static void primerMenu () {
+    public static void primerMenu () throws IOException {
         Scanner scan = new Scanner(System.in);
         int respuesta;
         do {
-        cuestionarioInicial();
-        respuesta = scan.nextInt();
-        switch (respuesta){
-            case 1:
-                case1();
-                break;
-            case 2:
-                opcion13();
-                break;
-            case 3:
-                opcion14();
-                break;
-            case 4:
-                case5();
-                break;
-            case 5:
-                opcion15();
-                break;
-            case 0:
-                opcion3();
-                break;
-            default:
-                respuesta = 0;
-                System.out.println("Solo puede elegir las opciones 1, 2, 3, 4 o 0...");
-                break;
-        }
-    }while(respuesta != 0);
+            cuestionarioInicial();
+            respuesta = scan.nextInt();
+            switch (respuesta){
+                case 1:
+                    //case1();
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
+                    break;
+                case 2:
+                    //opcion13();
+                     gestionPasajeros("pasajeros.json");
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+                    case5();
+                    break;
+                case 5:
+                    opcion15();
+                    break;
+                case 0:
+                    opcion3();
+                    break;
+                default:
+                    respuesta = 0;
+                    System.out.println("Solo puede elegir las opciones 1, 2, 3, 4 o 0...");
+                    break;
+            }
+        }while(respuesta != 0);
         System.out.println("despegue !!");
-}
+    }
     // Menu del cuestionario inicial
     private static void case1(){
         Scanner scan = new Scanner(System.in);
@@ -166,22 +178,17 @@ public class Menu {
     }
     private static void cuestionarioInicial() {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
-        System.out.println("1- Elija fecha para realizar el viaje: ");
-        System.out.println("2- Seleccionar origen y destino: ");
-        System.out.println("3- Indicar acompanantes: ");
+        System.out.println("1- VIAJE");
+        System.out.println("2- GESTION DE PASAJEROS");
         System.out.println("4- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
         System.out.println("5- Imprimir pasajes..");
         System.out.println("0- ESC");
     }
     /*public static void case6() {
-
     }
     public static void case7() {
-
     }
     public static void case8() {
-
-
     }*/
     private static void opcionIntro() {
         System.out.println("<<< Seleccione su AeroTaxi >>>");
@@ -232,7 +239,6 @@ public class Menu {
     private static void opcion9() {
         System.out.println("sin WiFi entonces");
     }
-
     // TODO: 10/06/2022 subMenú para el cuestionario inicial de la app
     private static void opcion10() {
         System.out.println("Elija Fechas:");
@@ -247,7 +253,6 @@ public class Menu {
     private static void opcion12() {
         System.out.println("Fecha de regreso cargada");
     }
-
     private static void opcion13() {
         Scanner scanner = new Scanner(System.in);
         String origen;
@@ -260,19 +265,51 @@ public class Menu {
         System.out.println("Su destino es: "+destino);
         System.out.println("Vuelo desde "+origen+" hacia "+destino);
     }
-    private static void opcion14() {
+    public int addCompa() {
         Scanner scanner = new Scanner(System.in);
+
         int cantAcompanantes = 0;
         System.out.println("Ingrese la cantidad de acompanantes: ");
         cantAcompanantes = scanner.nextInt();
+        int suma = 1;
         if (cantAcompanantes > 0) {
-            int suma = 1; // yo
-            System.out.println("Usted reserva "+(suma+=cantAcompanantes)+" lugares ");
+            // yo
+            suma=suma+cantAcompanantes;
+            System.out.println("Usted reserva "+suma+" lugares ");
         }else {
             System.out.println("sin acompanantes..");
         }
-    }    private static void opcion15() {
+        return suma;
+    }
+    private static void opcion15() {
         System.out.println("Imprimiendo pasaje...");// TODO: 10/06/2022 se puede cambiar el msj, de singular a plural, según la cantidad de pasajes que se compren
+    }
+
+    public static void gestionPasajeros (String ArchivoPasajero) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Passenger> aux = new ArrayList<>();
+         aux = file.jSonToArrayList(ArchivoPasajero);
+        System.out.println("1 - AGREGAR PASAJERO" +
+                           " 2 - MODIFICAR PASAJERO " +
+                            " 3 - BUSCAR POR DNI"+
+                            " 4 - ELIMINAR PASAJERO");
+        String resp =scan.nextLine();
+        switch (resp){
+            case "1" : crud.AltaPassenger(ArchivoPasajero);
+            break;
+            case "2": crud.modificarDatosPasajero(ArchivoPasajero);
+            break;
+            case "3":
+                System.out.println("Ingrese el Dni");
+                String dni= scan.nextLine();
+                System.out.println(aux.get(crud.buscaPorDni(ArchivoPasajero, dni)));
+                break;
+            case "4":
+                System.out.println("Ingrese el Dni");
+                String search= scan.nextLine();
+                crud.bajaPassenger(ArchivoPasajero, search);
+                break;
+        }
     }
 
 }

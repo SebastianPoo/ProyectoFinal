@@ -1,0 +1,38 @@
+[
+  {
+    "name": "pedro",
+    "LastName": "lopez",
+    "Dni": "123123",
+    "age": 30
+  },
+  {
+    "name": "maxi",
+    "LastName": "fernandez",
+    "Dni": "231231",
+    "age": 33
+  },
+  {
+    "name": "ramiro",
+    "LastName": "goti",
+    "Dni": "123123123",
+    "age": 23
+  },
+  {
+    "name": "gonzalo",
+    "LastName": "ciano",
+    "Dni": "5266659",
+    "age": 30
+  },
+  {
+    "name": "Miguel",
+    "LastName": "Fernandez",
+    "Dni": "14936289",
+    "age": 60
+  },
+  {
+    "name": "Sebastian",
+    "LastName": "Poo",
+    "Dni": "3566999",
+    "age": 30
+  }
+]
