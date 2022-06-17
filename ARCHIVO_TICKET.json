@@ -170,6 +170,39 @@
   },
   {
     "ticket": "508532cb-6ae2-4fa7-9fe4-4f293b27705d",
+    "id": 0.0,
+    "price": 0.0,
+    "destination": "BsAs_Cor",
+    "plane": {
+      "planeType": 500.0,
+      "diaVuelo": {
+        "year": 2022.0,
+        "month": 5.0,
+        "dayOfMonth": 19.0,
+        "hourOfDay": 21.0,
+        "minute": 2.0,
+        "second": 13.0
+      },
+      "nombre": "boeing 123",
+      "coste": 150.0,
+      "fuel": 19325.44,
+      "maxPassenger": 60.0,
+      "kmXhs": 876.0,
+      "kmTraveled": 3440.0,
+      "tipoMotor": "MOTOR_DE_PISTONES"
+    },
+    "fechaDeViaje": {
+      "year": 2023.0,
+      "month": 0.0,
+      "dayOfMonth": 22.0,
+      "hourOfDay": 21.0,
+      "minute": 2.0,
+      "second": 15.0
+    },
+    "agregarPasajeros": 2.0
+  },
+  {
+    "ticket": "d2b5d41f-5915-4e7a-b2b6-b8910b45d3a9",
     "id": 0,
     "price": 0,
     "destination": "BsAs_Cor",
@@ -178,12 +211,12 @@
       "diaVuelo": {
         "year": 2022,
         "month": 5,
-        "dayOfMonth": 19,
+        "dayOfMonth": 2,
         "hourOfDay": 21,
-        "minute": 2,
-        "second": 13
+        "minute": 59,
+        "second": 31
       },
-      "nombre": "boeing 123",
+      "nombre": "boeing 124",
       "coste": 150,
       "fuel": 19325.44,
       "maxPassenger": 60,
@@ -196,9 +229,9 @@
       "month": 0,
       "dayOfMonth": 22,
       "hourOfDay": 21,
-      "minute": 2,
-      "second": 15
+      "minute": 59,
+      "second": 36
     },
-    "agregarPasajeros": 2
+    "agregarPasajeros": 3
   }
 ]

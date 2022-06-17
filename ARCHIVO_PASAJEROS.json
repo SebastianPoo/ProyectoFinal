@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Sebas",
+    "LastName": "Poo",
+    "Dni": "30123456",
+    "id": 1,
+    "age": 38
+  },
+  {
+    "name": "Maxi",
+    "LastName": "Fernadez",
+    "Dni": "31123456",
+    "id": 2,
+    "age": 38
+  }
+]

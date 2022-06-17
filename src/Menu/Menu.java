@@ -29,7 +29,7 @@ public class Menu {
                     Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 2:
-                     gestionPasajeros("pasajeros.json");
+                     gestionPasajeros("ARCHIVO_PASAJEROS.json");
                     break;
                 case 3:
 
