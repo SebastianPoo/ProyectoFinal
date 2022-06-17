@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Crud.*;
-import Passenger.Passenger;
+import Person.Passenger;
 import Ticket.Ticket;
 
 import java.util.function.ToDoubleBiFunction;
@@ -16,10 +16,9 @@ import java.util.function.ToDoubleBiFunction;
 public class Menu {
     // comente clase Gestión
     static Crud crud = new Crud();
+    static FileManagement file = new FileManagement();
 
     public static void primerMenu () throws IOException {
-        FileManagement file = new FileManagement();
-        ArrayList<Passenger> aux = file.jSonToArrayList("PruebaMenu-borrar");
         Scanner scan = new Scanner(System.in);
         int respuesta;
         do {
@@ -27,26 +26,16 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    //case1();
-                    crud.AltaPassenger("PruebaMenu-borrar");
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 2:
-                    //opcion13();
-                    Ticket.ticket_registration("ARCHIVO_TICKET");
+                     gestionPasajeros("pasajeros.json");
                     break;
                 case 3:
-                    //opcion13();
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Ingrese DNI a buscar: ");
-                    String DNI;
-                    DNI = scanner.nextLine();
-                    int usuario=crud.buscaPorDni("PruebaMenu-borrar",DNI);
-                    System.out.println(aux.get(usuario).toString());
 
                     break;
                 case 4:
-                    //case5();
-                    //Gestion.bestPlane(misAviones);
+                    case5();
                     break;
                 case 5:
                     opcion15();
@@ -186,9 +175,8 @@ public class Menu {
     }
     private static void cuestionarioInicial() {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
-        System.out.println("1- Elija fecha para realizar el viaje: ");
-        System.out.println("2- Seleccionar origen y destino: ");
-        System.out.println("3- Indicar acompanantes: ");
+        System.out.println("1- VIAJE");
+        System.out.println("2- GESTION DE PASAJEROS");
         System.out.println("4- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
         System.out.println("5- Imprimir pasajes..");
         System.out.println("0- ESC");
@@ -274,7 +262,6 @@ public class Menu {
         System.out.println("Su destino es: "+destino);
         System.out.println("Vuelo desde "+origen+" hacia "+destino);
     }
-
     public int addCompa() {
         Scanner scanner = new Scanner(System.in);
 
@@ -291,21 +278,35 @@ public class Menu {
         }
         return suma;
     }
-
-
-    private static void opcion14() {
-        Scanner scanner = new Scanner(System.in);
-        int cantAcompanantes = 0;
-        System.out.println("Ingrese la cantidad de acompanantes: ");
-        cantAcompanantes = scanner.nextInt();
-        if (cantAcompanantes > 0) {
-            int suma = 1; // yo
-            System.out.println("Usted reserva "+(suma+=cantAcompanantes)+" lugares ");
-        }else {
-            System.out.println("sin acompanantes..");
-        }
-    }    private static void opcion15() {
+    private static void opcion15() {
         System.out.println("Imprimiendo pasaje...");// TODO: 10/06/2022 se puede cambiar el msj, de singular a plural, según la cantidad de pasajes que se compren
+    }
+
+    public static void gestionPasajeros (String ArchivoPasajero) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Passenger> aux = new ArrayList<>();
+         aux = file.jSonToArrayList(ArchivoPasajero);
+        System.out.println("1 - AGREGAR PASAJERO" +
+                           " 2 - MODIFICAR PASAJERO " +
+                            " 3 - BUSCAR POR DNI"+
+                            " 4 - ELIMINAR PASAJERO");
+        String resp =scan.nextLine();
+        switch (resp){
+            case "1" : crud.AltaPassenger(ArchivoPasajero);
+            break;
+            case "2": crud.modificarDatosPasajero(ArchivoPasajero);
+            break;
+            case "3":
+                System.out.println("Ingrese el Dni");
+                String dni= scan.nextLine();
+                System.out.println(aux.get(crud.buscaPorDni(ArchivoPasajero, dni)));
+                break;
+            case "4":
+                System.out.println("Ingrese el Dni");
+                String search= scan.nextLine();
+                crud.bajaPassenger(ArchivoPasajero, search);
+                break;
+        }
     }
 
 }

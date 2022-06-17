@@ -12,6 +12,8 @@ public class Bronze extends Plane{
         super( nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
 
+
+
     public Bronze(String nombre,int day) {
         super(nombre ,150, 19325.44, 60, 876, 3440, TipoMotor.MOTOR_DE_PISTONES);
         Calendar dia = Calendar.getInstance();

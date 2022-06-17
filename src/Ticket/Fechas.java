@@ -47,7 +47,6 @@ public class Fechas {
             } while (respuesta < diaHoy || respuesta > 31);
         }else {
             do {
-                System.out.println("else");
                 showdates();
                 respuesta = scan.nextInt();
             }while (respuesta < 1 || respuesta > 31);

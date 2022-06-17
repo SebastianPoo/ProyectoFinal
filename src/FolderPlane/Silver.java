@@ -10,6 +10,8 @@ public class Silver extends Plane{
                   double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
         super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
     }
+
+
     public Silver(String nombre, int day) {
         super(nombre, 150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
         Calendar dia = Calendar.getInstance();

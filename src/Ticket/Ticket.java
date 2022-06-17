@@ -4,14 +4,18 @@ import Files.FileManagement;
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
 import Menu.Menu;
+import Passenger.Passenger;
 import Person.Person;
 import Travel.Distances;
+
+
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Ticket {
     private UUID ticket;
-    private int ID;
+    private int id;
     private int price;
     private Distances destination;
     private Plane plane;
@@ -22,17 +26,8 @@ public class Ticket {
     private int agregarPasajeros;
 
 
-
     public Ticket() {
         this.ticket = UUID.randomUUID();
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public Ticket(Distances destination, String seat, Plane plane) {
@@ -42,12 +37,12 @@ public class Ticket {
         this.plane = plane;
     }
 
-    public void setAgregarPasajeros(int agregarPasajeros) {
-        this.agregarPasajeros = agregarPasajeros;
+    public int getAgregarPasajeros() {
+        return agregarPasajeros;
     }
 
-    public void setFechaDeViaje(Calendar fechaDeViaje) {
-        this.fechaDeViaje = fechaDeViaje;
+    public void setAgregarPasajeros(int agregarPasajeros) {
+        this.agregarPasajeros = agregarPasajeros;
     }
 
     public Distances getDestination() {
@@ -60,6 +55,14 @@ public class Ticket {
 
     public Plane getPlane() {
         return plane;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setPlane(Plane plane) {
@@ -80,6 +83,10 @@ public class Ticket {
         //(canKm * cosKm)+(canPas * 3500)+(tarifaTipoAvion)
         return coste;
     }
+    public void setFechaDeViaje(Calendar fechaDeViaje) {
+        this.fechaDeViaje = fechaDeViaje;
+    }
+
 
     public Ticket costoTicket() {
         Ticket ticket = new Ticket();
@@ -87,7 +94,14 @@ public class Ticket {
         return ticket;
     }
 
-
+    @Override
+    public String toString() {
+        return  "ID ticket=" + ticket +  "\'" +
+                " destination " + destination + '\'' +
+                " Seats " + this.getAgregarPasajeros() + '\'' +
+                " Price " + price + '\'' +
+                 " Plane " + plane.getNombre();
+    }
 
     public static void ticket_registration(String nombreArchivo) throws IOException {
         List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
@@ -95,7 +109,6 @@ public class Ticket {
         FileManagement file = new FileManagement();
         Scanner scan = new Scanner(System.in);
         Menu menu = new Menu();
-        IOException error1 = new IOException();
 
         int option = 0;
         if (nombreArchivo.isEmpty()) {
@@ -107,11 +120,9 @@ public class Ticket {
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                ticket.setID(1);
-                int companions = menu.addCompa();
-                ticket.setAgregarPasajeros(companions);
+                 int companions= menu.addCompa();
+                 ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
-                System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
                 System.out.println(ticket.toString());
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
@@ -136,13 +147,12 @@ public class Ticket {
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                ticket.setID(aux.size());
                 int companions= menu.addCompa();
                 ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
-                System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
                 System.out.println(ticket.toString());
+                System.out.println();
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
                 if (conf.contains("S")){
@@ -158,6 +168,7 @@ public class Ticket {
 
         }
     }
+
     public static int eligeAvion() throws IOException {
         Scanner scan = new Scanner(System.in);
         int respuesta;
@@ -191,6 +202,7 @@ public class Ticket {
                     respuesta = 0;
                     System.out.println("Solo puede elegir las opciones 1, 2, 3, 4, 5, 6 o 0...");
                     break;
+
             }
             return pos;
 
@@ -212,6 +224,7 @@ public class Ticket {
     public static void eligeDestino(Ticket tick) throws IOException {
         Scanner scan = new Scanner(System.in);
         int respuesta;
+
         do {
             destinos();
             respuesta = scan.nextInt();
@@ -234,15 +247,13 @@ public class Ticket {
                 case 6:
                     tick.setDestination(Distances.BsAs_Mon);
                     break;
-                case 0:
-                    System.out.println("ESC");
-                    break;
                 default:
                     respuesta = 0;
                     System.out.println("Solo puede elegir las opciones 1, 2, 3, 4, 5, 6 o 0...");
                     break;
             }
-        } while (respuesta != 0);
+
+        } while (respuesta == 0);
         System.out.println("Destino seleccionado !!");
     }
 
@@ -255,16 +266,5 @@ public class Ticket {
         System.out.println("5- Bs.As_Cordoba ");
         System.out.println("6- Bs.As_Montevideo ");
         System.out.println("0- ESC");
-    }
-    @Override
-    public String toString() {
-        return "Ticket{" +
-                "ID ticket=" + ticket +
-                ", destination=" + destination + '\'' +
-                ", Seat='" + Seat + '\'' +
-                ", Price='" + price + '\'' +
-                ", Plane='" + plane.getNombre() + '\'' +
-                " Fecha= " + fechaDeViaje.get(Calendar.DATE) + "/" + fechaDeViaje.get(Calendar.MONTH) +
-                '}';
     }
 }

@@ -18,6 +18,7 @@ public class Gold extends Plane{
     }
 
 
+
     @Override
     public int catering(int costo) {
         System.out.println("Precio $500");
