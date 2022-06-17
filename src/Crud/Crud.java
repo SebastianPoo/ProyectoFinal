@@ -37,6 +37,7 @@ public class Crud{
                 System.out.println("Ingrese la Edad Del Pasajero ");
                 Integer age = scan.nextInt();
                 Passenger pasajero = new Passenger(name, surname, dni, age);
+                pasajero.setId(1);
                 passengers.add(pasajero);
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
@@ -59,6 +60,7 @@ public class Crud{
                 Integer age = scan.nextInt();
                 Passenger pasajero = new Passenger(name, surname, dni, age);
                 aux.add(pasajero);
+                pasajero.setId(aux.size());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();

@@ -96,13 +96,11 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "ID ticket=" + ticket +
-                ", destination=" + destination.retornarNumero() +
-                ", Seats='" + this.getAgregarPasajeros() +
-                ", Price='" + price + '\'' +
-                 ", Plane='" + plane.getNombre() + '\'' +
-                '}';
+        return  "ID ticket=" + ticket +  "\'" +
+                " destination " + destination + '\'' +
+                " Seats " + this.getAgregarPasajeros() + '\'' +
+                " Price " + price + '\'' +
+                 " Plane " + plane.getNombre();
     }
 
     public static void ticket_registration(String nombreArchivo) throws IOException {
@@ -125,7 +123,6 @@ public class Ticket {
                  int companions= menu.addCompa();
                  ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
-                System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
                 System.out.println(ticket.toString());
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
@@ -135,7 +132,6 @@ public class Ticket {
                 }else{
                     break;
                 }
-                //System.out.println("tickets " + tickets.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -154,9 +150,9 @@ public class Ticket {
                 int companions= menu.addCompa();
                 ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
-                System.out.println(num);
                 ticket.setPlane(misAviones.get(num));
                 System.out.println(ticket.toString());
+                System.out.println();
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
                 if (conf.contains("S")){
@@ -164,7 +160,6 @@ public class Ticket {
                 }else{
                     break;
                 }
-                //System.out.println("Aux" + aux.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -183,29 +178,21 @@ public class Ticket {
             respuesta = scan.nextInt();
             switch (respuesta) {
                 case 1:
-                   //ticket1.setPlane(misAviones.get(0));
                    pos = 0;
                     break;
                 case 2:
-                    /*System.out.println("avion" + misAviones.get(1));
-                    //ticket1.setPlane(misAviones.get(1));
-                    System.out.println("ticket " + ticket1.getPlane().toString());*/
                     pos = 1;
                     break;
                 case 3:
-                    //ticket1.setPlane(misAviones.get(2));
                     pos = 2;
                     break;
                 case 4:
-                    //ticket1.setPlane(misAviones.get(3));
                     pos = 3;
                     break;
                 case 5:
-                   // ticket1.setPlane(misAviones.get(4));
                     pos = 4;
                     break;
                 case 6:
-                    //ticket1.setPlane(misAviones.get(5));
                     pos = 5;
                     break;
                 case 0:

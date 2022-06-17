@@ -26,13 +26,10 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    //case1();
                     Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 2:
-                    //opcion13();
                      gestionPasajeros("pasajeros.json");
-
                     break;
                 case 3:
 
