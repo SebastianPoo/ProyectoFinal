@@ -9,6 +9,7 @@ import Passenger.Passenger;
 import Travel.Distances;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -16,12 +17,13 @@ public class Ticket {
     private UUID ticket;
     private int price;
     private Distances destination;
+    private int agregarPasajeros;
     private Plane plane;
     private Passenger passager;
     private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
     private Calendar fechaDeViaje;
 
-    private int agregarPasajeros;
+
 
 
     public Ticket() {
@@ -94,11 +96,12 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return  "ID ticket:   " + ticket +  "\n" +
-                "destination: " + destination + "\n" +
-                "Seats:       " + this.getAgregarPasajeros() + "\n" +
-                "Price:       " + price + "\n" +
-                "Plane:       " + plane.getNombre() + "\n" + "\n";
+        return  "ID ticket:      " + ticket +  "\n" +
+                "Name passenger: " + passager.getName() + " " + passager.getLastName() + "\n" +
+                "destination:    " + destination + "\n" +
+                "Seats:          " + this.getAgregarPasajeros() + "\n" +
+                "Price:          " + price + "\n" +
+                "Plane:          " + plane.getNombre() + "\n" ;
     }
 
     public static void ticket_registration(String nameFileTicket, String nameFilePax) throws IOException {
@@ -115,9 +118,10 @@ public class Ticket {
         Fechas fechas = new Fechas();
 
         int option = 0;
-        if (nameFileTicket.isEmpty()) {
+        if (fileTi.isFileEmpty(new File(nameFileTicket))) {
 
             while (option != 2) {
+                System.out.println(             "NUEVO ARCHIVO DE TICKET EN PROCESO" + "\n");
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
@@ -128,28 +132,26 @@ public class Ticket {
                 System.out.println("ENTER DNI");
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);
-                System.out.println("AQUI VA SETPASAJERO DE ARCHIVO INEXISTENTE");
-                System.out.println(ticket.toString());
-                    System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                pax = filePas.jSonToArrayList(nameFilePax);
+                ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                System.out.println(           "Datos del ticket" + "\n"  + ticket.toString());
+                    System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
                     String conf= scan.nextLine().toUpperCase();
                     if (conf.contains("S")){
                         tickets.add(ticket);
-                    }else{
+                    }/*else{
                         break;
-                    }
-                System.out.println("Presione 1 para continar o 2 para salir");
+                    }*/
+                System.out.println(             "1 para modificar ticket o 2 para continuar");
                 option = scan.nextInt();
                 scan.nextLine();
                 fileTi.arrayToJsonFormat(tickets, nameFileTicket);
             }
-            fileTi.arrayToJsonFormatTicket(tickets, nameFileTicket);
+
         } else {
             ArrayList<Ticket> aux = new ArrayList<>();
             aux = fileTi.jSonToArrayListTicket(nameFileTicket);
             while (option != 2) {
-                for (Object ticket1: aux){
-                    System.out.println(" print aux " + ticket1.toString());
-                }
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
@@ -159,20 +161,18 @@ public class Ticket {
                 ticket.setPlane(flota.get(num));
                 System.out.println("ENTER DNI");
                 String dni = scan.nextLine();
-                newPass(nameFilePax, dni);   // TODO: 6/17/2022 Me falta corregir cuando no existe el pasajero
-                pax = filePas.jSonToArrayList(nameFilePax);
-                System.out.println("nuevo ingresado  " + crud.buscaPorDni(nameFilePax,dni) + pax.get(1).toString());
-                //ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
-                System.out.println(ticket.toString());
-                System.out.println();
-                System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                newPass(nameFilePax, dni);   // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
+                pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
+                ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
+                System.out.println(            "Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
                 if (conf.contains("S")){
                     aux.add(ticket);
-                }else{
+                }/*else{
                     break;
-                }
-                System.out.println("Presione 1 para continar o 2 para salir");
+                }*/
+                System.out.println(           " 1 para modificar ticket o 2 para confirmar");
                 option = scan.nextInt();
                 scan.nextLine();
                 fileTi.arrayToJsonFormatTicket(aux, nameFileTicket);
@@ -289,13 +289,13 @@ public class Ticket {
             aux = file.jSonToArrayList(nameFile);
             System.out.println("Cliente encontrado " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
         }else {
-                System.out.println("Nuevo cliente");
+                System.out.println("Ingrese datos para nuevo pasajero");
                 crud.altaPassenger(nameFile);
-                FileManagement file = new FileManagement();
+                /*FileManagement file = new FileManagement();
                 ArrayList<Object> aux = new ArrayList<>();
                 aux = file.jSonToArrayList(nameFile);
                 System.out.println("Nuevo pasajero agregado" +
-                       "dentro de newPass " +  aux.get(crud.buscaPorDni(nameFile, dni)));
+                       "dentro de newPass " +  aux.get(crud.buscaPorDni(nameFile, dni)));*/
         }
         }catch (RuntimeException e){
             System.out.println("Archivo no encontrado" );
