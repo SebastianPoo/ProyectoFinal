@@ -2,7 +2,7 @@
 package Travel;
 
 import FolderPlane.Plane;
-import Person.Person;
+import Passenger.Passenger;
 import Ticket.Ticket;
 
 import java.time.LocalDate;
@@ -17,12 +17,12 @@ public class Travel {                       //Resultado final de un viaje- esto 
     private Distances distance;
     private Ticket ticket;
     private Plane plane;
-    private List<Person> pax;            ////arreglo de pasajeros nombre y apellido  del viaje
+    private List<Passenger> pax;            ////arreglo de pasajeros nombre y apellido  del viaje
     private List<Ticket> tickets;         // arreglos de todos los tickets del viaje
 
 
     // TODO: Ver como crear un metodo que instancie un objeto Travel
-    public Travel( Integer earnings, Distances distances, Plane plane, List<Person> passenger, List<Ticket> tickets) {
+    public Travel( Integer earnings, Distances distances, Plane plane, List<Passenger> passenger, List<Ticket> tickets) {
         this.fecha = LocalDate.now();
         this.earnings = earnings;
         this.distance = distances;

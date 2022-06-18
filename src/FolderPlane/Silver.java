@@ -7,13 +7,13 @@ public class Silver extends Plane{
     private Calendar diaVuelo;
 
     public Silver(String nombre, int coste, double fuel, int maxPassenger,
-                  double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
+                  double kmXhs, double kmTraveled, engineType engineType) {
+        super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, engineType);
     }
 
 
     public Silver(String nombre, int day) {
-        super(nombre, 150,1141,4,694,2084,TipoMotor.MOTOR_A_HELICE);
+        super(nombre, 150,1141,4,694,2084, engineType.MOTOR_A_HELICE);
         Calendar dia = Calendar.getInstance();
         dia.set(Calendar.DATE,day);
         this.diaVuelo = dia;

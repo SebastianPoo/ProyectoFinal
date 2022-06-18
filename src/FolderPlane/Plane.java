@@ -9,7 +9,7 @@ public abstract class Plane implements Service, Serializable {
     private int maxPassenger;
     private double kmXhs;
     private double kmTraveled;
-    private  TipoMotor tipoMotor;
+    private engineType engineType;
 
 
 
@@ -27,14 +27,14 @@ public abstract class Plane implements Service, Serializable {
     }
 
     public Plane(String nombre, int coste, double fuel, int maxPassenger,
-                 double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
+                 double kmXhs, double kmTraveled, engineType engineType) {
         this.nombre = nombre;
         this.coste = coste;
         this.fuel = fuel;
         this.maxPassenger = maxPassenger;
         this.kmXhs = kmXhs;
         this.kmTraveled = kmTraveled;
-        this.tipoMotor = tipoMotor;
+        this.engineType = engineType;
     }
 
     public int getMaxPassenger() {
@@ -54,23 +54,22 @@ public abstract class Plane implements Service, Serializable {
         }
         return false;
     }
-    public enum TipoMotor {
+    public enum engineType {
         MOTOR_A_REACCION,
         MOTOR_A_HELICE,
         MOTOR_DE_PISTONES,
     }
 
     @Override
-    public String toString() {
-        return "Plane{" +
-                "nombre='" + nombre + '\'' +
-                ", coste=" + coste +  '\'' +
-                ", fuel=" + fuel +     '\'' +
-                ", maxPassenger=" + maxPassenger +  '\'' +
-                ", kmXhs=" + kmXhs +  '\'' +
-                ", kmTraveled=" + kmTraveled +  '\'' +
-                ", tipoMotor=" + tipoMotor +  '\'' +
-                '}';
+    public String toString() {      // TODO: 6/17/2022 correccion salto de linea
+        return "Plane > " + "\n" +
+                " nombre:       " + nombre + "\n" +
+                " coste:        " + coste +  "\n" +
+                " fuel:         " + fuel +     "\n" +
+                " maxPassenger: " + maxPassenger +  "\n" +
+                " kmXhs:        " + kmXhs +  "\n" +
+                " kmTraveled:   " + kmTraveled +  "\n" +
+                " engineType:    " + engineType +  "\n" + "\n";
     }
 
 }

@@ -7,15 +7,15 @@ public class Bronze extends Plane{
     private Integer planeType = 500;
     private Calendar diaVuelo;
 
-    public Bronze(String nombre, int coste, double fuel, int maxPassenger,
-                  double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        super( nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
+    public Bronze(String name, int coste, double fuel, int maxPassenger,
+                  double kmXhs, double kmTraveled, engineType engineType) {
+        super( name, coste, fuel, maxPassenger, kmXhs, kmTraveled, engineType);
     }
 
 
 
-    public Bronze(String nombre,int day) {
-        super(nombre ,150, 19325.44, 60, 876, 3440, TipoMotor.MOTOR_DE_PISTONES);
+    public Bronze(String name,int day) {
+        super(name ,150, 19325.44, 60, 876, 3440, engineType.MOTOR_DE_PISTONES);
         Calendar dia = Calendar.getInstance();
         dia.set(Calendar.DATE,day);
         this.diaVuelo = dia;
@@ -23,27 +23,27 @@ public class Bronze extends Plane{
 
 
     @Override
-    public int catering(int costo) {
-        System.out.println("servicio no disponible");
-        return costo;
+    public int catering(int coste) {
+        System.out.println("service not available");
+        return coste;
     }
 
     @Override
-    public int wifi(int costo) {
-        System.out.println("servicio no disponible");
-        return costo;
+    public int wifi(int coste) {
+        System.out.println("service not available");
+        return coste;
     }
 
     @Override
-    public int carry_on_bag(int costo) {
-        System.out.println("precio $300");
-        return costo=costo+300;
+    public int carry_on_bag(int coste) {
+        System.out.println("Coste $300");
+        return coste=coste+300;
     }
 
     @Override
-    public int confort(int costo) {
+    public int confort(int coste) {
         System.out.println("Precio $200");
-        return costo=costo+200;
+        return coste=coste+200;
     }
 
 }

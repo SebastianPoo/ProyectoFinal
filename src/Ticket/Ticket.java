@@ -1,25 +1,23 @@
 package Ticket;
 
+import Crud.Crud;
 import Files.FileManagement;
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
 import Menu.Menu;
 import Passenger.Passenger;
-import Person.Person;
 import Travel.Distances;
 
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Ticket {
     private UUID ticket;
-    private int id;
     private int price;
     private Distances destination;
     private Plane plane;
-    private Person passager;
+    private Passenger passager;
     private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
     private Calendar fechaDeViaje;
 
@@ -57,16 +55,16 @@ public class Ticket {
         return plane;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setPlane(Plane plane) {
         this.plane = plane;
+    }
+
+    public Passenger getPassager() {
+        return passager;
+    }
+
+    public void setPassager(Passenger passager) {
+        this.passager = passager;
     }
 
     public String getSeat() {
@@ -96,61 +94,70 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return  "ID ticket=" + ticket +  "\'" +
-                " destination " + destination + '\'' +
-                " Seats " + this.getAgregarPasajeros() + '\'' +
-                " Price " + price + '\'' +
-                 " Plane " + plane.getNombre();
+        return  "ID ticket:   " + ticket +  "\n" +
+                "destination: " + destination + "\n" +
+                "Seats:       " + this.getAgregarPasajeros() + "\n" +
+                "Price:       " + price + "\n" +
+                "Plane:       " + plane.getNombre() + "\n" + "\n";
     }
 
-    public static void ticket_registration(String nombreArchivo) throws IOException {
-        List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
+    public static void ticket_registration(String nameFileTicket, String nameFilePax) throws IOException {
+        List<Plane> flota = Gestion.add_a_Flota(new ArrayList<>());
         ArrayList<Ticket> tickets = new ArrayList<>();
         FileManagement file = new FileManagement();
+        ArrayList <Passenger> pax = file.jSonToArrayList(nameFilePax);
+
         Scanner scan = new Scanner(System.in);
         Menu menu = new Menu();
+        Crud crud = new Crud();
+        Ticket ticket = new Ticket();
+        Fechas fechas = new Fechas();
 
         int option = 0;
-        if (nombreArchivo.isEmpty()) {
+        if (nameFileTicket.isEmpty()) {
 
             while (option != 2) {
-
-                Ticket ticket = new Ticket();
-                Fechas fechas = new Fechas();
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
                  int companions= menu.addCompa();
                  ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
-                ticket.setPlane(misAviones.get(num));
+                ticket.setPlane(flota.get(num));
+                System.out.println("ENTER DNI");
+                String dni = scan.nextLine();
+                newPass(nameFilePax, dni);
+                System.out.println("AQUI VA SETPASAJERO DE ARCHIVO INEXISTENTE");
                 System.out.println(ticket.toString());
-                System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
-                String conf= scan.nextLine().toUpperCase();
-                if (conf.contains("S")){
-                    tickets.add(ticket);
-                }else{
-                    break;
-                }
+                    System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
+                    String conf= scan.nextLine().toUpperCase();
+                    if (conf.contains("S")){
+                        tickets.add(ticket);
+                    }else{
+                        break;
+                    }
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
-                file.arrayToJsonFormat(tickets, nombreArchivo);
+                file.arrayToJsonFormat(tickets, nameFileTicket);
             }
-            file.arrayToJsonFormatTicket(tickets, nombreArchivo);
+            file.arrayToJsonFormatTicket(tickets, nameFileTicket);
         } else {
             ArrayList<Ticket> aux = new ArrayList<>();
-            aux = file.jSonToArrayListTicket(nombreArchivo);
+            aux = file.jSonToArrayListTicket(nameFileTicket);
             while (option != 2) {
-                Ticket ticket = new Ticket();
-                Fechas fechas = new Fechas();
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
                 int companions= menu.addCompa();
                 ticket.setAgregarPasajeros(companions);
                 int num = eligeAvion();
-                ticket.setPlane(misAviones.get(num));
+                ticket.setPlane(flota.get(num));
+                System.out.println("ENTER DNI");
+                String dni = scan.nextLine();
+                newPass(nameFilePax, dni);  // TODO: 6/17/2022 Me falta corregir cuando no existe el pasajero 
+                
+                ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
                 System.out.println(ticket.toString());
                 System.out.println();
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
@@ -163,7 +170,7 @@ public class Ticket {
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
-                file.arrayToJsonFormatTicket(aux, nombreArchivo);
+                file.arrayToJsonFormatTicket(aux, nameFileTicket);
             }
 
         }
@@ -221,7 +228,7 @@ public class Ticket {
         System.out.println("0- ESC");
     }
 
-    public static void eligeDestino(Ticket tick) throws IOException {
+    public static void eligeDestino(Ticket tick)  {
         Scanner scan = new Scanner(System.in);
         int respuesta;
 
@@ -267,4 +274,21 @@ public class Ticket {
         System.out.println("6- Bs.As_Montevideo ");
         System.out.println("0- ESC");
     }
+
+    public static void newPass (String nameFile, String dni) throws RuntimeException, IOException {
+        Crud crud = new Crud();
+        try {
+           if (crud.buscaPorDni(nameFile,dni)>=0){
+            FileManagement file = new FileManagement();
+            ArrayList<Object> aux = new ArrayList<>();
+            aux = file.jSonToArrayList(nameFile);
+            System.out.println("client found " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
+        }else {
+            crud.altaPassenger(nameFile);
+        }
+        }catch (RuntimeException e){
+            System.out.println("File not found" );
+        }
+    }
+
 }

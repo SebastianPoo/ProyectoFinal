@@ -12,7 +12,6 @@ public class Fechas {
 
 
     public Fechas(){
-
     }
 
     public  Calendar elegir(){
@@ -26,9 +25,6 @@ public class Fechas {
         int diaHoy = dayToday.get(Calendar.DATE);// Cuando instaciamos una fecha en Calendar los meses se valoran de 0 a 11
         int mesHoy = dayToday.get(Calendar.MONTH)+1;// entonces de este modo modificamos su valor para q sea igual al calendario de 1 a 12
 
-
-
-
         int respuesta;
 
         do {
@@ -36,8 +32,6 @@ public class Fechas {
             respuesta = scan.nextInt();
         } while (respuesta<mesHoy);
         mes=respuesta;
-
-
 
         if (mes==mesHoy) {
             do {
@@ -52,8 +46,6 @@ public class Fechas {
             }while (respuesta < 1 || respuesta > 31);
         }
         dia=respuesta;
-
-
 
         day.set(Calendar.MONTH, mes);
         day.set(Calendar.DATE, dia);

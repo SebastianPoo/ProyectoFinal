@@ -1,17 +1,13 @@
 package Menu;
 
 import Files.FileManagement;
-import FolderPlane.Gestion;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Crud.*;
-import Person.Passenger;
+import Passenger.Passenger;
 import Ticket.Ticket;
-
-import java.util.function.ToDoubleBiFunction;
 
 public class Menu {
     // comente clase Gestión
@@ -26,7 +22,7 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json","ARCHIVO_PASAJEROS.json");
                     break;
                 case 2:
                      gestionPasajeros("ARCHIVO_PASAJEROS.json");
@@ -177,7 +173,7 @@ public class Menu {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
         System.out.println("1- VIAJE");
         System.out.println("2- GESTION DE PASAJEROS");
-        System.out.println("4- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
+        System.out.println("3- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
         System.out.println("5- Imprimir pasajes..");
         System.out.println("0- ESC");
     }
@@ -284,7 +280,7 @@ public class Menu {
 
     public static void gestionPasajeros (String ArchivoPasajero) throws IOException {
         Scanner scan = new Scanner(System.in);
-        ArrayList<Passenger> aux = new ArrayList<>();
+        ArrayList aux = new ArrayList<>();
          aux = file.jSonToArrayList(ArchivoPasajero);
         System.out.println("1 - AGREGAR PASAJERO" +
                            " 2 - MODIFICAR PASAJERO " +
@@ -292,7 +288,7 @@ public class Menu {
                             " 4 - ELIMINAR PASAJERO");
         String resp =scan.nextLine();
         switch (resp){
-            case "1" : crud.AltaPassenger(ArchivoPasajero);
+            case "1" : crud.altaPassenger(ArchivoPasajero);
             break;
             case "2": crud.modificarDatosPasajero(ArchivoPasajero);
             break;
@@ -308,5 +304,6 @@ public class Menu {
                 break;
         }
     }
+
 
 }

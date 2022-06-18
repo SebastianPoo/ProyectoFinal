@@ -1,6 +1,6 @@
 package FolderPlane;
 
-import Person.Person;
+import Passenger.Passenger;
 import Ticket.Ticket;
 import Travel.*;
 import com.google.gson.Gson;
@@ -15,7 +15,7 @@ import java.util.*;
 public abstract class Gestion {
 
     private static List <Plane> planes;
-    private static List <Person> passenger;
+    private static List <Passenger> passenger;
     private static List <Ticket> tickets;
     private static List <Travel> travels;
 
@@ -46,13 +46,13 @@ public abstract class Gestion {
     }
 
     ///VER DEL ARCHIVO
-    public static  <T> void persistencia(List<T> t, String nombre) {
+    public static  <T> void persistencia(List<T> t, String name) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         BufferedWriter whrite = null;
 
         try {
-            whrite = new BufferedWriter(new FileWriter(new File(nombre)));
+            whrite = new BufferedWriter(new FileWriter(new File(name)));
             gson.toJson(t, t.getClass(), whrite);
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,20 +84,8 @@ public abstract class Gestion {
     }
 
     public static void bestPlane (List<Plane> lista){
-        Collections.sort(lista,new Comparator<Plane>() {
-            public int compare(Plane plane1, Plane plane2) {
-                return Integer.compare(plane2.getCoste(), plane1.getCoste());
-            }
-        });
-        System.out.println("El metodo sort es   ; " + lista.get(0).getNombre());
-
         Plane mayor = Collections.max(lista, Comparator.comparing(c -> c.getCoste()));
-        System.out.println("El mayor es   ; " + mayor.getNombre());
-        for (Plane plane : lista){
-            System.out.println(plane.toString());
+        System.out.println("  best category: " + "\n" + mayor.getNombre());
+        System.out.println(mayor.toString());
         }
-    }
-
-
-
 }
