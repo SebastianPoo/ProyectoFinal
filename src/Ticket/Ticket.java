@@ -103,9 +103,10 @@ public class Ticket {
 
     public static void ticket_registration(String nameFileTicket, String nameFilePax) throws IOException {
         List<Plane> flota = Gestion.add_a_Flota(new ArrayList<>());
-        ArrayList<Ticket> tickets = new ArrayList<>();
-        FileManagement file = new FileManagement();
-        ArrayList <Passenger> pax = file.jSonToArrayList(nameFilePax);
+        FileManagement filePas = new FileManagement();
+        FileManagement fileTi = new FileManagement();
+        ArrayList <Passenger> pax = filePas.jSonToArrayList(nameFilePax);
+        ArrayList <Ticket> tickets = fileTi.jSonToArrayListTicket(nameFileTicket);
 
         Scanner scan = new Scanner(System.in);
         Menu menu = new Menu();
@@ -139,13 +140,16 @@ public class Ticket {
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
-                file.arrayToJsonFormat(tickets, nameFileTicket);
+                fileTi.arrayToJsonFormat(tickets, nameFileTicket);
             }
-            file.arrayToJsonFormatTicket(tickets, nameFileTicket);
+            fileTi.arrayToJsonFormatTicket(tickets, nameFileTicket);
         } else {
             ArrayList<Ticket> aux = new ArrayList<>();
-            aux = file.jSonToArrayListTicket(nameFileTicket);
+            aux = fileTi.jSonToArrayListTicket(nameFileTicket);
             while (option != 2) {
+                for (Object ticket1: aux){
+                    System.out.println(" print aux " + ticket1.toString());
+                }
                 eligeDestino(ticket);
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
@@ -155,9 +159,10 @@ public class Ticket {
                 ticket.setPlane(flota.get(num));
                 System.out.println("ENTER DNI");
                 String dni = scan.nextLine();
-                newPass(nameFilePax, dni);  // TODO: 6/17/2022 Me falta corregir cuando no existe el pasajero 
-                
-                ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                newPass(nameFilePax, dni);   // TODO: 6/17/2022 Me falta corregir cuando no existe el pasajero
+                pax = filePas.jSonToArrayList(nameFilePax);
+                System.out.println("nuevo ingresado  " + crud.buscaPorDni(nameFilePax,dni) + pax.get(1).toString());
+                //ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
                 System.out.println(ticket.toString());
                 System.out.println();
                 System.out.println("Desea Confirmar El Ticket ?  --- S   /   N");
@@ -170,7 +175,7 @@ public class Ticket {
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
-                file.arrayToJsonFormatTicket(aux, nameFileTicket);
+                fileTi.arrayToJsonFormatTicket(aux, nameFileTicket);
             }
 
         }
@@ -282,12 +287,18 @@ public class Ticket {
             FileManagement file = new FileManagement();
             ArrayList<Object> aux = new ArrayList<>();
             aux = file.jSonToArrayList(nameFile);
-            System.out.println("client found " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
+            System.out.println("Cliente encontrado " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
         }else {
-            crud.altaPassenger(nameFile);
+                System.out.println("Nuevo cliente");
+                crud.altaPassenger(nameFile);
+                FileManagement file = new FileManagement();
+                ArrayList<Object> aux = new ArrayList<>();
+                aux = file.jSonToArrayList(nameFile);
+                System.out.println("Nuevo pasajero agregado" +
+                       "dentro de newPass " +  aux.get(crud.buscaPorDni(nameFile, dni)));
         }
         }catch (RuntimeException e){
-            System.out.println("File not found" );
+            System.out.println("Archivo no encontrado" );
         }
     }
 

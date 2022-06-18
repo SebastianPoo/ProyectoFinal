@@ -2,9 +2,11 @@ package Crud;
 
 import Files.FileManagement;
 import Passenger.Passenger;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Crud{
@@ -22,14 +24,15 @@ public class Crud{
         this.passengers = passengers;
     }
 
-    public void altaPassenger(String nombreArchivo) throws IOException {
+    public void altaPassenger(String nombreArchivo)  {
         Scanner scan = new Scanner(System.in);
 
         int option = 0;
-        if (nombreArchivo.isEmpty()) {
+
+        if (file.isFileEmpty(new File(nombreArchivo))) {
 
             while (option != 2) {
-                System.out.println("Ingrese El Nombre Del Pasajero ");
+                System.out.println("Ingrese El Nombre Del Pasajero para nuevo archivo ");
                 String name = scan.nextLine();
                 System.out.println("Ingrese El Apellido Del Pasajero ");
                 String surname = scan.nextLine();
@@ -39,22 +42,15 @@ public class Crud{
                 Integer age = scan.nextInt();
                 Passenger pasajero = new Passenger(name, surname, dni, age);
                 pasajero.setId(1);
-                System.out.println(" para confi "  + pasajero.toString());
-                System.out.println();
-                System.out.println("confirm passenger??  --- S   /   N ");
-                String confi = scan.nextLine().toUpperCase();
-                if (confi.contains("S")){
-                    passengers.add(pasajero);
-                }else{
-                    break;
-                }
+                passengers.add(pasajero);
+                System.out.println( pasajero.toString());
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
             }
-
-
             file.arrayToJsonFormat(passengers, nombreArchivo);
+            System.out.println("nuevo archivo creado");
+
         } else {
             ArrayList<Passenger> aux = new ArrayList<>();
             aux = file.jSonToArrayList(nombreArchivo);
@@ -70,23 +66,18 @@ public class Crud{
                 Passenger pasajero = new Passenger(name, surname, dni, age);
                 pasajero.setId(aux.size());
                     System.out.println( pasajero.toString());
+                aux.add(pasajero);
 
-                    System.out.println("confirm passenger??  --- S   /   N");
-                System.out.println("id del PAse" + pasajero.getId());
-                    String conf= scan.nextLine().toUpperCase();
-                    if (conf.contains("S")){
-                        aux.add(pasajero);
-                    }else{
-                        break;
-                    }
                 System.out.println("Presione 1 para continar o 2 para salir");
                 option = scan.nextInt();
                 scan.nextLine();
                 file.arrayToJsonFormat(aux, nombreArchivo);
+                System.out.println("nuevo pasajero agregado con exito");
             }
 
         }
     }
+
 
     public void bajaPassenger (String archivoPasajero, String Dni){
          ArrayList <Passenger> aux = file.jSonToArrayList(archivoPasajero);
@@ -103,6 +94,52 @@ public class Crud{
              System.out.println("El Pasajero Buscado No Existe");
          }
     }
+
+    /*public void altaPassenger(String nombreArchivo) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        int option = 0;
+
+        if (file.isFileEmpty(new File(nombreArchivo))) {
+            while (option != 2) {
+
+                System.out.println("Ingrese El Nombre Del Pasajero ");
+                String name = scan.nextLine();
+                System.out.println("Ingrese El Apellido Del Pasajero ");
+                String surname = scan.nextLine();
+                System.out.println("Ingrese El DNI Del Pasajero ");
+                String dni = scan.nextLine();
+                System.out.println("Ingrese la Edad Del Pasajero ");
+                Integer age = scan.nextInt();
+                Passenger pasajero = new Passenger(name, surname, dni, age);
+                pasajero.setId(1);
+                passengers.add(pasajero);
+                System.out.println("Presione 1 para continar o 2 para salir");
+                option = scan.nextInt();
+                scan.nextLine();
+            }
+            file.arrayToJsonFormat(passengers, nombreArchivo);
+        } else {
+            ArrayList<Passenger> aux = new ArrayList<>();
+            aux = file.jSonToArrayList(nombreArchivo);
+            while (option != 2) {
+                System.out.println("Ingrese El Nombre Del Pasajero ");
+                String name = scan.nextLine();
+                System.out.println("Ingrese El Apellido Del Pasajero ");
+                String surname = scan.nextLine();
+                System.out.println("Ingrese El DNI Del Pasajero ");
+                String dni = scan.nextLine();
+                System.out.println("Ingrese la Edad Del Pasajero ");
+                Integer age = scan.nextInt();
+                Passenger pasajero = new Passenger(name, surname, dni, age);
+                aux.add(pasajero);
+                pasajero.setId(aux.size());
+                System.out.println("Presione 1 para continar o 2 para salir");
+                option = scan.nextInt();
+                scan.nextLine();
+                file.arrayToJsonFormat(aux, nombreArchivo);
+            }
+        }
+    }*/
 
     public int buscaPorDni (String archivoPasajero, String dni) throws RuntimeException{
         ArrayList <Passenger>  aux = file.jSonToArrayList(archivoPasajero);

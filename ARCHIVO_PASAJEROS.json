@@ -1,37 +1,9 @@
 [
   {
-    "name": "Sebas",
-    "LastName": "Poo",
-    "Dni": "00000000",
-    "id": 1,
-    "age": 38
-  },
-  {
-    "name": "Maxi",
-    "LastName": "Fernadez",
-    "Dni": "31123456",
-    "id": 2,
-    "age": 38
-  },
-  {
     "name": "sebas",
-    "LastName": "ppepe",
-    "Dni": "12345678",
-    "id": 3,
-    "age": 31
-  },
-  {
-    "name": "avion",
-    "LastName": "inexistente",
-    "Dni": "98765432",
-    "id": 4,
-    "age": 89
-  },
-  {
-    "name": "Sebastian",
-    "LastName": "Poo",
+    "LastName": "poo",
     "Dni": "30451111",
-    "id": 5,
+    "id": 1,
     "age": 38
   }
 ]

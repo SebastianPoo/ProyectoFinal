@@ -2,11 +2,11 @@ package Menu;
 
 import Files.FileManagement;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Crud.*;
-import Passenger.Passenger;
 import Ticket.Ticket;
 
 public class Menu {
@@ -25,7 +25,7 @@ public class Menu {
                     Ticket.ticket_registration("ARCHIVO_TICKET.json","ARCHIVO_PASAJEROS.json");
                     break;
                 case 2:
-                     gestionPasajeros("ARCHIVO_PASAJEROS.json");
+                    gestionPasajeros("ARCHIVO_PASAJEROS.json");
                     break;
                 case 3:
 
@@ -278,7 +278,7 @@ public class Menu {
         System.out.println("Imprimiendo pasaje...");// TODO: 10/06/2022 se puede cambiar el msj, de singular a plural, según la cantidad de pasajes que se compren
     }
 
-    public static void gestionPasajeros (String ArchivoPasajero) throws IOException {
+    public static void gestionPasajeros (String ArchivoPasajero)  {
         Scanner scan = new Scanner(System.in);
         ArrayList aux = new ArrayList<>();
          aux = file.jSonToArrayList(ArchivoPasajero);
@@ -288,7 +288,9 @@ public class Menu {
                             " 4 - ELIMINAR PASAJERO");
         String resp =scan.nextLine();
         switch (resp){
-            case "1" : crud.altaPassenger(ArchivoPasajero);
+            case "1" :
+                crud.altaPassenger(ArchivoPasajero);
+
             break;
             case "2": crud.modificarDatosPasajero(ArchivoPasajero);
             break;
