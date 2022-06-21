@@ -5,8 +5,11 @@ import Files.FileManagement;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import Crud.*;
+import FolderPlane.Gestion;
+import FolderPlane.Plane;
 import Ticket.Ticket;
 
 public class Menu {
@@ -35,6 +38,13 @@ public class Menu {
                     break;
                 case 5:
                     opcion15();
+                    break;
+                case 6:
+                    List<Plane> flota = Gestion.add_a_Flota(new ArrayList<>());
+                    for (Plane plane: flota ){
+                        System.out.println(plane.toString());
+                    }
+
                     break;
                 case 0:
                     opcion3();
@@ -175,6 +185,7 @@ public class Menu {
         System.out.println("2- GESTION DE PASAJEROS");
         System.out.println("3- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
         System.out.println("5- Imprimir pasajes..");
+        System.out.println("6- Imprimir flota ");
         System.out.println("0- ESC");
     }
     /*public static void case6() {

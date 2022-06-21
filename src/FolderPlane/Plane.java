@@ -3,6 +3,7 @@ package FolderPlane;
 import java.io.Serializable;
 
 public abstract class Plane implements Service, Serializable {
+    private Integer planeType;
     private String nombre;
     private int coste;
     private double fuel;
@@ -22,12 +23,17 @@ public abstract class Plane implements Service, Serializable {
         return coste;
     }
 
+    public Integer getPlaneType() {
+        return planeType;
+    }
+
+
     public String getNombre() {
         return nombre;
     }
 
     public Plane(String nombre, int coste, double fuel, int maxPassenger,
-                 double kmXhs, double kmTraveled, engineType engineType) {
+                 double kmXhs, double kmTraveled, engineType engineType, Integer PlaneType) {
         this.nombre = nombre;
         this.coste = coste;
         this.fuel = fuel;
@@ -35,6 +41,7 @@ public abstract class Plane implements Service, Serializable {
         this.kmXhs = kmXhs;
         this.kmTraveled = kmTraveled;
         this.engineType = engineType;
+        this.planeType = PlaneType;
     }
 
     public int getMaxPassenger() {
@@ -62,14 +69,15 @@ public abstract class Plane implements Service, Serializable {
 
     @Override
     public String toString() {      // TODO: 6/17/2022 correccion salto de linea
-        return "Plane > " + "\n" +
-                " nombre:       " + nombre + "\n" +
-                " coste:        " + coste +  "\n" +
-                " fuel:         " + fuel +     "\n" +
-                " maxPassenger: " + maxPassenger +  "\n" +
-                " kmXhs:        " + kmXhs +  "\n" +
-                " kmTraveled:   " + kmTraveled +  "\n" +
-                " engineType:    " + engineType +  "\n" + "\n";
+        return             "           <Plane> " + "\n" +
+                " nombre:            " + nombre + "\n" +
+                " coste fuel:        " + coste +  "\n" +
+                " fuel:              " + fuel +     "\n" +
+                " maxPassenger:      " + maxPassenger +  "\n" +
+                " kmXhs:             " + kmXhs +  "\n" +
+                " kmTraveled:        " + kmTraveled +  "\n" +
+                " engineType:        " + engineType +  "\n" +
+                " PlaneType:         " + planeType +  "\n" + "\n";
     }
 
 }

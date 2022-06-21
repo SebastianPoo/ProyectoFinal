@@ -17,7 +17,7 @@ public class Ticket {
     private UUID ticket;
     private int price;
     private Distances destination;
-    private int agregarPasajeros;
+    private int total_passengers;
     private Plane plane;
     private Passenger passager;
     private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
@@ -37,12 +37,12 @@ public class Ticket {
         this.plane = plane;
     }
 
-    public int getAgregarPasajeros() {
-        return agregarPasajeros;
+    public int getTotal_passengers() {
+        return total_passengers;
     }
 
-    public void setAgregarPasajeros(int agregarPasajeros) {
-        this.agregarPasajeros = agregarPasajeros;
+    public void setTotal_passengers(int total_passengers) {
+        this.total_passengers = total_passengers;
     }
 
     public Distances getDestination() {
@@ -93,13 +93,27 @@ public class Ticket {
         ticket.price = plane.carry_on_bag(plane.getCoste());
         return ticket;
     }
+    public void costoTicket(Ticket ticket) {
+        int costo = 0;
+        System.out.println("      Costo total del ticket  ");
+        if (ticket.getTotal_passengers() > 1){
+            System.out.println("Pasajeros agregados, total de boletos: " + ticket.getTotal_passengers());
+        }
+            costo = plane.carry_on_bag(costo) + plane.confort(costo)
+                + plane.catering(costo) + plane.wifi(costo) + plane.getPlaneType() + 3500 ;
+            costo  = getTotal_passengers() * costo;
+
+        System.out.println("     Costo del viaje en avion " + "<" + plane.getNombre() +">" + " es " + plane.getPlaneType()  );
+        System.out.println("     por pasajero es " + 3500 + "  total: " + costo  + "\n" );
+        ticket.price += costo;
+    }
 
     @Override
     public String toString() {
         return  "ID ticket:      " + ticket +  "\n" +
                 "Name passenger: " + passager.getName() + " " + passager.getLastName() + "\n" +
                 "destination:    " + destination + "\n" +
-                "Seats:          " + this.getAgregarPasajeros() + "\n" +
+                "Seats:          " + this.getTotal_passengers() + "\n" +
                 "Price:          " + price + "\n" +
                 "Plane:          " + plane.getNombre() + "\n" ;
     }
@@ -126,7 +140,7 @@ public class Ticket {
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
                  int companions= menu.addCompa();
-                 ticket.setAgregarPasajeros(companions);
+                 ticket.setTotal_passengers(companions);
                 int num = eligeAvion();
                 ticket.setPlane(flota.get(num));
                 System.out.println("ENTER DNI");
@@ -139,9 +153,7 @@ public class Ticket {
                     String conf= scan.nextLine().toUpperCase();
                     if (conf.contains("S")){
                         tickets.add(ticket);
-                    }/*else{
-                        break;
-                    }*/
+                    }
                 System.out.println(             "1 para modificar ticket o 2 para continuar");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -156,7 +168,7 @@ public class Ticket {
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
                 int companions= menu.addCompa();
-                ticket.setAgregarPasajeros(companions);
+                ticket.setTotal_passengers(companions);
                 int num = eligeAvion();
                 ticket.setPlane(flota.get(num));
                 System.out.println("ENTER DNI");
@@ -164,14 +176,13 @@ public class Ticket {
                 newPass(nameFilePax, dni);   // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                ticket.costoTicket(ticket);
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
                 System.out.println(            "Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
                 if (conf.contains("S")){
                     aux.add(ticket);
-                }/*else{
-                    break;
-                }*/
+                }
                 System.out.println(           " 1 para modificar ticket o 2 para confirmar");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -287,18 +298,14 @@ public class Ticket {
             FileManagement file = new FileManagement();
             ArrayList<Object> aux = new ArrayList<>();
             aux = file.jSonToArrayList(nameFile);
-            System.out.println("Cliente encontrado " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
+            System.out.println("             Cliente encontrado " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
         }else {
-                System.out.println("Ingrese datos para nuevo pasajero");
+                System.out.println("            Ingrese datos para nuevo pasajero");
                 crud.altaPassenger(nameFile);
-                /*FileManagement file = new FileManagement();
-                ArrayList<Object> aux = new ArrayList<>();
-                aux = file.jSonToArrayList(nameFile);
-                System.out.println("Nuevo pasajero agregado" +
-                       "dentro de newPass " +  aux.get(crud.buscaPorDni(nameFile, dni)));*/
+
         }
         }catch (RuntimeException e){
-            System.out.println("Archivo no encontrado" );
+            System.out.println("               Archivo no encontrado" );
         }
     }
 
