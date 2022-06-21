@@ -20,7 +20,7 @@ public class Ticket {
     private int total_passengers;
     private Plane plane;
     private Passenger passager;
-    private String Seat;                  // --AGREGUE ENCAPSULAMIENTO
+    private String Seat;
     private Calendar fechaDeViaje;
 
 
@@ -35,6 +35,14 @@ public class Ticket {
         this.destination = destination;
         Seat = seat;
         this.plane = plane;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getTotal_passengers() {
@@ -88,34 +96,34 @@ public class Ticket {
     }
 
 
-    public Ticket costoTicket() {
+   /* public Ticket costoTicket() {
         Ticket ticket = new Ticket();
         ticket.price = plane.carry_on_bag(plane.getCoste());
         return ticket;
-    }
-    public void costoTicket(Ticket ticket) {
+    }*/
+    public void costoTicket() {
         int costo = 0;
         System.out.println("      Costo total del ticket  ");
-        if (ticket.getTotal_passengers() > 1){
-            System.out.println("Pasajeros agregados, total de boletos: " + ticket.getTotal_passengers());
+        if (this.getTotal_passengers() > 1){
+            System.out.println("Pasajeros agregados, total de boletos: " + this.getTotal_passengers());
         }
-            costo = plane.carry_on_bag(costo) + plane.confort(costo)
-                + plane.catering(costo) + plane.wifi(costo) + plane.getPlaneType() + 3500 ;
-            costo  = getTotal_passengers() * costo;
+            costo = this.plane.carry_on_bag(costo) + this.plane.confort(costo)
+                + this.plane.catering(costo) + this.plane.wifi(costo) + this.plane.getPlaneType() + 3500;
+            costo  = (getTotal_passengers() * costo) + (this.plane.getCoste() * this.destination.retornarNumero());
 
         System.out.println("     Costo del viaje en avion " + "<" + plane.getNombre() +">" + " es " + plane.getPlaneType()  );
         System.out.println("     por pasajero es " + 3500 + "  total: " + costo  + "\n" );
-        ticket.price += costo;
+        this.setPrice(costo) ;
     }
 
     @Override
     public String toString() {
-        return  "ID ticket:      " + ticket +  "\n" +
+        return  "ID ticket:      " + ticket.toString().substring(0,10).toUpperCase(Locale.ROOT) +  "\n" +
                 "Name passenger: " + passager.getName() + " " + passager.getLastName() + "\n" +
                 "destination:    " + destination + "\n" +
                 "Seats:          " + this.getTotal_passengers() + "\n" +
-                "Price:          " + price + "\n" +
-                "Plane:          " + plane.getNombre() + "\n" ;
+                "Plane:          " + plane.getNombre() + "\n" +
+                "Price:         $" + price + "\n" ;
     }
 
     public static void ticket_registration(String nameFileTicket, String nameFilePax) throws IOException {
@@ -148,6 +156,7 @@ public class Ticket {
                 newPass(nameFilePax, dni);
                 pax = filePas.jSonToArrayList(nameFilePax);
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                ticket.costoTicket();
                 System.out.println(           "Datos del ticket" + "\n"  + ticket.toString());
                     System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
                     String conf= scan.nextLine().toUpperCase();
@@ -176,7 +185,7 @@ public class Ticket {
                 newPass(nameFilePax, dni);   // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
-                ticket.costoTicket(ticket);
+                ticket.costoTicket();
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
                 System.out.println(            "Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
@@ -236,11 +245,11 @@ public class Ticket {
     private static void tipo_de_avion() {
         System.out.println("<<< Elija opcion >>>");
         System.out.println("1- Bronze ");
-        System.out.println("2- Gold ");
+        System.out.println("2- Bronze ");
         System.out.println("3- Silver ");
         System.out.println("4- Bronze ");
         System.out.println("5- Gold ");
-        System.out.println("6- Silver ");
+        System.out.println("6- Gold ");
         System.out.println("0- ESC");
     }
 
@@ -265,7 +274,7 @@ public class Ticket {
                     tick.setDestination(Distances.BsAs_San);
                     break;
                 case 5:
-                    tick.setDestination(Distances.BsAs_Cor);
+                    tick.setDestination(Distances.Mon_San);
                     break;
                 case 6:
                     tick.setDestination(Distances.BsAs_Mon);
@@ -282,11 +291,11 @@ public class Ticket {
 
     private static void destinos() {
         System.out.println("<<< Elija opcion >>>");
-        System.out.println("1- Montevideo_San Luis ");
-        System.out.println("2- Cordoba_San luis ");
+        System.out.println("1- Bs.As_Cordoba ");
+        System.out.println("2- Cordoba_Santiago ");
         System.out.println("3- Corboda_Montevideo ");
-        System.out.println("4- Bs.As_San Luis ");
-        System.out.println("5- Bs.As_Cordoba ");
+        System.out.println("4- Bs.As_Santiago ");
+        System.out.println("5- Montevideo_Santiago ");
         System.out.println("6- Bs.As_Montevideo ");
         System.out.println("0- ESC");
     }
