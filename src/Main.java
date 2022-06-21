@@ -26,7 +26,7 @@ public class Main {
 
     }
 
-    public static void muestraJson(){     //TODO --no funciona leer archivo
+    /*public static void muestraJson(){     //TODO --no funciona leer archivo
         Gson gson = new Gson();
         try {
             File file = new File("ARCHIVO_DE_AVIONES");
@@ -36,15 +36,15 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    public static void muestraLista(ArrayList<Plane> lista){
+    }*/
+    /*public static void muestraLista(ArrayList<Plane> lista){
 
         for (Plane plane : lista){
             System.out.println(plane.toString());
         }
-    }
+    }*/
 
-    public static void dias_semana(){
+    /*public static void dias_semana(){
         System.out.println(LocalDate.now().getDayOfWeek());
         LocalDate hoy = LocalDate.parse("2022-06-07");
         System.out.println("1 miercoles " + hoy.getDayOfWeek().plus(01));
@@ -58,5 +58,5 @@ public class Main {
         System.out.println("El viaje a Cordoba es " + viaje_a_Cordoba );
         String dia_de_viaje_solicitado = String.valueOf(hoy.getDayOfWeek().plus(01));
         System.out.println("Dia solicitado es " + dia_de_viaje_solicitado);
-    }
+    }*/
 }
