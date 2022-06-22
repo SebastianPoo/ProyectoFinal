@@ -145,18 +145,24 @@ public class Ticket {
             while (option != 2) {
                 System.out.println(             "NUEVO ARCHIVO DE TICKET EN PROCESO" + "\n");
                 eligeDestino(ticket);
+
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                 int companions= menu.addCompa();
-                 ticket.setTotal_passengers(companions);
-                int num = eligeAvion();
+                //Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");
+
+                int companions= menu.addCompa();
+                ticket.setTotal_passengers(companions);
+
+                int num = eligeAvion(ticket);
                 ticket.setPlane(flota.get(num));
+                ticket.costoTicket();
+
                 System.out.println("ENTER DNI");
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);
                 pax = filePas.jSonToArrayList(nameFilePax);
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
-                ticket.costoTicket();
+
                 System.out.println(           "Datos del ticket" + "\n"  + ticket.toString());
                     System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
                     String conf= scan.nextLine().toUpperCase();
@@ -174,18 +180,24 @@ public class Ticket {
             aux = fileTi.jSonToArrayListTicket(nameFileTicket);
             while (option != 2) {
                 eligeDestino(ticket);
+
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
+                //Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");
+
                 int companions= menu.addCompa();
                 ticket.setTotal_passengers(companions);
-                int num = eligeAvion();
+
+                int num = eligeAvion(ticket);
                 ticket.setPlane(flota.get(num));
+                ticket.costoTicket();
+
                 System.out.println("ENTER DNI");
                 String dni = scan.nextLine();
-                newPass(nameFilePax, dni);   // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
+                newPass(nameFilePax, dni);       // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
-                ticket.costoTicket();
+
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
                 System.out.println(            "Desea Confirmar El Ticket ?  --- S   /   N");
                 String conf= scan.nextLine().toUpperCase();
@@ -200,8 +212,54 @@ public class Ticket {
 
         }
     }
+    public boolean equalsTicket(Calendar calendar) {
+        if (fechaDeViaje.get(Calendar.MONTH) == calendar.get(Calendar.MONTH) && fechaDeViaje.get(Calendar.DATE) == calendar.get(Calendar.DATE)) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public static boolean ticke_dates(Plane plane, Ticket ticket){
+        boolean flame = false;
+        for (Calendar calendar: plane.listPlane ){
+            flame = ticket.equalsTicket(calendar);
+            if (flame==true){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void plane_ticket_dates(Ticket ticket){
+        List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
+        boolean flame = false;
+        int i=0;
+        System.out.println("<<< Elija opcion >>>");
+        System.out.println("Aviones disponibles para la fecha: "+ ticket.fechaDeViaje.get(Calendar.DATE)+"/"+ticket.fechaDeViaje.get(Calendar.MONTH));
+        for (Plane plane: misAviones){
+            flame=ticke_dates(plane, ticket);
+            if (flame == false){
+                System.out.println(i +"-Avion: "+ plane.getNombre());
+            }
+            i++;
+        }
+    }
 
-    public static int eligeAvion() throws IOException {
+    public static int eligeAvion(Ticket ticket) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        int respuesta;
+        int pos = -1;
+        do {
+            plane_ticket_dates(ticket);
+            respuesta = scan.nextInt();
+
+        }while(respuesta==0);
+
+        return pos=respuesta;
+    }
+
+
+
+    /*public static int eligeAvion() throws IOException {
         Scanner scan = new Scanner(System.in);
         int respuesta;
         int pos = -1;
@@ -240,7 +298,7 @@ public class Ticket {
 
         } while (respuesta != 0);
 
-    }
+    }*/
 
     private static void tipo_de_avion() {
         System.out.println("<<< Elija opcion >>>");
