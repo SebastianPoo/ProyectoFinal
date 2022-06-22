@@ -34,7 +34,7 @@ public class Travel {                       //Resultado final de un viaje- esto 
     public Travel (Ticket ticket, Plane plane){
 
         this.fecha = LocalDate.now();        // TODO: 05/06/2022 --Es necesario un get de la fecha del  ticket--
-        this.earnings = ticket.travelCost(plane);
+        this.earnings = ticket.getPrice() * ticket.getTotal_passengers();
         this.plane = plane;
         //this.distance = ticket.getDestination();
     }

@@ -61,46 +61,18 @@ public class Ticket {
         this.destination = destination;
     }
 
-    public Plane getPlane() {
-        return plane;
-    }
-
     public void setPlane(Plane plane) {
         this.plane = plane;
-    }
-
-    public Passenger getPassager() {
-        return passager;
     }
 
     public void setPassager(Passenger passager) {
         this.passager = passager;
     }
 
-    public String getSeat() {
-        return Seat;
-    }
-
-    public void setSeat(String seat) {
-        Seat = seat;
-    }
-
-    public int travelCost(Plane plane) {
-        int coste = 0;
-        coste = plane.getCoste();
-        //(canKm * cosKm)+(canPas * 3500)+(tarifaTipoAvion)
-        return coste;
-    }
     public void setFechaDeViaje(Calendar fechaDeViaje) {
         this.fechaDeViaje = fechaDeViaje;
     }
 
-
-   /* public Ticket costoTicket() {
-        Ticket ticket = new Ticket();
-        ticket.price = plane.carry_on_bag(plane.getCoste());
-        return ticket;
-    }*/
     public void costoTicket() {
         int costo = 0;
         System.out.println("      Costo total del ticket  ");
@@ -259,57 +231,9 @@ public class Ticket {
 
 
 
-    /*public static int eligeAvion() throws IOException {
-        Scanner scan = new Scanner(System.in);
-        int respuesta;
-        int pos = -1;
-        do {
-            tipo_de_avion();
-            respuesta = scan.nextInt();
-            switch (respuesta) {
-                case 1:
-                   pos = 0;
-                    break;
-                case 2:
-                    pos = 1;
-                    break;
-                case 3:
-                    pos = 2;
-                    break;
-                case 4:
-                    pos = 3;
-                    break;
-                case 5:
-                    pos = 4;
-                    break;
-                case 6:
-                    pos = 5;
-                    break;
-                case 0:
-                    System.out.println("ESC");
-                    break;
-                default:
-                    respuesta = 0;
-                    System.out.println("Solo puede elegir las opciones 1, 2, 3, 4, 5, 6 o 0...");
-                    break;
 
-            }
-            return pos;
 
-        } while (respuesta != 0);
 
-    }*/
-
-    private static void tipo_de_avion() {
-        System.out.println("<<< Elija opcion >>>");
-        System.out.println("1- Bronze ");
-        System.out.println("2- Bronze ");
-        System.out.println("3- Silver ");
-        System.out.println("4- Bronze ");
-        System.out.println("5- Gold ");
-        System.out.println("6- Gold ");
-        System.out.println("0- ESC");
-    }
 
     public static void eligeDestino(Ticket tick)  {
         Scanner scan = new Scanner(System.in);
@@ -376,4 +300,37 @@ public class Ticket {
         }
     }
 
+    public static int search_DNI_ticket(ArrayList<Ticket> tickets, String dni) throws RuntimeException{
+
+        Passenger aux1 = new Passenger();
+        int index= -1;
+
+        try{
+            for (var pasajero: tickets) {
+                if (aux1.getDni().contains(dni)){
+                    index= tickets.indexOf(pasajero);
+                }
+            }
+        }catch (RuntimeException e){
+            System.out.println("No se encuentran el DNI");
+        }
+        return index;
+    }
+
+    public static void bajaTicket (String fileTicket, String Dni){
+        FileManagement file = new FileManagement();
+        ArrayList <Ticket> aux = file.jSonToArrayList(fileTicket);
+        try {
+            int index = search_DNI_ticket(aux, Dni);
+            aux.remove(index);
+            for (var pasajero : aux) {
+                System.out.println(pasajero);
+            }
+
+            file.arrayToJsonFormat(aux, fileTicket);
+            System.out.println("El pasajero ha sido eliminado correctamente");
+        } catch (Exception e){
+            System.out.println("El Pasajero Buscado No Existe");
+        }
+    }
 }

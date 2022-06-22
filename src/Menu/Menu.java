@@ -62,7 +62,10 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    opcion1(aux);
+                    Scanner scan1 = new Scanner(System.in);
+                    System.out.println("ENTER DNI");
+                   String dni = scan1.nextLine();
+                    Ticket.bajaTicket(nombreArchivo, dni);
                     break;
                 case 2:
                     opcion2();
@@ -77,14 +80,13 @@ public class Menu {
         }while (respuesta != 0);
     }
 
+
     private static void opcion0() {
         System.out.println("CANCELAR VUELO");
         System.out.println("MOSTRAR TICKETS");
         System.out.println("0- ESC");
     }
-    private static void opcion1( ArrayList<Ticket> tickets) {
-        System.out.println("");
-    }
+
     private static void opcion2() {
         System.out.println("en pasillo");
     }
