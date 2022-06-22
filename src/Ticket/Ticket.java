@@ -19,7 +19,8 @@ public class Ticket {
     private Distances destination;
     private int total_passengers;
     private Plane plane;
-    private Passenger passager;
+    //private Passenger passager;
+    private int id_Passager;
     private String Seat;
     private Calendar fechaDeViaje;
 
@@ -28,6 +29,14 @@ public class Ticket {
 
     public Ticket() {
         this.ticket = UUID.randomUUID();
+    }
+
+    public int getId_Passager() {
+        return id_Passager;
+    }
+
+    public void setId_Passager(int id_Passager) {
+        this.id_Passager = id_Passager;
     }
 
     public Ticket(Distances destination, String seat, Plane plane) {
@@ -65,9 +74,9 @@ public class Ticket {
         this.plane = plane;
     }
 
-    public void setPassager(Passenger passager) {
+    /*public void setPassager(Passenger passager) {
         this.passager = passager;
-    }
+    }*/
 
     public void setFechaDeViaje(Calendar fechaDeViaje) {
         this.fechaDeViaje = fechaDeViaje;
@@ -91,7 +100,8 @@ public class Ticket {
     @Override
     public String toString() {
         return  "ID ticket:      " + ticket.toString().substring(0,10).toUpperCase(Locale.ROOT) +  "\n" +
-                "Name passenger: " + passager.getName() + " " + passager.getLastName() + "\n" +
+                //"Name passenger: " + passager.getName() + " " + passager.getLastName() + "\n" +
+                "id Passsger     " + getId_Passager() + "\n" +
                 "destination:    " + destination + "\n" +
                 "Seats:          " + this.getTotal_passengers() + "\n" +
                 "Plane:          " + plane.getNombre() + "\n" +
@@ -133,7 +143,7 @@ public class Ticket {
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);
                 pax = filePas.jSonToArrayList(nameFilePax);
-                ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                ticket.setId_Passager(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
 
                 System.out.println(           "Datos del ticket" + "\n"  + ticket.toString());
                     System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
@@ -168,7 +178,8 @@ public class Ticket {
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);       // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
-                ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                //ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+                ticket.setId_Passager(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
 
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
                 System.out.println(            "Desea Confirmar El Ticket ?  --- S   /   N");
@@ -333,4 +344,13 @@ public class Ticket {
             System.out.println("El Pasajero Buscado No Existe");
         }
     }
+
+    /*public static void buscaPasTick (String NameFileTicket, int id){
+        Crud crud =new Crud();
+        FileManagement fileTi = new FileManagement();
+        ArrayList <Ticket> tickets = fileTi.jSonToArrayListTicket(NameFileTicket);
+        ArrayList <Passenger> pax = fileTi.jSonToArrayListTicket(NameFileTicket);
+
+        ticket.setId_Passager(tickets.get(crud.buscaPorDni(nameFilePax,dni)).getId());
+    }*/
 }
