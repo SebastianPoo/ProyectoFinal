@@ -54,7 +54,6 @@ public class Menu {
         ArrayList<Ticket> aux = new ArrayList<>();
         aux = file.jSonToArrayListTicket(nombreArchivo);
         Scanner scan = new Scanner(System.in);
-        opcion0();
         int respuesta;
         do {
             opcion0();
@@ -73,12 +72,12 @@ public class Menu {
                     opcionDefault(); // solo puede elegir opción 1 o 2
                     break;
             }
-        }while (respuesta != 0);
+        }while (respuesta == 0);
     }
 
     private static void opcion0() {
-        System.out.println("CANCELAR VUELO");
-        System.out.println("MOSTRAR TICKETS");
+        System.out.println("1- CANCELAR VUELO");
+        System.out.println("2- MOSTRAR TICKETS");
         System.out.println("0- ESC");
     }
     private static void opcion1( ArrayList<Ticket> tickets) {
