@@ -1,9 +1,23 @@
 [
   {
-    "name": "sebas",
-    "LastName": "poo",
+    "name": "Esteban",
+    "LastName": "Areco",
     "Dni": "30451111",
     "id": 1,
     "age": 38
+  },
+  {
+    "name": "Ester",
+    "LastName": "Salomon",
+    "Dni": "05123123",
+    "id": 2,
+    "age": 78
+  },
+  {
+    "name": "Jorge",
+    "LastName": "Poo",
+    "Dni": "06123123",
+    "id": 3,
+    "age": 68
   }
 ]
