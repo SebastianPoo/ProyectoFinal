@@ -1,33 +1,48 @@
 package FolderPlane;
 
+import java.util.Calendar;
+
 public class Bronze extends Plane{
-    private int planeType = 3000;
 
-    public Bronze(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
+    private Calendar diaVuelo;
+
+    public Bronze(String name, int coste, double fuel, int maxPassenger,
+                  double kmXhs, double kmTraveled, engineType engineType) {
+        super( name, coste, fuel, maxPassenger, kmXhs, kmTraveled, engineType,3000);
+    }
+
+
+
+    public Bronze(String name,int day) {
+        super(name ,150, 19325.44, 60, 876, 3440, engineType.MOTOR_DE_PISTONES,3000);
+        Calendar dia = Calendar.getInstance();
+        dia.set(Calendar.DATE,day);
+        this.diaVuelo = dia;
+    }
+
+
+    @Override
+    public int catering(int coste) {
+        System.out.println("service not available");
+        return coste;
     }
 
     @Override
-    public int catering(int costo) {
-        System.out.println("servicio no disponible");
-        return costo;
+    public int wifi(int coste) {
+        System.out.println("service not available");
+        return coste;
     }
 
     @Override
-    public int wifi(int costo) {
-        System.out.println("servicio no disponible");
-        return costo;
+    public int carry_on_bag(int coste) {
+        System.out.println("Carry_on_bag: Coste $300");
+        return coste=coste+300;
     }
 
     @Override
-    public int carry_on_bag(int costo) {
-        System.out.println("precio $300");
-        return costo=costo+300;
+    public int confort(int coste) {
+        System.out.println("Confort: Precio $200");
+        return coste=coste+200;
     }
 
-    @Override
-    public int confort(int costo) {
-        System.out.println("Precio $200");
-        return costo=costo+200;
-    }
 }

@@ -1,0 +1,165 @@
+[
+  {
+    "ticket": "0ea65707-9bc0-4255-9627-e3fbf66099e0",
+    "price": 155550.0,
+    "destination": "BsAs_Cor",
+    "total_passengers": 2.0,
+    "plane": {
+      "diaVuelo": {
+        "year": 2022.0,
+        "month": 5.0,
+        "dayOfMonth": 4.0,
+        "hourOfDay": 19.0,
+        "minute": 47.0,
+        "second": 26.0
+      },
+      "planeType": 4000.0,
+      "nombre": "eclipse 555-Silver",
+      "coste": 200.0,
+      "fuel": 1141.0,
+      "maxPassenger": 4.0,
+      "kmXhs": 694.0,
+      "kmTraveled": 2084.0,
+      "engineType": "MOTOR_A_HELICE",
+      "listPlane": []
+    },
+    "id_Passager": 1.0,
+    "fechaDeViaje": {
+      "year": 2022.0,
+      "month": 11.0,
+      "dayOfMonth": 1.0,
+      "hourOfDay": 19.0,
+      "minute": 47.0,
+      "second": 29.0
+    }
+  },
+  {
+    "ticket": "11ecc9f9-9d5a-40b6-a995-f97f6bf2fa49",
+    "price": 347400.0,
+    "destination": "Cor_San",
+    "total_passengers": 3.0,
+    "plane": {
+      "diaVuelo": {
+        "year": 2022.0,
+        "month": 5.0,
+        "dayOfMonth": 6.0,
+        "hourOfDay": 19.0,
+        "minute": 47.0,
+        "second": 49.0
+      },
+      "planeType": 6000.0,
+      "nombre": "cessna 650-Gold",
+      "coste": 300.0,
+      "fuel": 3260.0,
+      "maxPassenger": 8.0,
+      "kmXhs": 746.0,
+      "kmTraveled": 3700.0,
+      "engineType": "MOTOR_A_REACCION",
+      "listPlane": [
+        {
+          "year": 2022.0,
+          "month": 9.0,
+          "dayOfMonth": 9.0,
+          "hourOfDay": 19.0,
+          "minute": 47.0,
+          "second": 49.0
+        }
+      ]
+    },
+    "id_Passager": 2.0,
+    "fechaDeViaje": {
+      "year": 2022.0,
+      "month": 10.0,
+      "dayOfMonth": 5.0,
+      "hourOfDay": 19.0,
+      "minute": 47.0,
+      "second": 50.0
+    }
+  },
+  {
+    "ticket": "0bc76471-506f-4c3b-b58f-a8c86f189b21",
+    "price": 673200.0,
+    "destination": "Mon_San",
+    "total_passengers": 4.0,
+    "plane": {
+      "diaVuelo": {
+        "year": 2022.0,
+        "month": 5.0,
+        "dayOfMonth": 5.0,
+        "hourOfDay": 19.0,
+        "minute": 48.0,
+        "second": 7.0
+      },
+      "planeType": 6000.0,
+      "nombre": "cessna 550-Gold",
+      "coste": 300.0,
+      "fuel": 3260.0,
+      "maxPassenger": 8.0,
+      "kmXhs": 746.0,
+      "kmTraveled": 3700.0,
+      "engineType": "MOTOR_A_REACCION",
+      "listPlane": [
+        {
+          "year": 2022.0,
+          "month": 7.0,
+          "dayOfMonth": 7.0,
+          "hourOfDay": 19.0,
+          "minute": 48.0,
+          "second": 7.0
+        }
+      ]
+    },
+    "id_Passager": 3.0,
+    "fechaDeViaje": {
+      "year": 2022.0,
+      "month": 8.0,
+      "dayOfMonth": 1.0,
+      "hourOfDay": 19.0,
+      "minute": 48.0,
+      "second": 9.0
+    }
+  },
+  {
+    "ticket": "ae5076dc-d491-41ca-8913-8ab241bdcef4",
+    "price": 339000,
+    "destination": "BsAs_Mon",
+    "total_passengers": 5,
+    "plane": {
+      "diaVuelo": {
+        "year": 2022,
+        "month": 5,
+        "dayOfMonth": 5,
+        "hourOfDay": 20,
+        "minute": 12,
+        "second": 50
+      },
+      "planeType": 6000,
+      "nombre": "cessna 550-Gold",
+      "coste": 300,
+      "fuel": 3260.0,
+      "maxPassenger": 8,
+      "kmXhs": 746.0,
+      "kmTraveled": 3700.0,
+      "engineType": "MOTOR_A_REACCION",
+      "listPlane": [
+        {
+          "year": 2022,
+          "month": 7,
+          "dayOfMonth": 7,
+          "hourOfDay": 20,
+          "minute": 12,
+          "second": 50
+        }
+      ]
+    },
+    "id_Passager": 1,
+    "fechaDeViaje": {
+      "year": 2022,
+      "month": 10,
+      "dayOfMonth": 5,
+      "hourOfDay": 20,
+      "minute": 12,
+      "second": 54
+    }
+  }
+]

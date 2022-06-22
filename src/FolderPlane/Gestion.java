@@ -1,5 +1,8 @@
 package FolderPlane;
 
+import Passenger.Passenger;
+import Ticket.*;
+import Travel.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -7,43 +10,64 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.*;
 
-public class Gestion extends Plane {
+public abstract class Gestion {
 
-    private LinkedList<Plane> flota = new LinkedList<>();
+    private static List <Plane> planes;
+    private static List <Passenger> passenger;
+    private static List <Ticket> tickets;
+    private static List <Travel> travels;
 
-    public Gestion(int coste, double fuel, int maxPassenger, double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        super(coste, fuel, maxPassenger, kmXhs, kmTraveled, tipoMotor);
+    public Gestion (){}
+
+
+
+    public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
+
+        Bronze boeing123 = new Bronze("boeing 123-Bronce",1);
+        Bronze boeing124 = new Bronze("boeing 124-Bronce",2);
+        Silver eclipse550 = new Silver("eclipse 550-Silver",3);
+        Silver eclipse555 = new Silver("eclipse 555-Silver",4);
+        Gold cessna550 = new Gold("cessna 550-Gold",5);
+        Gold cessna650 = new Gold("cessna 650-Gold",6);
+
+        Calendar calendar7 = Calendar.getInstance();
+        calendar7.set(2022,7,7);
+        Calendar calendar8 = Calendar.getInstance();
+        calendar8.set(2022,9,9);
+        Calendar calendar9 = Calendar.getInstance();
+        calendar9.set(2022,7,7);
+
+        cessna550.setList(calendar7);
+        cessna650.setList(calendar8);
+        boeing123.setList(calendar9);
+
+        planes.add(boeing123);
+        planes.add(boeing124);
+        planes.add(eclipse555);
+        planes.add(cessna650);
+        planes.add(eclipse550);
+        planes.add(cessna550);
+
+
+        return planes;
     }
 
-
-
-
-    public static LinkedList<Plane> add_a_Flota(){
-        LinkedList<Plane> flota = new LinkedList<>();
-
-        Bronze boeing123 = new Bronze();
-        Silver eclipse550 = new Silver();
-        Gold cessna550 = new Gold();
-
-        flota.add(boeing123);
-        flota.add(eclipse550);
-        flota.add(cessna550);
-
-        return flota;
+    public static List<Plane> getPlanes() {
+        return planes;
     }
 
-    public static  <T> void persistencia(LinkedList<T> t) {
+    ///VER DEL ARCHIVO
+    public static  <T> void persistencia(List<T> t, String name) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         BufferedWriter whrite = null;
 
         try {
-            whrite = new BufferedWriter(new FileWriter(new File("ARCHIVO_DE_AVIONES")));
+            whrite = new BufferedWriter(new FileWriter(new File(name)));
             gson.toJson(t, t.getClass(), whrite);
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,39 +82,23 @@ public class Gestion extends Plane {
         }
     }
 
-    public void flotaToJson (){
-        persistencia(add_a_Flota());
-    }
+    public static ArrayList<Ticket> add_a_Ticket(ArrayList tickets, Ticket ticket){
 
-    @Override
-    public void catering() {
+        tickets.add(ticket);
 
-    }
-
-    @Override
-    public void wifi() {
+        return tickets;
 
     }
 
-    @Override
-    public void landingStrip() {
+    public static ArrayList<Travel> add_a_Array (ArrayList travels, Travel travel){
+        travels.add(travel);
 
+        return travels;
     }
 
-    @Override
-    public void sevice() {
-
-    }
-
-    @Override
-    public void carry_on_bag() {
-
-    }
-
-    @Override
-    public void confort() {
-
-    }
-
-
+    public static void bestPlane (List<Plane> lista){
+        Plane mayor = Collections.max(lista, Comparator.comparing(c -> c.getCoste()));
+        System.out.println("  best category: " + "\n" + mayor.getNombre());
+        System.out.println(mayor.toString());
+        }
 }
