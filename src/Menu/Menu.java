@@ -1,16 +1,19 @@
 package Menu;
 
 import Files.FileManagement;
+import FolderPlane.Gestion;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import Crud.*;
-import FolderPlane.Gestion;
 import FolderPlane.Plane;
+import Person.Passenger;
 import Ticket.Ticket;
+
+import java.util.function.ToDoubleBiFunction;
 
 public class Menu {
     // comente clase Gestión
@@ -25,26 +28,16 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    Ticket.ticket_registration("ARCHIVO_TICKET.json","ARCHIVO_PASAJEROS.json");
+
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
                     break;
                 case 2:
-                    gestionPasajeros("ARCHIVO_PASAJEROS.json");
+
+                     gestionPasajeros("pasajeros.json");
+
                     break;
                 case 3:
-
-                    break;
-                case 4:
-                    case5();
-                    break;
-                case 5:
-                    opcion15();
-                    break;
-                case 6:
-                    List<Plane> flota = Gestion.add_a_Flota(new ArrayList<>());
-                    for (Plane plane: flota ){
-                        System.out.println(plane.toString());
-                    }
-
+                    gestionTicket("ARCHIVO_TICKET.json");
                     break;
                 case 0:
                     opcion3();
@@ -57,6 +50,44 @@ public class Menu {
         }while(respuesta != 0);
         System.out.println("despegue !!");
     }
+    public static void gestionTicket(String nombreArchivo) throws IOException{
+        ArrayList<Ticket> aux = new ArrayList<>();
+        aux = file.jSonToArrayListTicket(nombreArchivo);
+        Scanner scan = new Scanner(System.in);
+        opcion0();
+        int respuesta;
+        do {
+            opcion0();
+            respuesta = scan.nextInt();
+            switch (respuesta){
+                case 1:
+                    opcion1(aux);
+                    break;
+                case 2:
+                    opcion2();
+                    break;
+                case 0:
+                    opcion3();
+                    break;
+                default:
+                    opcionDefault(); // solo puede elegir opción 1 o 2
+                    break;
+            }
+        }while (respuesta != 0);
+    }
+
+    private static void opcion0() {
+        System.out.println("CANCELAR VUELO");
+        System.out.println("MOSTRAR TICKETS");
+        System.out.println("0- ESC");
+    }
+    private static void opcion1( ArrayList<Ticket> tickets) {
+        System.out.println("");
+    }
+    private static void opcion2() {
+        System.out.println("en pasillo");
+    }
+
     // Menu del cuestionario inicial
     private static void case1(){
         Scanner scan = new Scanner(System.in);
@@ -82,29 +113,7 @@ public class Menu {
         }while (respuesta != 0);
     }
     // Elección de ubicación para Bronce
-    public static void case4() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Bronce en proceso..");
-        int respuesta;
-        do {
-            opcion0();
-            respuesta = scan.nextInt();
-            switch (respuesta){
-                case 1:
-                    opcion1();
-                    break;
-                case 2:
-                    opcion2();
-                    break;
-                case 0:
-                    opcion3();
-                    break;
-                default:
-                    opcionDefault(); // solo puede elegir opción 1 o 2
-                    break;
-            }
-        }while (respuesta != 0);
-    }
+
     // Elección de Confort para Plata
     private static void case2(){
         Scanner scan = new Scanner(System.in);
@@ -163,7 +172,7 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    case4();
+
                     break;
                 case 2:
                     case2();
@@ -183,9 +192,7 @@ public class Menu {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
         System.out.println("1- VIAJE");
         System.out.println("2- GESTION DE PASAJEROS");
-        System.out.println("3- Seleccionar avion disponible en la fecha elegida: (en esta opcion, se muestra el costo total del vuelo y el usuario debe confirmar para generar el ticket o vuelo)");
-        System.out.println("5- Imprimir pasajes..");
-        System.out.println("6- Imprimir flota ");
+        System.out.println("3- GESTION DE TICKET");
         System.out.println("0- ESC");
     }
     /*public static void case6() {
@@ -201,18 +208,8 @@ public class Menu {
         System.out.println("3- AeroTaxi Gold");
         System.out.println("0- ESC");
     }
-    private static void opcion0() {
-        System.out.println("Elija ubicacion:");
-        System.out.println("1- Ventana");
-        System.out.println("2- Pasillo");
-        System.out.println("0- ESC");
-    }
-    private static void opcion1() {
-        System.out.println("con ventana");
-    }
-    private static void opcion2() {
-        System.out.println("en pasillo");
-    }
+
+
     private static void opcion3() {
         System.out.println("ESC");
     }
@@ -289,9 +286,9 @@ public class Menu {
         System.out.println("Imprimiendo pasaje...");// TODO: 10/06/2022 se puede cambiar el msj, de singular a plural, según la cantidad de pasajes que se compren
     }
 
-    public static void gestionPasajeros (String ArchivoPasajero)  {
+    public static void gestionPasajeros (String ArchivoPasajero) throws IOException {
         Scanner scan = new Scanner(System.in);
-        ArrayList aux = new ArrayList<>();
+        ArrayList<Passenger> aux = new ArrayList<>();
          aux = file.jSonToArrayList(ArchivoPasajero);
         System.out.println("1 - AGREGAR PASAJERO" +
                            " 2 - MODIFICAR PASAJERO " +
@@ -299,9 +296,7 @@ public class Menu {
                             " 4 - ELIMINAR PASAJERO");
         String resp =scan.nextLine();
         switch (resp){
-            case "1" :
-                crud.altaPassenger(ArchivoPasajero);
-
+            case "1" : crud.AltaPassenger(ArchivoPasajero);
             break;
             case "2": crud.modificarDatosPasajero(ArchivoPasajero);
             break;
@@ -317,6 +312,5 @@ public class Menu {
                 break;
         }
     }
-
 
 }
