@@ -19,7 +19,6 @@ public class Ticket {
     private Distances destination;
     private int total_passengers;
     private Plane plane;
-    //private Passenger passager;
     private int id_Passager;
     private String Seat;
     private Calendar fechaDeViaje;
@@ -74,9 +73,6 @@ public class Ticket {
         this.plane = plane;
     }
 
-    /*public void setPassager(Passenger passager) {
-        this.passager = passager;
-    }*/
 
     public void setFechaDeViaje(Calendar fechaDeViaje) {
         this.fechaDeViaje = fechaDeViaje;
@@ -130,7 +126,6 @@ public class Ticket {
 
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                //Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");
 
                 int companions= menu.addCompa();
                 ticket.setTotal_passengers(companions);
@@ -165,7 +160,7 @@ public class Ticket {
 
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                //Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");
+
 
                 int companions= menu.addCompa();
                 ticket.setTotal_passengers(companions);
@@ -178,7 +173,7 @@ public class Ticket {
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);       // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
-                //ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
+
                 ticket.setId_Passager(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
 
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
@@ -345,12 +340,5 @@ public class Ticket {
         }
     }
 
-    /*public static void buscaPasTick (String NameFileTicket, int id){
-        Crud crud =new Crud();
-        FileManagement fileTi = new FileManagement();
-        ArrayList <Ticket> tickets = fileTi.jSonToArrayListTicket(NameFileTicket);
-        ArrayList <Passenger> pax = fileTi.jSonToArrayListTicket(NameFileTicket);
 
-        ticket.setId_Passager(tickets.get(crud.buscaPorDni(nameFilePax,dni)).getId());
-    }*/
 }

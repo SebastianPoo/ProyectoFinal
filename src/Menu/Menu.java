@@ -118,7 +118,7 @@ public class Menu {
         cantAcompanantes = scanner.nextInt();
         int suma = 1;
         if (cantAcompanantes > 0) {
-            // yo
+
             suma=suma+cantAcompanantes;
             System.out.println("Usted reserva "+suma+" lugares ");
         }else {
