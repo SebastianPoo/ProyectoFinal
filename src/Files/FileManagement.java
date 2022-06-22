@@ -154,8 +154,12 @@ public class FileManagement {
         }
     }
 
+    public boolean isFileEmpty(File file){
+        return file.length() == 0;
+    }
 
 }
+
 
 
 

@@ -12,7 +12,6 @@ public class Fechas {
 
 
     public Fechas(){
-
     }
 
     public  Calendar elegir(){
@@ -26,9 +25,6 @@ public class Fechas {
         int diaHoy = dayToday.get(Calendar.DATE);// Cuando instaciamos una fecha en Calendar los meses se valoran de 0 a 11
         int mesHoy = dayToday.get(Calendar.MONTH)+1;// entonces de este modo modificamos su valor para q sea igual al calendario de 1 a 12
 
-
-
-
         int respuesta;
 
         do {
@@ -37,24 +33,19 @@ public class Fechas {
         } while (respuesta<mesHoy);
         mes=respuesta;
 
-
-
         if (mes==mesHoy) {
             do {
-
+                System.out.println("if"+diaHoy);
                 showdates();
                 respuesta = scan.nextInt();
             } while (respuesta < diaHoy || respuesta > 31);
         }else {
             do {
-
                 showdates();
                 respuesta = scan.nextInt();
             }while (respuesta < 1 || respuesta > 31);
         }
         dia=respuesta;
-
-
 
         day.set(Calendar.MONTH, mes);
         day.set(Calendar.DATE, dia);
@@ -62,7 +53,7 @@ public class Fechas {
     }
 
     private static void showdates(){
-        System.out.println("Marque el dia para viajar....");
+        System.out.println("Marque el dia para viajar");
     }
     private static void dateMonths(){
         System.out.println("1-Enero  2-Febrero  3-Marzo  4-Abril" );

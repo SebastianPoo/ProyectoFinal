@@ -6,40 +6,19 @@ import java.util.Calendar;
 import java.util.List;
 
 public abstract class Plane implements Service, Serializable {
+    private Integer planeType;
     private String nombre;
     private int coste;
     private double fuel;
     private int maxPassenger;
     private double kmXhs;
     private double kmTraveled;
-    private  TipoMotor tipoMotor;
+    private engineType engineType;
     public List<Calendar> listPlane ;
 
 
 
     private Plane (){
-    }
-
-
-
-    public int getCoste() {
-        return coste;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public Plane(String nombre, int coste, double fuel, int maxPassenger,
-                 double kmXhs, double kmTraveled, TipoMotor tipoMotor) {
-        this.nombre = nombre;
-        this.coste = coste;
-        this.fuel = fuel;
-        this.maxPassenger = maxPassenger;
-        this.kmXhs = kmXhs;
-        this.kmTraveled = kmTraveled;
-        this.tipoMotor = tipoMotor;
-        this.listPlane = new ArrayList<>();
     }
 
     public List<Calendar> getListPlane() {
@@ -48,6 +27,32 @@ public abstract class Plane implements Service, Serializable {
     public void setList(Calendar calendar) {
         listPlane.add(calendar);
         this.listPlane = listPlane;
+    }
+
+    public int getCoste() {
+        return coste;
+    }
+
+    public Integer getPlaneType() {
+        return planeType;
+    }
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Plane(String nombre, int coste, double fuel, int maxPassenger,
+                 double kmXhs, double kmTraveled, engineType engineType, Integer PlaneType) {
+        this.nombre = nombre;
+        this.coste = coste;
+        this.fuel = fuel;
+        this.maxPassenger = maxPassenger;
+        this.kmXhs = kmXhs;
+        this.kmTraveled = kmTraveled;
+        this.engineType = engineType;
+        this.planeType = PlaneType;
+        this.listPlane = new ArrayList<>();
     }
 
     public int getMaxPassenger() {
@@ -67,23 +72,23 @@ public abstract class Plane implements Service, Serializable {
         }
         return false;
     }
-    public enum TipoMotor {
+    public enum engineType {
         MOTOR_A_REACCION,
         MOTOR_A_HELICE,
         MOTOR_DE_PISTONES,
     }
 
     @Override
-    public String toString() {
-        return "Plane{" +
-                "nombre='" + nombre + '\'' +
-                ", coste=" + coste +  '\'' +
-                ", fuel=" + fuel +     '\'' +
-                ", maxPassenger=" + maxPassenger +  '\'' +
-                ", kmXhs=" + kmXhs +  '\'' +
-                ", kmTraveled=" + kmTraveled +  '\'' +
-                ", tipoMotor=" + tipoMotor +  '\'' +
-                '}';
+    public String toString() {      // TODO: 6/17/2022 correccion salto de linea
+        return             "           <Plane> " + "\n" +
+                " nombre:            " + nombre + "\n" +
+                " coste fuel:        " + coste +  "\n" +
+                " fuel:              " + fuel +     "\n" +
+                " maxPassenger:      " + maxPassenger +  "\n" +
+                " kmXhs:             " + kmXhs +  "\n" +
+                " kmTraveled:        " + kmTraveled +  "\n" +
+                " engineType:        " + engineType +  "\n" +
+                " PlaneType:         " + planeType +  "\n" + "\n";
     }
 
 }

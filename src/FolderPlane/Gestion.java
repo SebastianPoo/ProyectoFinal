@@ -1,7 +1,7 @@
 package FolderPlane;
 
-import Person.Person;
-import Ticket.Ticket;
+import Passenger.Passenger;
+import Ticket.*;
 import Travel.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,19 +10,18 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Gestion {
 
     private static List <Plane> planes;
-    private static List <Person> passenger;
+    private static List <Passenger> passenger;
     private static List <Ticket> tickets;
     private static List <Travel> travels;
 
     public Gestion (){}
+
+
 
     public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
@@ -36,7 +35,7 @@ public abstract class Gestion {
         Calendar calendar7 = Calendar.getInstance();
         calendar7.set(2022,7,7);
         Calendar calendar8 = Calendar.getInstance();
-        calendar8.set(2022,7,7);
+        calendar8.set(2022,9,9);
         Calendar calendar9 = Calendar.getInstance();
         calendar9.set(2022,7,7);
 
@@ -60,13 +59,13 @@ public abstract class Gestion {
     }
 
     ///VER DEL ARCHIVO
-    public static  <T> void persistencia(List<T> t, String nombre) {
+    public static  <T> void persistencia(List<T> t, String name) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         BufferedWriter whrite = null;
 
         try {
-            whrite = new BufferedWriter(new FileWriter(new File(nombre)));
+            whrite = new BufferedWriter(new FileWriter(new File(name)));
             gson.toJson(t, t.getClass(), whrite);
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,6 +96,9 @@ public abstract class Gestion {
         return travels;
     }
 
-
-
+    public static void bestPlane (List<Plane> lista){
+        Plane mayor = Collections.max(lista, Comparator.comparing(c -> c.getCoste()));
+        System.out.println("  best category: " + "\n" + mayor.getNombre());
+        System.out.println(mayor.toString());
+        }
 }

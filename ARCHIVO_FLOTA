@@ -4,10 +4,10 @@
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 12,
-      "hourOfDay": 22,
-      "minute": 19,
-      "second": 41
+      "dayOfMonth": 1,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 16
     },
     "nombre": "boeing 123",
     "coste": 150,
@@ -15,17 +15,17 @@
     "maxPassenger": 60,
     "kmXhs": 876.0,
     "kmTraveled": 3440.0,
-    "tipoMotor": "MOTOR_DE_PISTONES"
+    "engineType": "MOTOR_DE_PISTONES"
   },
   {
     "planeType": 500,
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 6,
-      "hourOfDay": 22,
-      "minute": 19,
-      "second": 41
+      "dayOfMonth": 2,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "boeing 124",
     "coste": 150,
@@ -33,17 +33,17 @@
     "maxPassenger": 60,
     "kmXhs": 876.0,
     "kmTraveled": 3440.0,
-    "tipoMotor": "MOTOR_DE_PISTONES"
+    "engineType": "MOTOR_DE_PISTONES"
   },
   {
     "planeType": 4000,
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 8,
-      "hourOfDay": 22,
-      "minute": 19,
-      "second": 41
+      "dayOfMonth": 4,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "eclipse 555",
     "coste": 150,
@@ -51,17 +51,17 @@
     "maxPassenger": 4,
     "kmXhs": 694.0,
     "kmTraveled": 2084.0,
-    "tipoMotor": "MOTOR_A_HELICE"
+    "engineType": "MOTOR_A_HELICE"
   },
   {
     "planeType": 6000,
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 10,
-      "hourOfDay": 22,
-      "minute": 19,
-      "second": 41
+      "dayOfMonth": 6,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "cessna 650",
     "coste": 300,
@@ -69,17 +69,17 @@
     "maxPassenger": 8,
     "kmXhs": 746.0,
     "kmTraveled": 3700.0,
-    "tipoMotor": "MOTOR_A_REACCION"
+    "engineType": "MOTOR_A_REACCION"
   },
   {
     "planeType": 4000,
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 7,
-      "hourOfDay": 22,
-      "minute": 19,
-      "second": 41
+      "dayOfMonth": 3,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "eclipse 550",
     "coste": 150,
@@ -87,17 +87,17 @@
     "maxPassenger": 4,
     "kmXhs": 694.0,
     "kmTraveled": 2084.0,
-    "tipoMotor": "MOTOR_A_HELICE"
+    "engineType": "MOTOR_A_HELICE"
   },
   {
     "planeType": 6000,
     "diaVuelo": {
       "year": 2022,
       "month": 5,
-      "dayOfMonth": 9,
-      "hourOfDay": 22,
-      "minute": 19,
-      "second": 41
+      "dayOfMonth": 5,
+      "hourOfDay": 21,
+      "minute": 34,
+      "second": 17
     },
     "nombre": "cessna 550",
     "coste": 300,
@@ -105,6 +105,6 @@
     "maxPassenger": 8,
     "kmXhs": 746.0,
     "kmTraveled": 3700.0,
-    "tipoMotor": "MOTOR_A_REACCION"
+    "engineType": "MOTOR_A_REACCION"
   }
 ]

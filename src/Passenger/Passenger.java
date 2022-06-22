@@ -1,20 +1,14 @@
 package Passenger;
 
-import Ticket.Ticket;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 public class Passenger implements Serializable {
     private String name;
     private String LastName;
     private String Dni;
-    private static int id=1;
-    private int myId;
+    private int id;
     private Integer age;
-    public List<Ticket> listTicket;
 
     public Passenger() {
     }
@@ -24,28 +18,14 @@ public class Passenger implements Serializable {
         LastName = lastName;
         Dni = dni;
         this.age = age;
-        this.myId=generateId();
-        this.listTicket=new ArrayList<>();
     }
 
-    public void setListTicket(Ticket ticket) {
-        listTicket.add(ticket);
-        this.listTicket = listTicket;
-    }
     public int getId() {
         return id;
     }
 
-    public int generateId() {
-       return ++id;
-    }
-
-    public int getMyId() {
-        return myId;
-    }
-
-    public void setMyId(int myId) {
-        this.myId = myId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -72,21 +52,16 @@ public class Passenger implements Serializable {
         Dni = dni;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
     public void setAge(Integer age) {
         this.age = age;
     }
 
     @Override
     public String toString() {
-        return "Passenger{" +
-                "name='" + name + '\'' +
-                ", LastName='" + LastName + '\'' +
-                ", Dni='" + Dni + '\'' +
-                ", age=" + age +
-                '}';
+        return "Passenger id " + "-" + id + "-" + "\n" +
+                "  name :    " + name + "\n" +
+                "  LastName: " + LastName + "\n" +
+                "  Dni:      " + Dni + "\n" +
+                "  age:      " + age + "\n" + "\n" ;
     }
 }

@@ -2,6 +2,9 @@ package Crud;
 
 import Files.FileManagement;
 import Passenger.Passenger;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -21,13 +24,15 @@ public class Crud{
         this.passengers = passengers;
     }
 
-    public void AltaPassenger (String nombreArchivo) throws IOException {
+    public void altaPassenger(String nombreArchivo)  {
         Scanner scan = new Scanner(System.in);
 
         int option = 0;
-        if (nombreArchivo.isEmpty()) {
+
+        if (file.isFileEmpty(new File(nombreArchivo))) {
 
             while (option != 2) {
+                System.out.println(             "NUEVO ARCHIVO EN PROCESO" + "\n");
                 System.out.println("Ingrese El Nombre Del Pasajero ");
                 String name = scan.nextLine();
                 System.out.println("Ingrese El Apellido Del Pasajero ");
@@ -37,14 +42,15 @@ public class Crud{
                 System.out.println("Ingrese la Edad Del Pasajero ");
                 Integer age = scan.nextInt();
                 Passenger pasajero = new Passenger(name, surname, dni, age);
+                pasajero.setId(1);
                 passengers.add(pasajero);
-                System.out.println("Presione 1 para continar o 2 para salir");
+                System.out.println(          "Confirma datos del pasajero" + "\n" + pasajero.toString());
+                System.out.println(          "Presione 1 para modificar o 2 para continuar");
                 option = scan.nextInt();
                 scan.nextLine();
+                file.arrayToJsonFormat(passengers, nombreArchivo);
+                System.out.println(           "nuevo archivo creado");
             }
-
-
-            file.arrayToJsonFormat(passengers, nombreArchivo);
         } else {
             ArrayList<Passenger> aux = new ArrayList<>();
             aux = file.jSonToArrayList(nombreArchivo);
@@ -58,15 +64,20 @@ public class Crud{
                 System.out.println("Ingrese la Edad Del Pasajero ");
                 Integer age = scan.nextInt();
                 Passenger pasajero = new Passenger(name, surname, dni, age);
+                pasajero.setId(aux.size() + 1);
+                    System.out.println(        "Confirma datos del pasajero" + "\n" +pasajero.toString());
                 aux.add(pasajero);
-                System.out.println("Presione 1 para continar o 2 para salir");
+
+                System.out.println(              " 1 para modificar pasajero o 2 para continuar");
                 option = scan.nextInt();
                 scan.nextLine();
                 file.arrayToJsonFormat(aux, nombreArchivo);
+                System.out.println(              "nuevo pasajero agregado con exito");
             }
 
         }
     }
+
 
     public void bajaPassenger (String archivoPasajero, String Dni){
          ArrayList <Passenger> aux = file.jSonToArrayList(archivoPasajero);
@@ -84,20 +95,24 @@ public class Crud{
          }
     }
 
-    public int buscaPorDni (String archivoPasajero, String dni) {
+
+    public int buscaPorDni (String archivoPasajero, String dni) throws RuntimeException{
         ArrayList <Passenger>  aux = file.jSonToArrayList(archivoPasajero);
         int index= -1;
 
-        for (var pasajero: aux) {
-            if (pasajero.getDni().contains(dni)){
-                index= aux.indexOf(pasajero);
+        try{
+            for (var pasajero: aux) {
+                if (pasajero.getDni().contains(dni)){
+                    index= aux.indexOf(pasajero);
+                }
             }
+        }catch (RuntimeException e){
+            System.out.println("No se encuentran el DNI");
         }
-
         return index;
     }
 
-    public void modificarDatosPasajero (String archivoPasajero){
+    public void modificarDatosPasajero (String archivoPasajero) {
         Scanner scan = new Scanner(System.in);
         System.out.println(" Ingrese el dni del pasajero a buscar ");
         String dni= scan.nextLine();
@@ -139,6 +154,8 @@ public class Crud{
 
         file.arrayToJsonFormat(aux, archivoPasajero);
     }
+
+
 
 }
 

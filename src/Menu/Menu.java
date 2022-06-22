@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 import Crud.*;
 import FolderPlane.Plane;
-import Person.Passenger;
+
+import Passenger.Passenger;
 import Ticket.Ticket;
 
 import java.util.function.ToDoubleBiFunction;
@@ -29,11 +30,11 @@ public class Menu {
             switch (respuesta){
                 case 1:
 
-                    Ticket.ticket_registration("ARCHIVO_TICKET.json");
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json","ARCHIVO_PASAJEROS.json");
                     break;
                 case 2:
 
-                     gestionPasajeros("pasajeros.json");
+                     gestionPasajeros("ARCHIVO_PASAJEROS.json");
 
                     break;
                 case 3:
@@ -295,7 +296,7 @@ public class Menu {
                             " 4 - ELIMINAR PASAJERO");
         String resp =scan.nextLine();
         switch (resp){
-            case "1" : crud.AltaPassenger(ArchivoPasajero);
+            case "1" : crud.altaPassenger(ArchivoPasajero);
             break;
             case "2": crud.modificarDatosPasajero(ArchivoPasajero);
             break;
