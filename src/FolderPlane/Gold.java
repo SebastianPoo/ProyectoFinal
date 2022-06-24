@@ -19,22 +19,25 @@ public class Gold extends Plane{
 
     @Override
     public int catering(int coste) {
-        System.out.println("Precio $500");
+        System.out.println("Cateting: $500");
         return coste=coste+500;
     }
 
     @Override
     public int wifi(int coste) {
+        System.out.println("Wifi: $100");
         return coste=coste+100;
     }
 
     @Override
     public int carry_on_bag(int coste) {
+        System.out.println("Carry_on_bag:  $300");
         return coste=coste+300;
     }
 
     @Override
     public int confort(int coste) {
+        System.out.println("Confort: 400");
         return coste=coste+400;
     }
 }

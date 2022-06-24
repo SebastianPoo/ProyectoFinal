@@ -154,8 +154,42 @@ public class FileManagement {
         }
     }
 
-    public boolean isFileEmpty(File file){
+    public static boolean isFileEmpty(File file){
         return file.length() == 0;
+    }
+    public static <t> ArrayList<t> jsonToArray(String nameFile) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        BufferedReader reader = null;
+
+        List<t> list;
+        List<t> list1 = new ArrayList<>();
+
+        try {
+            reader = new BufferedReader(new FileReader(new File(nameFile)));
+            list = gson.fromJson(reader,
+                    (new TypeToken<List<t>>() {}.getType())
+            );
+            int i = 0;
+            for(var plane : list) {
+                list1.add(list.get(i));
+                i++;
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return (ArrayList<t>) list1;
     }
 
 }

@@ -207,45 +207,132 @@
   },
   {
     "ticket": "32a92012-9923-4e29-a619-610cda0434e3",
-    "price": 240900,
+    "price": 240900.0,
     "destination": "BsAs_Cor",
-    "total_passengers": 3,
+    "total_passengers": 3.0,
     "plane": {
       "diaVuelo": {
-        "year": 2022,
-        "month": 5,
-        "dayOfMonth": 5,
-        "hourOfDay": 20,
-        "minute": 36,
-        "second": 48
+        "year": 2022.0,
+        "month": 5.0,
+        "dayOfMonth": 5.0,
+        "hourOfDay": 20.0,
+        "minute": 36.0,
+        "second": 48.0
       },
-      "planeType": 6000,
+      "planeType": 6000.0,
       "nombre": "cessna 550-Gold",
-      "coste": 300,
+      "coste": 300.0,
       "fuel": 3260.0,
-      "maxPassenger": 8,
+      "maxPassenger": 8.0,
       "kmXhs": 746.0,
       "kmTraveled": 3700.0,
       "engineType": "MOTOR_A_REACCION",
       "listPlane": [
         {
-          "year": 2022,
-          "month": 7,
-          "dayOfMonth": 7,
-          "hourOfDay": 20,
-          "minute": 36,
-          "second": 48
+          "year": 2022.0,
+          "month": 7.0,
+          "dayOfMonth": 7.0,
+          "hourOfDay": 20.0,
+          "minute": 36.0,
+          "second": 48.0
         }
       ]
     },
-    "id_Passager": 3,
+    "id_Passager": 3.0,
+    "fechaDeViaje": {
+      "year": 2022.0,
+      "month": 11.0,
+      "dayOfMonth": 5.0,
+      "hourOfDay": 20.0,
+      "minute": 37.0,
+      "second": 1.0
+    }
+  },
+  {
+    "ticket": "eba1b036-a4ec-4487-95c1-d1f693957b59",
+    "price": 234825.0,
+    "destination": "Cor_San",
+    "total_passengers": 3.0,
+    "plane": {
+      "planeType": 4000.0,
+      "nombre": "eclipse 555-Silver",
+      "coste": 200.0,
+      "fuel": 1141.0,
+      "maxPassenger": 4.0,
+      "kmXhs": 694.0,
+      "kmTraveled": 2084.0,
+      "engineType": "MOTOR_A_HELICE",
+      "listPlane": []
+    },
+    "id_Passager": 4.0,
+    "fechaDeViaje": {
+      "year": 2022.0,
+      "month": 10.0,
+      "dayOfMonth": 6.0,
+      "hourOfDay": 18.0,
+      "minute": 32.0,
+      "second": 47.0
+    }
+  },
+  {
+    "ticket": "2aff3267-5ff1-46a5-acce-67015acee322",
+    "price": 251700.0,
+    "destination": "BsAs_Cor",
+    "total_passengers": 4.0,
+    "plane": {
+      "planeType": 6000.0,
+      "nombre": "cessna 550-Gold",
+      "coste": 300.0,
+      "fuel": 3260.0,
+      "maxPassenger": 8.0,
+      "kmXhs": 746.0,
+      "kmTraveled": 3700.0,
+      "engineType": "MOTOR_A_REACCION",
+      "listPlane": [
+        {
+          "year": 2022.0,
+          "month": 7.0,
+          "dayOfMonth": 7.0,
+          "hourOfDay": 18.0,
+          "minute": 33.0,
+          "second": 44.0
+        }
+      ]
+    },
+    "id_Passager": 4.0,
+    "fechaDeViaje": {
+      "year": 2022.0,
+      "month": 9.0,
+      "dayOfMonth": 6.0,
+      "hourOfDay": 18.0,
+      "minute": 33.0,
+      "second": 47.0
+    }
+  },
+  {
+    "ticket": "84356fb0-5c3b-4183-90e1-aca5b4054e0f",
+    "price": 163500,
+    "destination": "BsAs_Mon",
+    "total_passengers": 3,
+    "plane": {
+      "planeType": 3000,
+      "nombre": "boeing 124-Bronce",
+      "coste": 150,
+      "fuel": 19325.44,
+      "maxPassenger": 60,
+      "kmXhs": 876.0,
+      "kmTraveled": 3440.0,
+      "engineType": "MOTOR_DE_PISTONES",
+      "listPlane": []
+    },
+    "id_Passager": 4,
     "fechaDeViaje": {
       "year": 2022,
-      "month": 11,
-      "dayOfMonth": 5,
-      "hourOfDay": 20,
-      "minute": 37,
-      "second": 1
+      "month": 10,
+      "dayOfMonth": 8,
+      "hourOfDay": 18,
+      "minute": 50,
+      "second": 16
     }
   }
 ]

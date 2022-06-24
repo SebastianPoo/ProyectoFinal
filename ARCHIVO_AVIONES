@@ -1,0 +1,95 @@
+[
+  {
+    "planeType": 3000,
+    "nombre": "boeing 123-Bronce",
+    "coste": 150,
+    "fuel": 19325.44,
+    "maxPassenger": 60,
+    "kmXhs": 876.0,
+    "kmTraveled": 3440.0,
+    "engineType": "MOTOR_DE_PISTONES",
+    "listPlane": [
+      {
+        "year": 2022,
+        "month": 7,
+        "dayOfMonth": 7,
+        "hourOfDay": 21,
+        "minute": 7,
+        "second": 10
+      }
+    ]
+  },
+  {
+    "planeType": 3000,
+    "nombre": "boeing 124-Bronce",
+    "coste": 150,
+    "fuel": 19325.44,
+    "maxPassenger": 60,
+    "kmXhs": 876.0,
+    "kmTraveled": 3440.0,
+    "engineType": "MOTOR_DE_PISTONES",
+    "listPlane": []
+  },
+  {
+    "planeType": 4000,
+    "nombre": "eclipse 555-Silver",
+    "coste": 200,
+    "fuel": 1141.0,
+    "maxPassenger": 4,
+    "kmXhs": 694.0,
+    "kmTraveled": 2084.0,
+    "engineType": "MOTOR_A_HELICE",
+    "listPlane": []
+  },
+  {
+    "planeType": 6000,
+    "nombre": "cessna 650-Gold",
+    "coste": 300,
+    "fuel": 3260.0,
+    "maxPassenger": 8,
+    "kmXhs": 746.0,
+    "kmTraveled": 3700.0,
+    "engineType": "MOTOR_A_REACCION",
+    "listPlane": [
+      {
+        "year": 2022,
+        "month": 9,
+        "dayOfMonth": 9,
+        "hourOfDay": 21,
+        "minute": 7,
+        "second": 10
+      }
+    ]
+  },
+  {
+    "planeType": 4000,
+    "nombre": "eclipse 550-Silver",
+    "coste": 200,
+    "fuel": 1141.0,
+    "maxPassenger": 4,
+    "kmXhs": 694.0,
+    "kmTraveled": 2084.0,
+    "engineType": "MOTOR_A_HELICE",
+    "listPlane": []
+  },
+  {
+    "planeType": 6000,
+    "nombre": "cessna 550-Gold",
+    "coste": 300,
+    "fuel": 3260.0,
+    "maxPassenger": 8,
+    "kmXhs": 746.0,
+    "kmTraveled": 3700.0,
+    "engineType": "MOTOR_A_REACCION",
+    "listPlane": [
+      {
+        "year": 2022,
+        "month": 7,
+        "dayOfMonth": 7,
+        "hourOfDay": 21,
+        "minute": 7,
+        "second": 10
+      }
+    ]
+  }
+]

@@ -18,25 +18,25 @@ public class Silver extends Plane{
 
     @Override
     public int catering(int costo) {
-        System.out.println("Catering: Precio $250");
+        System.out.println("Catering: $250");
         return costo=costo+250;
     }
 
     @Override
     public int wifi(int costo) {
-        System.out.println("Wifi: Precio $25");
+        System.out.println("Wifi: $25");
         return costo=costo+25;
     }
 
     @Override
     public int carry_on_bag(int costo) {
-        System.out.println("Carry_on_bag: precio $300");
+        System.out.println("Carry_on_bag: $300");
         return costo=costo+300;
     }
 
     @Override
     public int confort(int costo) {
-        System.out.println("Confort: Precio $200");
+        System.out.println("Confort: $200");
         return costo=costo+200;
     }
 }

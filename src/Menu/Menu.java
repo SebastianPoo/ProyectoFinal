@@ -52,10 +52,9 @@ public class Menu {
         System.out.println("despegue !!");
     }
     public static void gestionTicket(String nombreArchivo) throws IOException{
-        ArrayList<Ticket> aux  = new ArrayList<>();
-        ArrayList<Passenger> aux1  = new ArrayList<>();
-        aux = file.jSonToArrayListTicket(nombreArchivo);
-        aux1 = file.jSonToArrayList("ARCHIVO_PASAJEROS.json");
+        List<Ticket> aux = file.jSonToArrayListTicket(nombreArchivo);
+        ArrayList<Passenger> aux1 = file.jSonToArrayList("ARCHIVO_PASAJEROS.json");
+
         Scanner scan = new Scanner(System.in);
 
         int respuesta;
@@ -71,12 +70,10 @@ public class Menu {
                     System.out.println("ENTER DNI");
                     String dni = scan1.nextLine();
                     int pos = aux1.get(crud.buscaPorDni("ARCHIVO_PASAJEROS.json", dni)).getId();
+
                     System.out.println("tickte     " + aux.get(pos));
-                    for (int i =0 ; i < aux.size() ; i++) {
-                        if (aux.get(i).getId_Passager() == 2) {
-                            System.out.println(aux.get(i).toString());
-                        }
-                    }
+                    List<Plane> misAviones1 = FileManagement.jsonToArray("ARCHIVO_AVIONES");
+
 
                     break;
                 case 0:

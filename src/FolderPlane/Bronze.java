@@ -33,13 +33,13 @@ public class Bronze extends Plane{
 
     @Override
     public int carry_on_bag(int coste) {
-        System.out.println("Carry_on_bag: Coste $300");
+        System.out.println("Carry_on_bag:  $300");
         return coste=coste+300;
     }
 
     @Override
     public int confort(int coste) {
-        System.out.println("Confort: Precio $200");
+        System.out.println("Confort:  $200");
         return coste=coste+200;
     }
 

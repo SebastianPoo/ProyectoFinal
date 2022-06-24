@@ -96,7 +96,6 @@ public class Ticket {
     @Override
     public String toString() {
         return  "ID ticket:      " + ticket.toString().substring(0,10).toUpperCase(Locale.ROOT) +  "\n" +
-                //"Name passenger: " + passager.getName() + " " + passager.getLastName() + "\n" +
                 "id Passsger     " + getId_Passager() + "\n" +
                 "destination:    " + destination + "\n" +
                 "Seats:          " + this.getTotal_passengers() + "\n" +

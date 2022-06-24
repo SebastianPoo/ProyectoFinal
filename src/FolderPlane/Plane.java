@@ -24,6 +24,7 @@ public abstract class Plane implements Service, Serializable {
     public List<Calendar> getListPlane() {
         return listPlane;
     }
+
     public void setList(Calendar calendar) {
         listPlane.add(calendar);
         this.listPlane = listPlane;
