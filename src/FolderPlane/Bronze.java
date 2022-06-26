@@ -1,10 +1,7 @@
 package FolderPlane;
 
-import java.util.Calendar;
 
 public class Bronze extends Plane{
-
-    private Calendar diaVuelo;
 
     public Bronze(String name, int coste, double fuel, int maxPassenger,
                   double kmXhs, double kmTraveled, engineType engineType) {
@@ -14,7 +11,8 @@ public class Bronze extends Plane{
 
 
     public Bronze(String name) {
-        super(name ,150, 19325.44, 60, 876, 3440, engineType.MOTOR_DE_PISTONES,3000);
+        super(name ,150, 19325.44, 60,
+                876, 3440, engineType.MOTOR_DE_PISTONES,3000);
 
     }
 

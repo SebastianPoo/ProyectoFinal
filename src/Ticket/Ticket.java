@@ -11,15 +11,16 @@ import Travel.Distances;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 
-public class Ticket {
+public class Ticket implements Serializable {
     private UUID ticket;
     private int price;
     private Distances destination;
     private int total_passengers;
     private Plane plane;
-    private int id_Passager;
+    private int id_Passenger;
     private String Seat;
     private Calendar fechaDeViaje;
 
@@ -30,12 +31,12 @@ public class Ticket {
         this.ticket = UUID.randomUUID();
     }
 
-    public int getId_Passager() {
-        return id_Passager;
+    public int getId_Passenger() {
+        return id_Passenger;
     }
 
-    public void setId_Passager(int id_Passager) {
-        this.id_Passager = id_Passager;
+    public void setId_Passenger(int id_Passenger) {
+        this.id_Passenger = id_Passenger;
     }
 
     public Ticket(Distances destination, String seat, Plane plane) {
@@ -96,7 +97,7 @@ public class Ticket {
     @Override
     public String toString() {
         return  "ID ticket:      " + ticket.toString().substring(0,10).toUpperCase(Locale.ROOT) +  "\n" +
-                "id Passsger     " + getId_Passager() + "\n" +
+                "id Passsger     " + getId_Passenger() + "\n" +
                 "destination:    " + destination + "\n" +
                 "Seats:          " + this.getTotal_passengers() + "\n" +
                 "Plane:          " + plane.getNombre() + "\n" +
@@ -137,7 +138,7 @@ public class Ticket {
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);
                 pax = filePas.jSonToArrayList(nameFilePax);
-                ticket.setId_Passager(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
+                ticket.setId_Passenger(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
 
                 System.out.println(           "Datos del ticket" + "\n"  + ticket.toString());
                     System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
@@ -149,11 +150,12 @@ public class Ticket {
                 option = scan.nextInt();
                 scan.nextLine();
                 fileTi.arrayToJsonFormat(tickets, nameFileTicket);
+
+
             }
 
         } else {
-            ArrayList<Ticket> aux = new ArrayList<>();
-            aux = fileTi.jSonToArrayListTicket(nameFileTicket);
+            ArrayList<Ticket> aux = fileTi.jSonToArrayListTicket(nameFileTicket);
             while (option != 2) {
                 eligeDestino(ticket);
 
@@ -173,7 +175,7 @@ public class Ticket {
                 newPass(nameFilePax, dni);       // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
 
-                ticket.setId_Passager(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
+                ticket.setId_Passenger(pax.get(crud.buscaPorDni(nameFilePax,dni)).getId());
 
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
                 System.out.println(            "Desea Confirmar El Ticket ?  --- S   /   N");
@@ -234,12 +236,6 @@ public class Ticket {
         return pos=respuesta;
     }
 
-
-
-
-
-
-
     public static void eligeDestino(Ticket tick)  {
         Scanner scan = new Scanner(System.in);
         int respuesta;
@@ -292,8 +288,8 @@ public class Ticket {
         try {
            if (crud.buscaPorDni(nameFile,dni)>=0){
             FileManagement file = new FileManagement();
-            ArrayList<Object> aux = new ArrayList<>();
-            aux = file.jSonToArrayList(nameFile);
+            ArrayList<Object> aux = file.jSonToArrayList(nameFile);
+
             System.out.println("             Cliente encontrado " +  "\n"  + aux.get(crud.buscaPorDni(nameFile, dni)));
         }else {
                 System.out.println("            Ingrese datos para nuevo pasajero");
@@ -305,37 +301,48 @@ public class Ticket {
         }
     }
 
-    public static int search_DNI_ticket(ArrayList<Ticket> tickets, String dni) throws RuntimeException{
-
-        Passenger aux1 = new Passenger();
-        int index= -1;
+    public static int search_DNI_ticket(ArrayList<Ticket> tickets, String dniBusca) throws RuntimeException{
+        Crud crud = new Crud();
+        FileManagement file = new FileManagement();
+        ArrayList <Passenger>  aux = file.jSonToArrayList("ARCHIVO_PASAJEROS.json");
+        int index = crud.buscaPorDni("ARCHIVO_PASAJEROS.json", dniBusca);
+        /*System.out.println("Pasajero de busca_dni_ticket " + " ID " + aux.get(index).getId() + " " +
+                aux.get(index));*/
+        Passenger aux1 = aux.get(index);
+        int index1= -1;
 
         try{
-            for (var pasajero: tickets) {
-                if (aux1.getDni().contains(dni)){
-                    index= tickets.indexOf(pasajero);
+            for (var ticket: tickets) {
+                System.out.println("Entre al try de search_DNI_ticket");
+                if (aux1.getId() == ticket.getId_Passenger()){
+                    index1= tickets.indexOf(ticket);
                 }
+                System.out.println("ticket con id de pasajero numero " + aux1.getId() +
+                        " " + ticket.toString());
             }
         }catch (RuntimeException e){
             System.out.println("No se encuentran el DNI");
         }
-        return index;
+        return index1;
     }
 
-    public static void bajaTicket (String fileTicket, String Dni){
+    public static void bajaTicket (String fileTicket, String idBusca){
         FileManagement file = new FileManagement();
-        ArrayList <Ticket> aux = file.jSonToArrayList(fileTicket);
+        ArrayList <Ticket> aux = file.jSonToArrayListTicket(fileTicket);
+        ArrayList <Passenger> aux1 = file.jSonToArrayList("ARCHIVO_PASAJEROS.json");
+        System.out.println("<<<Persona>>>" + aux1.get(search_DNI_ticket(aux,idBusca)) + " index" + search_DNI_ticket(aux,idBusca)            );
+
         try {
-            int index = search_DNI_ticket(aux, Dni);
+            int index = search_DNI_ticket(aux, idBusca);
             aux.remove(index);
-            for (var pasajero : aux) {
-                System.out.println(pasajero);
-            }
 
             file.arrayToJsonFormat(aux, fileTicket);
             System.out.println("El pasajero ha sido eliminado correctamente");
         } catch (Exception e){
+
             System.out.println("El Pasajero Buscado No Existe");
+            System.out.println(e.getMessage());
+
         }
     }
 

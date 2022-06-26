@@ -3,6 +3,7 @@ import Files.FileManagement;
 import FolderPlane.Gestion;
 import FolderPlane.Plane;
 import Menu.Menu;
+import Ticket.Ticket;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -18,8 +19,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-      Menu.primerMenu();
-        /*List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
+      //Menu.primerMenu();
+
+
+        List<Plane> misAviones = Gestion.add_a_Flota(new ArrayList<>());
 
         for (Plane plane: misAviones){
             System.out.println("Avion" + plane.toString());
@@ -44,7 +47,6 @@ public class Main {
         System.out.println("\n Mis aviones 4 " + misAviones1.get(3) );
         System.out.println("\n Mis aviones 5 " + misAviones1.get(4) );
         System.out.println("\n Mis aviones 6 " + misAviones1.get(5) );
-*/
 
     }
     public static void leyendoArchivo() {

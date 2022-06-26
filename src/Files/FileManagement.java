@@ -106,7 +106,7 @@ public class FileManagement {
 
         BufferedReader reader = null;
 
-        ArrayList<Object> tickets= new ArrayList<>();
+        ArrayList<Ticket> tickets= new ArrayList<>();
 
         try {
             reader = new BufferedReader(new FileReader(new File(archivoJson)));
@@ -190,6 +190,22 @@ public class FileManagement {
             }
         }
         return (ArrayList<t>) list1;
+    }
+
+    public void arrayToJsonTicketSeria (Ticket t, String nameFileTick) throws IOException, ClassNotFoundException {
+        FileOutputStream fos = new FileOutputStream(nameFileTick);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(t);
+            System.out.println("Ticket dentro de for" + t.toString());
+
+        FileInputStream fis = new FileInputStream(nameFileTick);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Ticket t1 = (Ticket) ois.readObject();
+        System.out.println("Ticket dentro de seria  " + t1.toString());
+        oos.close();
+        ois.close();
+
     }
 
 }

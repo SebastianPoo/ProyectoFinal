@@ -29,13 +29,11 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-
-                    Ticket.ticket_registration("ARCHIVO_TICKET.json","ARCHIVO_PASAJEROS.json");
+                    Ticket.ticket_registration("ARCHIVO_TICKET.json",
+                            "ARCHIVO_PASAJEROS.json");
                     break;
                 case 2:
-
                      gestionPasajeros("ARCHIVO_PASAJEROS.json");
-
                     break;
                 case 3:
                     gestionTicket("ARCHIVO_TICKET.json");
@@ -63,18 +61,21 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
+
+                    Scanner scan2 = new Scanner(System.in);
+                    System.out.println("ENTER DNI");
+                    String dni1 = scan2.nextLine();
                     System.out.println("Borrando en proceso");
+                    Ticket.bajaTicket(nombreArchivo,dni1);
                     break;
                 case 2:
                     Scanner scan1 = new Scanner(System.in);
                     System.out.println("ENTER DNI");
                     String dni = scan1.nextLine();
-                    int pos = aux1.get(crud.buscaPorDni("ARCHIVO_PASAJEROS.json", dni)).getId();
-
+                    int pos = aux1.get(crud.buscaPorDni("ARCHIVO_PASAJEROS.json",
+                            dni)).getId();
                     System.out.println("tickte     " + aux.get(pos));
                     List<Plane> misAviones1 = FileManagement.jsonToArray("ARCHIVO_AVIONES");
-
-
                     break;
                 case 0:
                     opcion3();
@@ -91,7 +92,6 @@ public class Menu {
         System.out.println("2- MOSTRAR TICKETS");
         System.out.println("0- ESC");
     }
-
     private static void cuestionarioInicial() {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
         System.out.println("1- VIAJE");
@@ -99,14 +99,12 @@ public class Menu {
         System.out.println("3- GESTION DE TICKET");
         System.out.println("0- ESC");
     }
-
     private static void opcion3() {
         System.out.println("ESC");
     }
     private static void opcionDefault() {
         System.out.println("Solo puede elegir las opciones 1 o 2");
     }
-
     public int addCompa() {
         Scanner scanner = new Scanner(System.in);
 
@@ -123,7 +121,6 @@ public class Menu {
         }
         return suma;
     }
-
     public static void gestionPasajeros (String ArchivoPasajero) throws IOException {
         Scanner scan = new Scanner(System.in);
         ArrayList<Passenger> aux = new ArrayList<>();

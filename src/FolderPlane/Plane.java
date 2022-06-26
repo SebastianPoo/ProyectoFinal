@@ -22,6 +22,7 @@ public abstract class Plane implements Service, Serializable {
     }
 
     public List<Calendar> getListPlane() {
+
         return listPlane;
     }
 
@@ -55,6 +56,8 @@ public abstract class Plane implements Service, Serializable {
         this.planeType = PlaneType;
         this.listPlane = new ArrayList<>();
     }
+
+
 
     public int getMaxPassenger() {
         return maxPassenger;

@@ -1,9 +1,6 @@
 package FolderPlane;
 
-import java.util.Calendar;
-
 public class Silver extends Plane{
-    private Calendar diaVuelo;
 
     public Silver(String nombre, int coste, double fuel, int maxPassenger,
                   double kmXhs, double kmTraveled, engineType engineType) {
@@ -12,7 +9,8 @@ public class Silver extends Plane{
 
 
     public Silver(String nombre) {
-        super(nombre, 200,1141,4,694,2084, engineType.MOTOR_A_HELICE,4000);
+        super(nombre, 200,1141,4,694,
+                2084, engineType.MOTOR_A_HELICE,4000);
     }
 
 
