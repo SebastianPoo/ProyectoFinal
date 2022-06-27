@@ -6,13 +6,10 @@ import Travel.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
-public abstract class Gestion {
+public abstract class Gestion implements Serializable {
 
     private static List <Plane> planes;
     private static List <Passenger> passenger;

@@ -30,12 +30,11 @@ public class Fechas {
         do {
             dateMonths();
             respuesta = scan.nextInt();
-        } while (respuesta<mesHoy);
+        } while (respuesta<mesHoy || respuesta > 12);
         mes=respuesta;
 
         if (mes==mesHoy) {
             do {
-                System.out.println("if"+diaHoy);
                 showdates();
                 respuesta = scan.nextInt();
             } while (respuesta < diaHoy || respuesta > 31);

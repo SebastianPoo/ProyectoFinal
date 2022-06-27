@@ -1,18 +1,24 @@
 package FolderPlane;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Silver extends Plane{
+public class Silver extends Plane implements Serializable {
     private Calendar diaVuelo;
 
     public Silver(String nombre, int coste, double fuel, int maxPassenger,
                   double kmXhs, double kmTraveled, engineType engineType) {
-        super(nombre, coste, fuel, maxPassenger, kmXhs, kmTraveled, engineType,4000);
+        super(nombre, coste, maxPassenger, kmXhs, kmTraveled, engineType,4000);
     }
 
 
     public Silver(String nombre) {
-        super(nombre, 200,1141,4,694,2084, engineType.MOTOR_A_HELICE,4000);
+        super(nombre, 200,4,694,2084, engineType.MOTOR_A_HELICE,4000);
+
+    }
+
+    public Silver() {
+
     }
 
 
