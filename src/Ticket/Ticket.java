@@ -11,9 +11,14 @@ import Travel.Distances;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
-public class Ticket {
+public class Ticket implements Serializable {
     private UUID ticket;
     private int price;
     private Distances destination;
@@ -95,12 +100,15 @@ public class Ticket {
         this.fechaDeViaje = fechaDeViaje;
     }
 
+    public Calendar getFechaDeViaje() {
+        return fechaDeViaje;
+    }
 
-   /* public Ticket costoTicket() {
-        Ticket ticket = new Ticket();
-        ticket.price = plane.carry_on_bag(plane.getCoste());
-        return ticket;
-    }*/
+    /* public Ticket costoTicket() {
+            Ticket ticket = new Ticket();
+            ticket.price = plane.carry_on_bag(plane.getCoste());
+            return ticket;
+        }*/
     public void costoTicket() {
         int costo = 0;
         System.out.println("      Costo total del ticket  ");
@@ -148,7 +156,6 @@ public class Ticket {
 
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                //Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");
 
                 int companions= menu.addCompa();
                 ticket.setTotal_passengers(companions);
@@ -161,14 +168,15 @@ public class Ticket {
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);
                 pax = filePas.jSonToArrayList(nameFilePax);
+
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
 
                 System.out.println(           "Datos del ticket" + "\n"  + ticket.toString());
-                    System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
-                    String conf= scan.nextLine().toUpperCase();
-                    if (conf.contains("S")){
-                        tickets.add(ticket);
-                    }
+                System.out.println(       "Desea Confirmar el Ticket ?  --- S   /   N");
+                String conf= scan.nextLine().toUpperCase();
+                if (conf.contains("S")){
+                    tickets.add(ticket);
+                }
                 System.out.println(             "1 para modificar ticket o 2 para continuar");
                 option = scan.nextInt();
                 scan.nextLine();
@@ -183,7 +191,7 @@ public class Ticket {
 
                 Calendar calendar= fechas.elegir();
                 ticket.setFechaDeViaje(calendar);
-                //Gestion.persistencia(Gestion.add_a_Flota(new ArrayList<>()),"ARCHIVO_FLOTA");
+
 
                 int companions= menu.addCompa();
                 ticket.setTotal_passengers(companions);
@@ -196,6 +204,7 @@ public class Ticket {
                 String dni = scan.nextLine();
                 newPass(nameFilePax, dni);       // TODO: 6/17/2022 busca el dni en el archivo, sino existe lo agrega
                 pax = filePas.jSonToArrayList(nameFilePax);  // TODO: 6/18/2022 Fue necesario traer archivo para setear pasajero
+
                 ticket.setPassager(pax.get(crud.buscaPorDni(nameFilePax,dni)));
 
                 System.out.println(            "Datos de nuevo ticket" + "\n" + ticket.toString());
@@ -212,6 +221,7 @@ public class Ticket {
 
         }
     }
+
     public boolean equalsTicket(Calendar calendar) {
         if (fechaDeViaje.get(Calendar.MONTH) == calendar.get(Calendar.MONTH) && fechaDeViaje.get(Calendar.DATE) == calendar.get(Calendar.DATE)) {
             return true;

@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+
 public abstract class Plane implements Service, Serializable {
     private Integer planeType;
     private String nombre;
     private int coste;
-    private double fuel;
     private int maxPassenger;
     private double kmXhs;
     private double kmTraveled;
@@ -18,12 +20,23 @@ public abstract class Plane implements Service, Serializable {
 
 
 
-    private Plane (){
+    Plane(){
     }
 
+    public Plane(String nombre, int coste, int maxPassenger, double kmXhs, double kmTraveled, engineType engineType, Integer PlaneType) {
+        this.nombre = nombre;
+        this.coste = coste;
+        this.maxPassenger = maxPassenger;
+        this.kmXhs = kmXhs;
+        this.kmTraveled = kmTraveled;
+        this.engineType = engineType;
+        this.planeType = PlaneType;
+        this.listPlane = new ArrayList<>();
+    }
     public List<Calendar> getListPlane() {
         return listPlane;
     }
+
     public void setList(Calendar calendar) {
         listPlane.add(calendar);
         this.listPlane = listPlane;
@@ -42,18 +55,6 @@ public abstract class Plane implements Service, Serializable {
         return nombre;
     }
 
-    public Plane(String nombre, int coste, double fuel, int maxPassenger,
-                 double kmXhs, double kmTraveled, engineType engineType, Integer PlaneType) {
-        this.nombre = nombre;
-        this.coste = coste;
-        this.fuel = fuel;
-        this.maxPassenger = maxPassenger;
-        this.kmXhs = kmXhs;
-        this.kmTraveled = kmTraveled;
-        this.engineType = engineType;
-        this.planeType = PlaneType;
-        this.listPlane = new ArrayList<>();
-    }
 
     public int getMaxPassenger() {
         return maxPassenger;
@@ -83,7 +84,6 @@ public abstract class Plane implements Service, Serializable {
         return             "           <Plane> " + "\n" +
                 " nombre:            " + nombre + "\n" +
                 " coste fuel:        " + coste +  "\n" +
-                " fuel:              " + fuel +     "\n" +
                 " maxPassenger:      " + maxPassenger +  "\n" +
                 " kmXhs:             " + kmXhs +  "\n" +
                 " kmTraveled:        " + kmTraveled +  "\n" +

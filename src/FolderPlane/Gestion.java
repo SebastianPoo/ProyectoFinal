@@ -6,13 +6,10 @@ import Travel.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
-public abstract class Gestion {
+public abstract class Gestion implements Serializable {
 
     private static List <Plane> planes;
     private static List <Passenger> passenger;
@@ -25,12 +22,12 @@ public abstract class Gestion {
 
     public static  ArrayList<Plane> add_a_Flota(ArrayList planes){
 
-        Bronze boeing123 = new Bronze("boeing 123-Bronce",1);
-        Bronze boeing124 = new Bronze("boeing 124-Bronce",2);
-        Silver eclipse550 = new Silver("eclipse 550-Silver",3);
-        Silver eclipse555 = new Silver("eclipse 555-Silver",4);
-        Gold cessna550 = new Gold("cessna 550-Gold",5);
-        Gold cessna650 = new Gold("cessna 650-Gold",6);
+        Bronze boeing123 = new Bronze("boeing 123-Bronce");
+        Bronze boeing124 = new Bronze("boeing 124-Bronce");
+        Silver eclipse550 = new Silver("eclipse 550-Silver");
+        Silver eclipse555 = new Silver("eclipse 555-Silver");
+        Gold cessna550 = new Gold("cessna 550-Gold");
+        Gold cessna650 = new Gold("cessna 650-Gold");
 
         Calendar calendar7 = Calendar.getInstance();
         calendar7.set(2022,7,7);

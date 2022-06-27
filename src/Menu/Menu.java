@@ -5,9 +5,8 @@ import FolderPlane.Gestion;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
 import Crud.*;
 import FolderPlane.Plane;
 
@@ -21,7 +20,7 @@ public class Menu {
     static Crud crud = new Crud();
     static FileManagement file = new FileManagement();
 
-    public static void primerMenu () throws IOException {
+    public static void primerMenu () throws IOException, ClassNotFoundException {
         Scanner scan = new Scanner(System.in);
         int respuesta;
         do {
@@ -29,7 +28,6 @@ public class Menu {
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-
                     Ticket.ticket_registration("ARCHIVO_TICKET.json","ARCHIVO_PASAJEROS.json");
                     break;
                 case 2:
@@ -55,17 +53,17 @@ public class Menu {
         ArrayList<Ticket> aux = new ArrayList<>();
         aux = file.jSonToArrayListTicket(nombreArchivo);
         Scanner scan = new Scanner(System.in);
-        opcion0();
         int respuesta;
         do {
             opcion0();
             respuesta = scan.nextInt();
             switch (respuesta){
                 case 1:
-                    opcion1(aux);
+                    aux=CancelarVuelo(aux);
+                    file.arrayToJsonFormatTicket(aux, nombreArchivo);
                     break;
                 case 2:
-                    opcion2();
+                    MostrarTickets(aux);
                     break;
                 case 0:
                     opcion3();
@@ -78,117 +76,42 @@ public class Menu {
     }
 
     private static void opcion0() {
-        System.out.println("CANCELAR VUELO");
-        System.out.println("MOSTRAR TICKETS");
+        System.out.println("1- CANCELAR VUELO");
+        System.out.println("2- MOSTRAR TICKETS");
         System.out.println("0- ESC");
     }
-    private static void opcion1( ArrayList<Ticket> tickets) {
-        System.out.println("");
+    private static ArrayList<Ticket> CancelarVuelo( ArrayList<Ticket> tickets) {
+        Scanner scan = new Scanner(System.in);
+        Calendar dayToday = Calendar.getInstance();
+
+        int i=0;
+        int respuesta=0;
+        for(var ticket : tickets){
+            System.out.println("    Ticket numero: "+i);
+            System.out.println(ticket.toString());
+            i++;
+        }
+        System.out.println("Elija ticket a Borrar");
+        respuesta = scan.nextInt();
+        if(tickets.get(respuesta).getFechaDeViaje().get(Calendar.MONTH)== dayToday.get(Calendar.MONTH) && tickets.get(respuesta).getFechaDeViaje().get(Calendar.DATE)== dayToday.get(Calendar.DATE)){
+            System.out.println("No se puede Borrar una Fecha en menos de 24hs");
+        }else {
+            tickets.remove(respuesta);
+            System.out.println("Vuelo Cancelado....");
+        }
+
+        return tickets;
     }
-    private static void opcion2() {
-        System.out.println("en pasillo");
+    private static void MostrarTickets(ArrayList<Ticket> tickets) {
+        int i=0;
+        for(var ticket : tickets){
+            System.out.println("    Ticket numero: "+i);
+            System.out.println(ticket.toString());
+            i++;
+        }
     }
 
-    // Menu del cuestionario inicial
-    private static void case1(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Cuestionario Intro..");
-        int respuesta;
-        do {
-            opcion10();
-            respuesta = scan.nextInt();
-            switch (respuesta){
-                case 1:
-                    opcion11();
-                    break;
-                case 2:
-                    opcion12();
-                    break;
-                case 0:
-                    opcion3();
-                    break;
-                default:
-                    opcionDefault(); // solo puede elegir opción 1 o 2
-                    break;
-            }
-        }while (respuesta != 0);
-    }
-    // Elección de ubicación para Bronce
 
-    // Elección de Confort para Plata
-    private static void case2(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Plata en proceso..");
-        int respuesta;
-        do {
-            opcion4();
-            respuesta = scan.nextInt();
-            switch (respuesta){
-                case 1:
-                    opcion5();
-                    break;
-                case 2:
-                    opcion6();
-                    break;
-                case 0:
-                    opcion3();
-                    break;
-                default:
-                    opcionDefault(); // solo puede elegir opción 1 o 2
-                    break;
-            }
-        }while (respuesta != 0);
-    }
-    // Elección de Conectividad para Gold
-    private static void case3(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Gold en proceso..");
-        int respuesta;
-        do {
-            opcion7();
-            respuesta = scan.nextInt();
-            switch (respuesta){
-                case 1:
-                    opcion8();
-                    break;
-                case 2:
-                    opcion9();
-                    break;
-                case 0:
-                    opcion3();
-                    break;
-                default:
-                    opcionDefault(); // solo puede elegir opción 1 o 2
-                    break;
-            }
-        }while (respuesta != 0);
-    }
-    // Selección de avión disponible para el viaje
-    public static void case5() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Seleccione el avion disponible para su viaje: ");
-        int respuesta;
-        do {
-            opcionIntro();
-            respuesta = scan.nextInt();
-            switch (respuesta){
-                case 1:
-
-                    break;
-                case 2:
-                    case2();
-                case 3:
-                    case3();
-                    break;
-                case 0:
-                    opcion3();
-                    break;
-                default:
-                    opcionDefault(); // solo puede elegir opción 1 o 2
-                    break;
-            }
-        }while (respuesta != 0);
-    }
     private static void cuestionarioInicial() {
         System.out.println("<<< Bienvenidos a AeroTaxi >>>");
         System.out.println("1- VIAJE");
@@ -196,20 +119,6 @@ public class Menu {
         System.out.println("3- GESTION DE TICKET");
         System.out.println("0- ESC");
     }
-    /*public static void case6() {
-    }
-    public static void case7() {
-    }
-    public static void case8() {
-    }*/
-    private static void opcionIntro() {
-        System.out.println("<<< Seleccione su AeroTaxi >>>");
-        System.out.println("1- AeroTaxi Bronze");
-        System.out.println("2- AeroTaxi Plata");
-        System.out.println("3- AeroTaxi Gold");
-        System.out.println("0- ESC");
-    }
-
 
     private static void opcion3() {
         System.out.println("ESC");
@@ -217,56 +126,7 @@ public class Menu {
     private static void opcionDefault() {
         System.out.println("Solo puede elegir las opciones 1 o 2");
     }
-    private static void opcion4() {
-        System.out.println("Elija confort:");
-        System.out.println("1- Con frazada");
-        System.out.println("2- Con almohada");
-        System.out.println("0- ESC");
-    }
-    private static void opcion5() {
-        System.out.println("con frazada entonces");
-    }
-    private static void opcion6() {
-        System.out.println("con almohada entonces");
-    }
-    private static void opcion7() {
-        System.out.println("Elija Comunicacion:");
-        System.out.println("1- Con WiFi");
-        System.out.println("2- Sin WiFi");
-        System.out.println("0- ESC");
-    }
-    private static void opcion8() {
-        System.out.println("con WiFi entonces");
-    }
-    private static void opcion9() {
-        System.out.println("sin WiFi entonces");
-    }
-    // TODO: 10/06/2022 subMenú para el cuestionario inicial de la app
-    private static void opcion10() {
-        System.out.println("Elija Fechas:");
-        System.out.println("1- Fecha para realizar el viaje");
-        System.out.println("2- Fecha de regreso...");
-        System.out.println("0- ESC");
 
-    }
-    private static void opcion11() {
-        System.out.println("Fecha de partida cargada");
-    }
-    private static void opcion12() {
-        System.out.println("Fecha de regreso cargada");
-    }
-    private static void opcion13() {
-        Scanner scanner = new Scanner(System.in);
-        String origen;
-        System.out.println("Origen");
-        origen = scanner.nextLine();
-        System.out.println("Su origen es: "+origen);
-        String destino;
-        System.out.println("Destino: ");
-        destino = scanner.nextLine();
-        System.out.println("Su destino es: "+destino);
-        System.out.println("Vuelo desde "+origen+" hacia "+destino);
-    }
     public int addCompa() {
         Scanner scanner = new Scanner(System.in);
 
